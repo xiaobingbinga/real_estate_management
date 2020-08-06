@@ -86,11 +86,27 @@
                     type: Array,
                     require: true
                 },
+                num:{
+                    type:Number
+                },
                 showPageDot:{
                     type:Boolean,
                     default:false
                 }
+            },
+            methods:{
+                setSlidesPerView(){
+                    if(this.num){
+                       this. swiperOption.slidesPerView = this.num
+                    }
+                }
+            },
+            created(){
+                this.setSlidesPerView()
+                console.log(this.swiperOption)
             }
+            
+    
         }
     </script>
 

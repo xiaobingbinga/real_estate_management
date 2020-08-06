@@ -672,7 +672,8 @@
                 title="我的代理"
                 itemRootClass="agent-carousel section"
                 :list="agentList"
-                :show-page-dot="true">
+                :num="4"
+                :show-page-dot="false">
             <template #item="{itemData}">
                 <div class="col">
                     <div class="agent">
@@ -739,6 +740,7 @@
                 <div class="brand col"><img :src="itemData.imgUrl" alt=""></div>
             </template>
         </brand-slot>
+        
     </div>
 </template>
 
