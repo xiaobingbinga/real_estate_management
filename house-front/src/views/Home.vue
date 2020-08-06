@@ -3,7 +3,6 @@
     <!--滑块组件-->
     <!--<slider title="蜗牛租房"></slider>-->
     <hero-carousel :list="houseList"></hero-carousel>
-    
     <!--搜索条件-->
     <my-search/>
     <!--特色房产-->
@@ -142,17 +141,17 @@
 </template>
 
 <script>
-  import HeroCarousel from "../components/until/HeroCarousel";
-  import EstateList from "../components/estate/EstateList";
-  import Down from "../components/home/Down";
-  import Service from "../components/home/Service";
-  import MyCarousel from "../components/until/MyCarousel";
-  import EstateSketch from "../components/estate/EstateSketch";
-  import FunFact from "../components/home/FunFact";
-  import MyAgent from "../components/agent/MyAgent";
-  import EstateNews from "../components/news/EstateNews";
-  import Brand from "../components/home/Brand";
-  import MySearch from "../components/home/MySearch";
+  import HeroCarousel from "../components/components-j/until/HeroCarousel";
+  import EstateList from "../components/components-j/estate/EstateList";
+  import Down from "../components/components-j/home/Down";
+  import Service from "../components/components-j/home/Service";
+  import MyCarousel from "../components/components-j/until/MyCarousel";
+  import EstateSketch from "../components/components-j/estate/EstateSketch";
+  import FunFact from "../components/components-j/home/FunFact";
+  import MyAgent from "../components/components-j/agent/MyAgent";
+  import EstateNews from "../components/components-j/news/EstateNews";
+  import Brand from "../components/components-j/home/Brand";
+  import MySearch from "../components/components-j/home/MySearch";
     export default {
         name: "Home",
         components:{
