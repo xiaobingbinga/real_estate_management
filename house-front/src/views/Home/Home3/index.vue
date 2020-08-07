@@ -4,7 +4,9 @@
     <div class="hero-section section position-relative">
 
       <!--Hero Map-->
-      <div id="hero-map"></div>
+      <div id="hero-map">
+        <baidu-map class="bm-view" ak="3SltoXj9AV0CpKQX2TymnPvWttzX0kYZ"></baidu-map>
+      </div>
 
       <!--Hero Map Property Controler-->
       <div class="map-property-controls"></div>
@@ -370,15 +372,16 @@
 </template>
 
 <script>
-  import houseSearch from "components/Home/Search"
-  import houseWelcome from "components/Home/Welcome"
-  import houseDownload from "components/Home/Download"
-  import houseSlider from "components/Slider"
-  import houseProperty from "components/Property"
-  import houseAgent from "components/Agent"
-  import houseReview from "components/Home/Review"
-  import houseNews from "components/News"
-  import houseModule from "components/Home/Module"
+  import houseSearch from "@/components/components-w/Home/Search"
+  import houseWelcome from "@/components/components-w/Home/Welcome"
+  import houseDownload from "@/components/components-w/Home/Download"
+  import houseSlider from "@/components/components-w/Slider"
+  import houseProperty from "@/components/components-w/Property"
+  import houseAgent from "@/components/components-w/Agent"
+  import houseReview from "@/components/components-w/Home/Review"
+  import houseNews from "@/components/components-w/News"
+  import houseModule from "@/components/components-w/Home/Module"
+  import BaiduMap from 'vue-baidu-map/components/map/Map.vue'
 
   export default {
     name: "index",
@@ -391,7 +394,8 @@
       houseDownload,
       houseAgent,
       houseReview,
-      houseNews
+      houseNews,
+      BaiduMap
     },
     data () {
       return {

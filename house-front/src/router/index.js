@@ -28,7 +28,7 @@ const routes = [
   {
     path: '/index3',
     name: 'Index3',
-    component: () => import('views/Home/Home3'),
+    component: () => import('@/views/Home/Home3'),
     meta: {
       title: 'house-front'
     }
