@@ -52,8 +52,12 @@
                   <template #first>
                     <b-form-select-option :value="null" disabled>请选择城市</b-form-select-option>
                   </template>
-                  <b-form-select-option>简阳</b-form-select-option>
-                  <b-form-select-option>简阳</b-form-select-option>
+                  <b-form-select-option
+                          v-for="(oneCity,idxCity) in city"
+                          :key="idxCity"
+                          :value="oneCity.value">
+                    {{oneCity.tip}}
+                  </b-form-select-option>
                 </b-form-select>
               </div>
               
@@ -140,6 +144,7 @@
 <script>
     import VueSlider from 'vue-slider-component'
     import 'vue-slider-component/theme/default.css'
+    import {mapGetters} from 'vuex'
 
     export default {
         components: {VueSlider},
@@ -148,7 +153,10 @@
             return {
                 sliderValue: [1250, 7500],
             }
-        }
+        },
+      computed:{
+          ...mapGetters(["city"])
+      }
     }
 </script>
 
