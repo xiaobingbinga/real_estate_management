@@ -16,36 +16,20 @@
             <div class="row row-30 align-items-center">
                 <div class="col-lg-5 col-12 mb-30">
                     <div class="property-slider-2">
-                        <div class="property-2">
-                            <div class="property-inner">
-                                <a href="single-properties.html" class="image"><img src="assets/images/property/property-13.jpg" alt=""></a>
-                                <div class="content">
-                                    <h4 class="title"><a href="single-properties.html">江南宅院</a></h4>
-                                    <span class="location">成都双流机场大道568</span>
-                                    <h4 class="type">出租 <span>￥550 <span>月</span></span></h4>
-                                    <ul>
-                                        <li>6卧</li>
-                                        <li>4卫</li>
-                                        <li>3车位</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!--<div class="property-2">-->
-                        <!--    <div class="property-inner">-->
-                        <!--        <a href="single-properties.html" class="image"><img src="assets/images/property/property-14.jpg" alt=""></a>-->
-                        <!--        <div class="content">-->
-                        <!--            <h4 class="title"><a href="single-properties.html">木马山别墅</a></h4>-->
-                        <!--            <span class="location">城北大道450号附22号</span>-->
-                        <!--            <h4 class="type">出租 <span>￥550 <span>月</span></span></h4>-->
-                        <!--            <ul>-->
-                        <!--                <li>6卧</li>-->
-                        <!--                <li>4卫</li>-->
-                        <!--                <li>3车位</li>-->
-                        <!--            </ul>-->
-                        <!--        </div>-->
-                        <!--    </div>-->
-                        <!--</div>-->
+
+                        <swiper class="swiper" :options="swiperOption">
+                            <swiper-slide v-for="serviceHouse in serviceHouseList" :key="serviceHouse.id">
+                                <service-house-inner :house-info="serviceHouse"/>
+                            </swiper-slide>
+                            <button class="slick-prev slick-arrow" slot="button-prev">
+                                <i class="fa fa-angle-left"></i>
+                            </button>
+                            <button class="slick-next slick-arrow" slot="button-next">
+                                <i class="fa fa-angle-right"></i>
+                            </button>
+                        </swiper>
+
+
                     </div>
                 </div>
                 <div class="col-lg-7 col-12">
@@ -125,7 +109,64 @@
 </template>
 
 <script>
+    import {Swiper,SwiperSlide} from 'vue-awesome-swiper'
+    import 'swiper/css/swiper.css'
+    import ServiceHouseInner from "@/components/components-z/house/ServiceHouseInner";
     export default {
+        components: {ServiceHouseInner, Swiper,SwiperSlide},
+        props:{
+            serviceHouseList:{
+                type:Array,
+                default(){
+                    return [
+                        {
+                            id:1,
+                            pictureUrl:"assets/images/property/property-1.jpg",
+                            square:550,
+                            roomNumber:6,
+                            bathroomNumber:4,
+                            garageNumber:3,
+                            title:'江南宅院',
+                            address:'锦江区东大街下东大街568号',
+                            rentType:1,
+                            price:550,
+                            leaseType:1,
+                            isHot:1,
+                            isSpecial:0
+                        },
+                        {
+                            id:2,
+                            pictureUrl:"assets/images/property/property-2.jpg",
+                            square:550,
+                            roomNumber:6,
+                            bathroomNumber:4,
+                            garageNumber:3,
+                            title:'木马山别墅',
+                            address:'城北大道450附22号',
+                            rentType:1,
+                            price:2550,
+                            leaseType:1,
+                            isHot:1,
+                            isSpecial:0
+                        },
+                    ]
+                }
+            },
+            swiperOption:{
+                type:Object,
+                default(){
+                    return {
+                        slidesPerView:1,
+                        spaceBetween:0,
+                        loop:true,
+                        navigation:{
+                            nextEl:'.slick-next',
+                            prevEl:'.slick-prev'
+                        }
+                    }
+                }
+            }
+        }
     }
 </script>
 

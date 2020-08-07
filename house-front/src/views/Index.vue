@@ -5,7 +5,7 @@
         <house-list :list="houseList" title="新增加的房产"/>
         <house-welcome/>
         <house-download/>
-        <house-services/>
+        <house-services :serviceHouseList="serviceHouseList"/>
 
         <house-slider root-class="property-section section pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50"
                       item-root-class="property-carousel section"
@@ -109,7 +109,8 @@
             ...mapGetters('brandList', ['brandList']),
             ...mapGetters('featureList', ['featureList']),
             ...mapGetters('houseList', ['houseList']),
-            ...mapGetters('newsList', ['newsList'])
+            ...mapGetters('newsList', ['newsList']),
+            ...mapGetters('serviceHouseList', ['serviceHouseList'])
         },
         data: () => ({
             featureSwiperOption: {

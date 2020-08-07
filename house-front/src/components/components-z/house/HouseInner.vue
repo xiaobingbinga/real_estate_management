@@ -28,7 +28,7 @@
                 <div class="type-wrap">
                     <span class="price">
                         ￥{{houseInfo.price}}
-                        <span v-if="houseInfo.rentType === 1">{{lessType[houseInfo.lessType]}}</span>
+                        <span v-if="houseInfo.rentType === 1">{{leaseType[houseInfo.leaseType]}}</span>
                     </span>
                     <span class="type" v-if="houseInfo.rentType === 1">出租</span>
                     <span class="type" v-if="houseInfo.rentType === 2">出售</span>
@@ -41,7 +41,7 @@
 <script>
     export default {
         data:()=>({
-            lessType:['','天','周','月','季','年']
+            leaseType:['','天','周','月','季','年']
         }),
         props:{
             msg:String,
