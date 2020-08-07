@@ -17,12 +17,12 @@ module.exports = {
     },
     lintOnSave: false,
     productionSourceMap: false,
-    css: {
-        extract: true,
-        sourceMap: false,
-        loaderOptions: {},
-        modules: false
-    },
+    // css: {
+    //     extract: true,
+    //     sourceMap: false,
+    //     loaderOptions: {},
+    //     modules: false
+    // },
     chainWebpack: (config) => {
         config.resolve.alias
           .set('components',resolve('./src/components/components-w'))
