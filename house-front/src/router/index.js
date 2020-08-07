@@ -12,17 +12,26 @@ const routes = [
   {
     path: '/index',
     name: 'Index',
-    component: () => import('../views/Home/Home1/Index.vue')
+    component: () => import('../views/Home/Home1/Index.vue'),
+    meta: {
+      title: 'house-front'
+    }
   },
   {
       path: '/index2',
       name: 'Home',
-      component: Home
+      component: Home,
+      meta: {
+        title: 'house-front'
+      }
   },
   {
     path: '/index3',
     name: 'Index3',
-    component: () => import('views/Home/Home3')
+    component: () => import('views/Home/Home3'),
+    meta: {
+      title: 'house-front'
+    }
   }
 ];
 

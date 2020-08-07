@@ -10,7 +10,7 @@ import brandList from "./index/brandList";
 import featureList from "./index/featureList";
 import houseList from "./index/houseList";
 import newsList from "./index/newsList";
-// import serviceHouseList from "./index/serviceHouseList";
+import serviceHouseList from "./index/serviceHouseList";
 
 Vue.use(Vuex)
 
@@ -52,7 +52,7 @@ export default new Vuex.Store({
     featureList,
     houseList,
     newsList,
-    view
-    // serviceHouseList
+    view,
+    serviceHouseList
   }
 })

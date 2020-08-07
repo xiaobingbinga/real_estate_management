@@ -1,7 +1,7 @@
 
 export default{
     // 开启命名空间
-    namespace:true,
+    namespaced:true,
     // 属性
     state: {
         menus:[

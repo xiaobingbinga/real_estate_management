@@ -9,8 +9,8 @@
   </div>
 </template>
 <script>
-  import houseHeader from 'components/Header'
-  import houseFooter from 'components/Footer'
+  import houseHeader from '@/components/Header.vue'
+  import houseFooter from '@/components/Footer.vue'
   export default {
     components:{
       houseHeader,

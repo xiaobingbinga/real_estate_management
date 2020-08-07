@@ -5,7 +5,8 @@ import Vue from 'vue'
 // 导入全局样式
 import '@/assets/css/style.css'
 import '@/assets/css/helper.css'
-// import '@/assets/css/pulgins.css'
+import '@/assets/css/pulgins.css'
+// import '@/assets/css/iconfont.min.css'
 
 // 导入字体
 // import './plugins/fontawesome'

@@ -48,7 +48,7 @@
                 <!--  <option>阆中</option>-->
                 <!--</select>-->
                 <!--选择城市-->
-                <b-form-select v-model="inputCity" class="nice-select search-select">
+                <b-form-select v-model="selectedCity" class="nice-select search-select">
                   <template #first>
                     <b-form-select-option :value="null" disabled>请选择城市</b-form-select-option>
                   </template>
@@ -63,18 +63,19 @@
               
               <!--类型-->
               <div>
-                <b-form-select  class="nice-select search-select ">
+                <b-form-select v-model="selectedRentType" class="nice-select search-select ">
                   <template #first>
-                    <b-form-select-option :value="null" disabled>买房</b-form-select-option>
+                    <b-form-select-option :value="null" disabled>请选择租售类型</b-form-select-option>
                   </template>
+                  <b-form-select-option >出售</b-form-select-option>
                   <b-form-select-option >租房</b-form-select-option>
                 </b-form-select>
               </div>
               <!--类型-->
               <div>
-                <b-form-select  class="nice-select search-select ">
+                <b-form-select v-model="selectedHouseType" class="nice-select search-select ">
                   <template #first>
-                    <b-form-select-option :value="null" disabled>类型</b-form-select-option>
+                    <b-form-select-option :value="null" disabled>请选择房屋类型</b-form-select-option>
                   </template>
                   <b-form-select-option >公寓</b-form-select-option>
                   <b-form-select-option >咖啡馆</b-form-select-option>
@@ -86,9 +87,9 @@
               </div>
               <!--房间数-->
               <div>
-                <b-form-select  class="nice-select search-select ">
+                <b-form-select v-model="selectedHouseNum" class="nice-select search-select ">
                   <template #first>
-                    <b-form-select-option :value="null" disabled>房间数</b-form-select-option>
+                    <b-form-select-option :value="null" disabled>请选择房间数</b-form-select-option>
                   </template>
                   <b-form-select-option >1</b-form-select-option>
                   <b-form-select-option >2</b-form-select-option>
@@ -100,7 +101,7 @@
               </div>
               <!--卫生间数-->
               <div>
-                <b-form-select  class="nice-select search-select ">
+                <b-form-select v-model="selectedBathroom" class="nice-select search-select ">
                   <template #first>
                     <b-form-select-option :value="null" disabled>卫生间数</b-form-select-option>
                   </template>
@@ -151,8 +152,12 @@
         name: "MySearch",
         data() {
             return {
-                inputCity: null,
                 sliderValue: [1250, 7500],
+                selectedCity:null,
+                selectedRentType:null,
+                selectedHouseType:null,
+                selectedHouseNum:null,
+                selectedBathroom:null,
             }
         },
       computed:{

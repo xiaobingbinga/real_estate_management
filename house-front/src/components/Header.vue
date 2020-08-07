@@ -16,19 +16,21 @@
                     <div class="col d-none d-lg-flex">
                         <nav class="main-menu">
                             <ul>
-
-                                <li v-for="(one,idx1) in menus" class="one.subMenu ? 'has-dropdown' : ''" :key="idx1">
-                                    <a :href="one.url">{{ one.title }}</a>
+                                <li v-for="(one,idx1) in menus" :class="one.subMenu ? 'has-dropdown' : ''" :key="idx1">
+                                    <a :href="one.url">{{one.title}}</a>
                                     <ul v-if="one.subMenu" class="sub-menu">
-                                        <li v-for="(two, idx2) in one.subMenu" :key="idx2" :class="two.subMenu ? 'has-dropdown' : ''">
-                                            <a :href="two.url">{{ two.title }}</a>
+                                        <li v-for="(two,idx2) in one.subMenu"
+                                            :class="two.subMenu ? 'has-dropdown' : ''"
+                                            :key="idx2">
+                                            <a :href="two.url">{{two.title}}</a>
                                             <ul v-if="two.subMenu" class="sub-menu">
-                                                <li v-for="(three, idx3) in two.subMenu" :key="idx3">
-                                                    <a :href="three.url">{{ three.title }}</a>
-
+                                                <li v-for="(three,idx3) in two.subMenu"
+                                                    :class="three.subMenu ? 'has-dropdown' : ''"
+                                                    :key="idx3">
+                                                    <a :href="three.url">{{three.title}}</a>
                                                 </li>
                                             </ul>
-                                        </li>
+                                            </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -40,8 +42,7 @@
                     <div class="col mr-sm-50 mr-xs-50">
                         <div class="header-user">
                             <a href="/login-register" class="user-toggle">
-                                <i class="pe-7s-user"></i><span>登录或注册</span>
-                            </a>
+                                <i class="pe-7s-user"></i><span>登录或注册</span></a>
                         </div>
                     </div>
                     <!--User end-->
@@ -61,25 +62,20 @@
 </template>
 
 <script>
-    import {mapGetters, mapMutations} from 'vuex'
-    // import {createNamespacedHelpers} from 'vuex'
-    // const {mapGetters, mapMutations} = createNamespacedHelpers("menus")
+    import {mapGetters,mapMutations} from 'vuex'
     export default {
-        data() {
+        data(){
             return {
-
             }
         },
-        computed: {
-            ...mapGetters('menus',['menus'])
+        computed:{
+            ...mapGetters(['menus'])
         },
-        methods: {
-            ...mapMutations('menus',['addMenu'])
+        methods:{
+            ...mapMutations(['addMenu'])
         },
         created() {
-            this.addMenu({
 
-            })
         }
     }
 </script>
