@@ -16,7 +16,6 @@
             <div class="row row-30 align-items-center">
                 <div class="col-lg-5 col-12 mb-30">
                     <div class="property-slider-2">
-
                         <swiper class="swiper" :options="swiperOption">
                             <swiper-slide v-for="serviceHouse in serviceHouseList" :key="serviceHouse.id">
                                 <service-house-inner :house-info="serviceHouse"/>
@@ -28,8 +27,6 @@
                                 <i class="fa fa-angle-right"></i>
                             </button>
                         </swiper>
-
-
                     </div>
                 </div>
                 <div class="col-lg-7 col-12">
