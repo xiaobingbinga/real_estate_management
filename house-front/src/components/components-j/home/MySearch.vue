@@ -146,7 +146,7 @@
         name: "MySearch",
         data() {
             return {
-                sliderValue: [0, 10000],
+                sliderValue: [1250, 7500],
             }
         }
     }
