@@ -64,6 +64,7 @@
                       item-root-class="brand-carousel section"
                       title="合作伙伴"
                       :showPageDot="false"
+                      :showArrowButton="false"
                       :list="brandList"
                       :swiperOption="brandSwiperOption">
             <template #item="{itemData}">
