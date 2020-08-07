@@ -15,12 +15,14 @@
                             <slot name="item" :itemData="itemData"></slot>
                         </swiper-slide>
                         <div v-show="showPageDot" class="swiper-pagination" slot="pagination"></div>
-                        <button class="slick-prev slick-arrow" style="margin-left: 25px" slot="button-prev">
-                            <i class="fa fa-angle-left"></i>
-                        </button>
-                        <button class="slick-next slick-arrow" style="margin-right: 25px" slot="button-next">
-                            <i class="fa fa-angle-right"></i>
-                        </button>
+                        <template v-if="showArrowButton">
+                            <button class="slick-prev slick-arrow" style="margin-left: 25px" slot="button-prev">
+                                <i class="fa fa-angle-left"></i>
+                            </button>
+                            <button class="slick-next slick-arrow" style="margin-right: 25px" slot="button-next">
+                                <i class="fa fa-angle-right"></i>
+                            </button>
+                        </template>
                     </swiper>
                 </div>
             </div>
@@ -37,6 +39,10 @@
             SwiperSlide
         },
         props:{
+            showArrowButton:{
+                type:Boolean,
+                default: true
+            },
             rootClass:String,
             itemRootClass:String,
             title:{
