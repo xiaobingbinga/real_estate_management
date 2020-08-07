@@ -69,10 +69,10 @@
             }
         },
         computed:{
-            ...mapGetters(['menus'])
+            ...mapGetters('menus',['menus'])
         },
         methods:{
-            ...mapMutations(['addMenu'])
+            ...mapMutations('menus',['addMenu'])
         },
         created() {
 
