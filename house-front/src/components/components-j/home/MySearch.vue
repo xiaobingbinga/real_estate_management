@@ -68,7 +68,7 @@
                     <b-form-select-option :value="null" disabled>请选择租售类型</b-form-select-option>
                   </template>
                   <b-form-select-option
-                          v-for="(oneRent,idxRent) in search.rentType.option"
+                          v-for="(oneRent,idxRent) in search.rentType.options"
                           :key="idxRent" :value="oneRent.value">
                     {{oneRent.tip}}
                   </b-form-select-option>
