@@ -53,7 +53,7 @@
                     <b-form-select-option :value="null" disabled>请选择城市</b-form-select-option>
                   </template>
                   <b-form-select-option
-                          v-for="(oneCity,idxCity) in city"
+                          v-for="(oneCity,idxCity) in search.city.options"
                           :key="idxCity"
                           :value="oneCity.value">
                     {{oneCity.tip}}
@@ -67,8 +67,11 @@
                   <template #first>
                     <b-form-select-option :value="null" disabled>请选择租售类型</b-form-select-option>
                   </template>
-                  <b-form-select-option >出售</b-form-select-option>
-                  <b-form-select-option >租房</b-form-select-option>
+                  <b-form-select-option
+                          v-for="(oneRent,idxRent) in search.rentType.option"
+                          :key="idxRent" :value="oneRent.value">
+                    {{oneRent.tip}}
+                  </b-form-select-option>
                 </b-form-select>
               </div>
               <!--类型-->
@@ -77,12 +80,12 @@
                   <template #first>
                     <b-form-select-option :value="null" disabled>请选择房屋类型</b-form-select-option>
                   </template>
-                  <b-form-select-option >公寓</b-form-select-option>
-                  <b-form-select-option >咖啡馆</b-form-select-option>
-                  <b-form-select-option >住宅</b-form-select-option>
-                  <b-form-select-option >餐馆</b-form-select-option>
-                  <b-form-select-option >商店</b-form-select-option>
-                  <b-form-select-option >别墅</b-form-select-option>
+                  <b-form-select-option
+                          v-for="(oneHouse,idxHouse) in search.houseType.options"
+                          :key="idxHouse" :value="oneHouse.value">
+                    {{oneHouse.tip}}
+                  </b-form-select-option>
+
                 </b-form-select>
               </div>
               <!--房间数-->
@@ -91,26 +94,24 @@
                   <template #first>
                     <b-form-select-option :value="null" disabled>请选择房间数</b-form-select-option>
                   </template>
-                  <b-form-select-option >1</b-form-select-option>
-                  <b-form-select-option >2</b-form-select-option>
-                  <b-form-select-option >3</b-form-select-option>
-                  <b-form-select-option >4</b-form-select-option>
-                  <b-form-select-option >5</b-form-select-option>
-                  <b-form-select-option >6</b-form-select-option>
+                  <b-form-select-option
+                          v-for="(oneRoom,idxRoom) in search.roomNumber.options"
+                          :key="idxRoom" :value="oneRoom.value">
+                    {{oneRoom.tip}}
+                  </b-form-select-option>
                 </b-form-select>
               </div>
               <!--卫生间数-->
               <div>
                 <b-form-select v-model="selectedBathroom" class="nice-select search-select ">
                   <template #first>
-                    <b-form-select-option :value="null" disabled>卫生间数</b-form-select-option>
+                    <b-form-select-option :value="null" disabled>请选择卫生间数</b-form-select-option>
                   </template>
-                  <b-form-select-option >1</b-form-select-option>
-                  <b-form-select-option >2</b-form-select-option>
-                  <b-form-select-option >3</b-form-select-option>
-                  <b-form-select-option >4</b-form-select-option>
-                  <b-form-select-option >5</b-form-select-option>
-                  <b-form-select-option >6</b-form-select-option>
+                  <b-form-select-option
+                          v-for="(oneBath,idxBath) in search.bathroomNumber.options"
+                          :key="idxBath" :value="oneBath.value">
+                    {{oneBath.tip}}
+                  </b-form-select-option>
                 </b-form-select>
               </div>
               
@@ -161,7 +162,7 @@
             }
         },
       computed:{
-          ...mapGetters(["city"])
+          ...mapGetters('search',["search"])
       }
     }
 </script>
