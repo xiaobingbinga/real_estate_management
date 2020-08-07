@@ -48,12 +48,12 @@
                 <!--  <option>阆中</option>-->
                 <!--</select>-->
                 <!--选择城市-->
-                <b-form-select  class="nice-select search-select ">
+                <b-form-select  class="nice-select search-select">
                   <template #first>
                     <b-form-select-option :value="null" disabled>请选择城市</b-form-select-option>
                   </template>
-                  <b-form-select-option >简阳</b-form-select-option>
-                  <b-form-select-option >简阳</b-form-select-option>
+                  <b-form-select-option>简阳</b-form-select-option>
+                  <b-form-select-option>简阳</b-form-select-option>
                 </b-form-select>
               </div>
               
@@ -119,7 +119,7 @@
                             :dotStyle="{backgroundColor:'#004395'}"
                             :processStyle="{backgroundColor:'#004395'}"
                             :railStyle="{backgroundColor:'#f4f4f4'}"
-                            :tooltipStyle="{backgroundColor:'#004395'}">
+                            :tooltipStyle="{backgroundColor:'#fff'}">
                 </vue-slider>
               </div>
               <div>
@@ -152,7 +152,7 @@
     }
 </script>
 
-<style scoped>
+<style>
   .vue-slider-dot-tooltip-text {
     font-family: "Poppins", sans-serif !important;
     font-size: 15px !important;
