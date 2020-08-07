@@ -65,11 +65,12 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
   .swiper {
     height: 100%;
     width: 100%;
-    .swiper-slide {
+  }
+  .swiper-slide {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -77,6 +78,5 @@
       /*font-weight: bold;*/
       /*font-size: 50px;*/
       /*background-color: #fff;*/
-    }
   }
 </style>
