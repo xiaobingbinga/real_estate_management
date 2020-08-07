@@ -2,6 +2,14 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import menus from "./menus";
 
+// index静态数据
+import search from "./index/search";
+import agentList from "./index/agentList";
+import brandList from "./index/brandList";
+import featureList from "./index/featureList";
+import houseList from "./index/houseList";
+import newsList from "./index/newsList";
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -19,6 +27,12 @@ export default new Vuex.Store({
   },
   // 分模块操作
   modules: {
-    menus
+    menus,
+    search,
+    agentList,
+    brandList,
+    featureList,
+    houseList,
+    newsList
   }
 })

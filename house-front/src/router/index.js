@@ -5,11 +5,15 @@ import Home from "../views/Home";
 Vue.use(VueRouter)
 
   const routes = [
-      {
-          path: '/index2',
-          name: 'Home',
-          component: Home
-      },
+  {
+    path: '/',
+    redirect: '/index'
+  },
+  {
+      path: '/index2',
+      name: 'Home',
+      component: Home
+  },
   {
     path: '/index',
     name: 'Index',

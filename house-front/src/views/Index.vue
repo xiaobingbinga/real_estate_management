@@ -1,110 +1,169 @@
 <template>
-  <div>
-    <house-special title="特色房产" :list="houseList">
-      <template #item="{itemData}">
-        <div class="property-item col">
+    <div>
+        <house-hero/>
+        <house-search/>
+        <house-list :list="houseList" title="新增加的房产"/>
+        <house-welcome/>
+        <house-download/>
+        <house-services/>
 
-          <house-inner :houseInfo="itemData"></house-inner>
+        <house-slider root-class="property-section section pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50"
+                      item-root-class="property-carousel section"
+                      title="特色房产"
+                      :showPageDot="true"
+                      :list="featureList"
+                      :swiperOption="featureSwiperOption">
+            <template #item="{itemData}">
+                <div class="property-item col">
+                    <house-inner :houseInfo="itemData"/>
+                </div>
+            </template>
+        </house-slider>
 
-        </div>
-      </template>
-    </house-special>
-  </div>
+        <house-c-t-a/>
+
+        <house-slider
+                root-class="agent-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50"
+                item-root-class="agent-carousel section"
+                title="我的代理"
+                :list="agentList"
+                :swiperOption="agentSwiperOption">
+            <template #item="{itemData}">
+                <div class="col">
+                    <div class="agent">
+                        <div class="image">
+                            <a class="img" href="agent-details.html">
+                                <img :src="itemData.photo" alt="">
+                            </a>
+                        </div>
+                        <div class="content">
+                            <h4 class="title"><a href="agent-details.html">{{itemData.name}}</a></h4>
+                            <a href="#" class="phone">{{itemData.phone}}</a>
+                            <a href="#" class="email">{{itemData.email}}</a>
+                            <span class="properties">{{itemData.houseCount}}房</span>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </house-slider>
+
+        <house-slider root-class="news-section section pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50"
+                      item-root-class="news-carousel section"
+                      title="房产新闻"
+                      :showPageDot="false"
+                      :list="newsList"
+                      :swiperOption="newsSwiperOption">
+            <template #item="{itemData}">
+                <div class="col">
+                    <house-news-inner :newsInfo="itemData"/>
+                </div>
+            </template>
+        </house-slider>
+
+        <house-slider root-class="brand-section section pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50"
+                      item-root-class="brand-carousel section"
+                      title="合作伙伴"
+                      :showPageDot="false"
+                      :list="brandList"
+                      :swiperOption="brandSwiperOption">
+            <template #item="{itemData}">
+                <div class="brand col"><img :src="itemData.pictureUrl" alt=""></div>
+            </template>
+        </house-slider>
+
+    </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import houseSpecial from '@/components/index/MySlot.vue'
-import houseInner from '@/components/house/HouseInner.vue'
-export default {
-  components: {
-    houseSpecial,
-    houseInner
-  },
-  data(){
-    return{
-      houseList:[{
-        id:1,
-        pictureUrl:'assets/images/property/property-1.jpg',
-        square:550,
-        roomNumber:5,
-        bathroomNumber:1,
-        garageNumber:2,
-        title:'江南宅院',
-        address:'锦江区东大街下东大街568号',
-        rentType:1,
-        price:550,
-        leaseType:1,
-        isHot:1,
-        isNew:2,
-        isSpecial:1,
-      },
-        {
-          id:2,
-          pictureUrl:'assets/images/property/property-1.jpg',
-          square:550,
-          roomNumber:5,
-          bathroomNumber:1,
-          garageNumber:2,
-          title:'江南宅院',
-          address:'锦江区东大街下东大街568号',
-          rentType:1,
-          price:550,
-          leaseType:1,
-          isHot:1,
-          isNew:2,
-          isSpecial:1,
+    // @ is an alias to /src
+    import HouseHero from '@/components/components-z/index/Hero.vue'
+    import HouseSearch from "@/components/components-z/index/Search.vue";
+    import HouseList from '@/components/components-z/index/List.vue'
+    import HouseWelcome from "@/components/components-z/index/Welcome.vue";
+    import HouseDownload from "@/components/components-z/index/Download.vue";
+    import HouseServices from "@/components/components-z/index/Services.vue";
+    import HouseCTA from "@/components/components-z/index/CTA.vue";
+    import HouseNewsInner from "@/components/components-z/news/HouseNewsInner.vue";
+
+    import houseInner from "@/components/components-z/house/HouseInner";
+    import houseSlider from "@/components/components-z/index/MySlider";
+
+    import {mapGetters} from 'vuex'
+
+    export default {
+        name: 'Index',
+        components: {
+            HouseHero,
+            HouseSearch,
+            HouseList,
+            HouseWelcome,
+            HouseDownload,
+            HouseServices,
+            HouseCTA,
+            HouseNewsInner,
+            houseSlider,
+            houseInner
         },
-        {
-          id:3,
-          pictureUrl:'assets/images/property/property-1.jpg',
-          square:550,
-          roomNumber:5,
-          bathroomNumber:1,
-          garageNumber:2,
-          title:'江南宅院',
-          address:'锦江区东大街下东大街568号',
-          rentType:1,
-          price:550,
-          leaseType:1,
-          isHot:1,
-          isNew:2,
-          isSpecial:1,
+        computed: {
+            ...mapGetters('agentList', ['agentList']),
+            ...mapGetters('brandList', ['brandList']),
+            ...mapGetters('featureList', ['featureList']),
+            ...mapGetters('houseList', ['houseList']),
+            ...mapGetters('newsList', ['newsList'])
         },
-        {
-          id:4,
-          pictureUrl:'assets/images/property/property-1.jpg',
-          square:550,
-          roomNumber:5,
-          bathroomNumber:1,
-          garageNumber:2,
-          title:'江南宅院',
-          address:'锦江区东大街下东大街568号',
-          rentType:1,
-          price:550,
-          leaseType:1,
-          isHot:1,
-          isNew:2,
-          isSpecial:1,
-        },
-        {
-          id:5,
-          pictureUrl:'assets/images/property/property-1.jpg',
-          square:550,
-          roomNumber:5,
-          bathroomNumber:1,
-          garageNumber:2,
-          title:'江南宅院',
-          address:'锦江区东大街下东大街568号',
-          rentType:1,
-          price:550,
-          leaseType:1,
-          isHot:1,
-          isNew:2,
-          isSpecial:1,
-        }
-      ],
+        data: () => ({
+            featureSwiperOption: {
+                slidesPerView: 3,
+                spaceBetween: 0,
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.slick-next',
+                    prevEl: '.slick-prev'
+                }
+            },
+            agentSwiperOption: {
+                slidesPerView: 4,
+                spaceBetween: 0,
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.slick-next',
+                    prevEl: '.slick-prev'
+                }
+            },
+            newsSwiperOption: {
+                slidesPerView: 3,
+                spaceBetween: 0,
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.slick-next',
+                    prevEl: '.slick-prev'
+                }
+            },
+            brandSwiperOption: {
+                slidesPerView: 5,
+                spaceBetween: 0,
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.slick-next',
+                    prevEl: '.slick-prev'
+                }
+            }
+        })
     }
-  }
-}
 </script>
