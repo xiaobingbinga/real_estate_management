@@ -56,7 +56,9 @@
         <house-slider
           :items="[1,2]"
           :showDot="false"
-          :num="1">
+          :num="1"
+          :showArrow="false"
+          :showArrowBottom="true">
           <template #item>
             <div class="property-2">
                 <div class="property-inner">
