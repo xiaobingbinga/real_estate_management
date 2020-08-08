@@ -32,6 +32,11 @@ const routes = [
     meta: {
       title: 'house-front'
     }
+  },
+  {
+    path:'/properties-left-sidebar.html',
+    name:'propertiesLeftSidebar',
+    component:() => import('@/view/House/properties-left-sidebar')
   }
 ];
 
