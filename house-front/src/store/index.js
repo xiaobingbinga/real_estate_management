@@ -20,6 +20,9 @@ export default new Vuex.Store({
   },
   // 读取属性方法
   getters:{
+    city: state => {
+      return state.city;
+    }
   },
   // 写入属性方法
   mutations: {
