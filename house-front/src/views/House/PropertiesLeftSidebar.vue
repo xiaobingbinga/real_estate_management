@@ -393,114 +393,36 @@
 
                     <div class="row mt-20">
                         <div class="col">
-                            <ul class="page-pagination">
-                                <li><a href="#"><i class="fa fa-angle-left"></i> Prev</a></li>
-                                <li class="active"><a href="#">01</a></li>
-                                <li><a href="#">02</a></li>
-                                <li><a href="#">03</a></li>
-                                <li><a href="#">04</a></li>
-                                <li><a href="#">05</a></li>
-                                <li><a href="#"><i class="fa fa-angle-right"></i> Next</a></li>
-                            </ul>
+
+                            <b-pagination
+                                    v-model="currentPage"
+                                    :total-rows="rows"
+                                    :per-page="perPage"
+                                    first-number
+                                    last-number
+                                    prev-text="< 上一页"
+                                    next-text="下一页 >"
+                                    class="page-pagination"
+                            ></b-pagination>
+
                         </div>
                     </div>
+
+
+
                 </div>
 <!--                左侧搜索栏-->
                 <div class="col-lg-4 col-12 order-2 order-lg-1 pr-30 pr-sm-15 pr-xs-15">
 
                     <!--Sidebar start-->
                     <div class="sidebar">
-                        <h4 class="sidebar-title"><span class="text">搜索房产</span><span class="shape"></span></h4>
+                        <h4 class="sidebar-title"><span class="text text-select-t">搜索房产</span><span class="shape"></span></h4>
 
 
                         <!--Property Search start-->
                         <div class="property-search sidebar-property-search">
 
-                            <form action="#">
-
-                                <div>
-                                    <input type="text" placeholder="位置">
-                                </div>
-
-                                <div>
-                                    <select class="nice-select">
-                                        <option>所有城市</option>
-                                        <option>北京</option>
-                                        <option>上海</option>
-                                        <option>广州</option>
-                                        <option>深圳</option>
-                                        <option>成都</option>
-                                        <option>重庆</option>
-                                        <option>武汉</option>
-                                        <option>沈阳</option>
-                                        <option>福州</option>
-                                        <option>厦门</option>
-                                        <option>银川</option>
-                                        <option>拉萨</option>
-                                        <option>绵阳</option>
-                                        <option>遂宁</option>
-                                        <option>攀枝花</option>
-                                        <option>简阳</option>
-                                        <option>德阳</option>
-                                        <option>金堂</option>
-                                        <option>泸州</option>
-                                        <option>内江</option>
-                                        <option>阆中</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <select class="nice-select">
-                                        <option>租房</option>
-                                        <option>卖房</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <select class="nice-select">
-                                        <option>类型</option>
-                                        <option>公寓</option>
-                                        <option>咖啡馆</option>
-                                        <option>住宅</option>
-                                        <option>餐馆</option>
-                                        <option>商店</option>
-                                        <option>别墅</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <select class="nice-select">
-                                        <option>房间数</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <select class="nice-select">
-                                        <option>卫生间数</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <div id="search-price-range"></div>
-                                </div>
-
-                                <div>
-                                    <button>搜索</button>
-                                </div>
-
-                            </form>
+                            <from-inner/>
 
                         </div>
                         <!--Property Search end-->
@@ -510,7 +432,7 @@
 
                     <!--Sidebar start-->
                     <div class="sidebar">
-                        <h4 class="sidebar-title"><span class="text">Feature Property</span><span class="shape"></span></h4>
+                        <h4 class="sidebar-title"><span class="text text-select-t">特别推荐</span><span class="shape"></span></h4>
 
                         <!--Sidebar Property start-->
                         <div class="sidebar-property-list">
@@ -558,7 +480,7 @@
 
                     <!--Sidebar start-->
                     <div class="sidebar">
-                        <h4 class="sidebar-title"><span class="text">Top Agents</span><span class="shape"></span></h4>
+                        <h4 class="sidebar-title"><span class="text text-select-t">顶级代理人</span><span class="shape"></span></h4>
 
                         <!--Sidebar Agents start-->
                         <div class="sidebar-agent-list">
@@ -620,7 +542,7 @@
 
                     <!--Sidebar start-->
                     <div class="sidebar">
-                        <h4 class="sidebar-title"><span class="text">Popular Tags</span><span class="shape"></span></h4>
+                        <h4 class="sidebar-title"><span class="text text-select-t">热门标签</span><span class="shape"></span></h4>
 
                         <!--Sidebar Tags start-->
                         <div class="sidebar-tags">
@@ -649,11 +571,50 @@
 </template>
 
 <script>
+    import FromInner from "../../components/components-j/home/FromInner";
     export default {
-        name: "properties-left-sidebar"
+        components:{FromInner},
+        data() {
+            return {
+                rows: 5,
+                perPage: 1,
+                currentPage: 2
+            }
+        }
     }
 </script>
 
 <style scoped>
+    ::v-deep .text-select-t{
+        font-size: 18px !important;
+        font-weight: 600 !important;
+    }
+    ::v-deep .active button{
+        background-color: #004395 !important;
+        border-color: #004395 !important;
+        color: #fff !important;
+    }
+    ::v-deep .page-pagination li:first-child button,
+    ::v-deep .page-pagination li:first-child span{
+        color: #222222;
+        width: auto !important;
+        padding: 10px 20px !important;
+    }
+    ::v-deep .page-pagination li:last-child button,
+    ::v-deep .page-pagination li:last-child span{
+        color: #222222;
+        width: auto !important;
+        padding: 10px 20px !important;
+    }
+    ::v-deep .page-pagination li button,
+    ::v-deep .page-pagination li span{
+        color: #222222;
+        background-color: #f8f8f8;
+        padding: 10px !important;
+        border-radius: 50px !important;
+        width: 44px !important;
+        height: 44px !important;
+    }
+
 
 </style>

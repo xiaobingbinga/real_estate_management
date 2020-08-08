@@ -16,7 +16,6 @@
           <div class="property-search">
             <from-inner/>
           </div>
-        
         </div>
       </div>
     
