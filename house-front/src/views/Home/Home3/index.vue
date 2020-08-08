@@ -246,11 +246,10 @@
     </house-module>
     <!--新增房产 end-->
 
-        <!--数据模块 start-->
-        <div class="funfact-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20"
-             style="background-image: url(assets/images/bg/cta-bg.jpg)">
-            <div class="container">
-                <div class="row">
+    <!--数据模块 start-->
+    <div class="funfact-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20" style="background-image: url(assets/images/bg/cta-bg.jpg)">
+      <div class="container">
+        <div class="row">
 
           <!--Funfact start-->
           <div class="single-fact col-lg-3 col-6 mb-30">

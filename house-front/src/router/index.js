@@ -37,6 +37,11 @@ const routes = [
     path:'/properties-left-sidebar.html',
     name:'propertiesLeftSidebar',
     component:() => import('../views/House/properties-left-sidebar')
+  },
+  {
+    path:'/properties',
+    name:'Properties',
+    component:() => import('@/views/House')
   }
 ];
 
