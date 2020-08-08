@@ -578,7 +578,8 @@
             return {
                 rows: 5,
                 perPage: 1,
-                currentPage: 2
+                currentPage: 2,
+                publicPath:process.env.B
             }
         }
     }

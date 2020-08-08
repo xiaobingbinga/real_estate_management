@@ -31,7 +31,7 @@ const routes = [
     }
   },
   {
-    path:'/house/properties-left-sidebar.html',
+    path:'/house/properties-left-sidebar',
     name:'propertiesLeftSidebar',
     component:() => import('../views/House/PropertiesLeftSidebar')
   },
