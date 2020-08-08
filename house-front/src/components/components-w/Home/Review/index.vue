@@ -12,7 +12,7 @@
 
 <script>
   export default {
-    name: "index",
+    name: "HouseReview",
     data () {
       return {
         publicPath: process.env.BASE_URL

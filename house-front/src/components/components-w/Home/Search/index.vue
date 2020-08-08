@@ -100,7 +100,7 @@
   import 'vue-slider-component/theme/default.css'
 
   export default {
-    name: "index",
+    name: "HouseSearch",
     components: {
       VueSlider
     },

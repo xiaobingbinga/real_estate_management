@@ -13,7 +13,7 @@
           <div class="feature-wrap row row-25">
 
             <!--Feature start-->
-            <div class="col-sm-6 col-12 mb-50" v-for="(f, i) in feature">
+            <div class="col-sm-6 col-12 mb-50" v-for="(f, i) in feature" :key="i">
               <div class="feature">
                 <div class="icon"><i class="pe-7s-piggy"></i></div>
                 <div class="content">
@@ -34,7 +34,7 @@
 
 <script>
   export default {
-    name: "index",
+    name: "HouseWelcome",
     data () {
       return {
         publicPath: process.env.BASE_URL

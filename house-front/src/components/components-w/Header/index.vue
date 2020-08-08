@@ -21,7 +21,7 @@
                     <li v-for="(subMenu, i) in menu.subMenus" :key="i" :class="subMenu.subMenus ? 'has-dropdown' : ''"><a :href="subMenu.url">{{ subMenu.title }}</a>
                       <template v-if="subMenu.subMenus">
                         <ul class="sub-menu">
-                          <li v-for="(subSubMenu, is) in subMenu.subMenus"><a :href="subMenu.url">{{ subMenu.title }}</a></li>
+                          <li v-for="(subSubMenu, is) in subMenu.subMenus" :key="is"><a :href="subSubMenu.url">{{ subSubMenu.title }}</a></li>
                         </ul>
                       </template>
                     </li>
@@ -58,7 +58,7 @@
   import { mapGetters } from "vuex";
 
   export default {
-    name: "Header",
+    name: "HouseHeader",
     data(){
       return {
         navMenus: []

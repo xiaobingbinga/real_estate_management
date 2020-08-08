@@ -34,7 +34,7 @@
 
 <script>
   export default {
-    name: "index",
+    name: "HouseDownload",
     data () {
       return {
         publicPath: process.env.BASE_URL

@@ -322,7 +322,7 @@
           :items="agents"
           :num="3"
           :showDot="false">
-          <template #item="{item}">
+          <template #item>
             <house-review></house-review>
           </template>
         </house-slider>

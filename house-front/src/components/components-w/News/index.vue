@@ -27,7 +27,7 @@
 
 <script>
   export default {
-    name: "index",
+    name: "HouseNews",
     data () {
       return {
         publicPath: process.env.BASE_URL

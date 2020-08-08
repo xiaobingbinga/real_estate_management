@@ -18,7 +18,7 @@
 
 <script>
   export default {
-    name: "index",
+    name: "HouseAgent",
     data () {
       return {
         publicPath: process.env.BASE_URL

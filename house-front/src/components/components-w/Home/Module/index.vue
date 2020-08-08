@@ -29,7 +29,7 @@
 
 <script>
   export default {
-    name: "index",
+    name: "HouseModule",
     props: {
       title: {
         type: String,
