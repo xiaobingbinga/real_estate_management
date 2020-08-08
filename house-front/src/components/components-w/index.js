@@ -11,14 +11,14 @@ requireComponent.keys().forEach(fileName => {
 function mapDir(dir, get, finish) { // eslint-disable-line no-unused-vars
   fs.readdir(dir, function(err, files) {
     if (err) {
-      console.error('玛德什么问题');
+      console.error(err);
       return;
     }
     files.forEach((filename, index) => {
       let pathname = path.join(dir, filename);
       fs.stat(pathname, (err, stats) => {
         if (err) {
-          console.log('烦死了烦死了');
+          console.log(err);
           return;
         }
         if (stats.isDirectory()) {
