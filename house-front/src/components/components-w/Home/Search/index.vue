@@ -25,48 +25,24 @@
               </div>
 
               <div>
-                <!--<h4>状态</h4>-->
-                <!--<select class="nice-select">-->
-                <!--  <option v-if="property.statuses.length === 0" disabled>空</option>-->
-                <!--  <option v-for="(status, i) in property.statuses" :key="i">{{status}}</option>-->
-                <!--</select>-->
-                <b-form-select v-model="status" :options="property.statuses"></b-form-select>
+                <b-form-select class="nice-select" style="height: 50px; padding: 15px" v-model="status" :options="property.statuses"></b-form-select>
               </div>
 
               <div>
-                <!--<h4>类型</h4>-->
-                <!--<select class="nice-select">-->
-                <!--  <option v-if="property.types.length === 0" disabled>空</option>-->
-                <!--  <option v-for="(type, i) in property.types" :key="i">{{type}}</option>-->
-                <!--</select>-->
-                <b-form-select v-model="type" :options="property.types"></b-form-select>
+                <b-form-select class="nice-select" style="height: 50px; padding: 15px" v-model="type" :options="property.types"></b-form-select>
               </div>
 
               <div>
-                <!--<h4>地理位置</h4>-->
-                <!--<select class="nice-select">-->
-                <!--  <option v-if="property.locations.length === 0" disabled>空</option>-->
-                <!--  <option v-for="(location, i) in property.locations" :key="i">{{location}}</option>-->
-                <!--</select>-->
+                <b-form-select class="nice-select" style="height: 50px; padding: 15px" v-model="location" :options="property.locations"></b-form-select>
                 <b-form-select @change="getCity" v-model="location" :options="property.locations"></b-form-select>
               </div>
 
               <div>
-                <!--<h4>房间数</h4>-->
-                <!--<select class="nice-select">-->
-                <!--  <option v-if="property.roomNums.length === 0" disabled>空</option>-->
-                <!--  <option v-for="(roomNum, i) in property.roomNums" :key="i">{{roomNum}}</option>-->
-                <!--</select>-->
-                <b-form-select v-model="roomNum" :options="property.roomNums"></b-form-select>
+                <b-form-select class="nice-select" style="height: 50px; padding: 15px" v-model="roomNum" :options="property.roomNums"></b-form-select>
               </div>
 
               <div>
-                <!--<h4>卫生间数量</h4>-->
-                <!--<select class="nice-select">-->
-                <!--  <option v-if="property.toiletNums.length === 0" disabled>空</option>-->
-                <!--  <option v-for="(toiletNum, i) in property.toiletNums" :key="i">{{toiletNum}}</option>-->
-                <!--</select>-->
-                <b-form-select v-model="toiletNum" :options="property.toiletNums"></b-form-select>
+                <b-form-select class="nice-select" style="height: 50px; padding: 15px" v-model="toiletNum" :options="property.toiletNums"></b-form-select>
               </div>
 
               <div>
@@ -177,11 +153,6 @@
               ]
           }
         }
-      }
-    },
-    methods:{
-      getCity(){
-        this.$emit("getCity",this.property.locations[this.location].text)
       }
     }
   }

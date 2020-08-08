@@ -3,7 +3,12 @@
   <div :class="agentClass">
     <div :class="agentInnerClass">
       <div class="image">
-        <a class="img" :href="agentUrl"><img :src="`${publicPath}${agent.photo}`" alt=""></a>
+        <a class="img" :href="agentUrl"><img :src="`${publicPath}${agent.photo}`" alt=""></a><div class="social">
+        <a :href="agent.facebook || 'javascript:;'" class="facebook"><i class="fa fa-facebook"></i></a>
+        <a :href="agent.twitter || 'javascript:;'" class="twitter"><i class="fa fa-twitter"></i></a>
+        <a :href="agent.linkedin || 'javascript:;'" class="linkedin"><i class="fa fa-linkedin"></i></a>
+        <a :href="agent.google || 'javascript:;'" class="google"><i class="fa fa-google-plus"></i></a>
+      </div>
       </div>
       <div class="content">
         <h4 class="title"><a :href="agentUrl">{{agent.name}}</a></h4>
@@ -42,6 +47,10 @@
             name: '唐纳德.菲尔',
             phone: '(756) 447 5779',
             email: 'info@example.com',
+            facebook: 'javascript:;',
+            twitter: 'javascript:;',
+            linkedin: 'javascript:;',
+            google: 'javascript:;',
             properties: 5
           }
         }

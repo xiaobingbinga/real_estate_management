@@ -20,10 +20,7 @@ const routes = [
   {
       path: '/index2',
       name: 'Home',
-      component: Home,
-      meta: {
-        title: 'house-front'
-      }
+      component: Home
   },
   {
     path: '/index3',
@@ -34,9 +31,14 @@ const routes = [
     }
   },
   {
-    path:'/properties-left-sidebar.html',
+    path:'/house/properties-left-sidebar.html',
     name:'propertiesLeftSidebar',
     component:() => import('../views/House/PropertiesLeftSidebar')
+  },
+  {
+    path:'/house',
+    name:'Properties',
+    component:() => import('@/views/House')
   }
 ];
 
