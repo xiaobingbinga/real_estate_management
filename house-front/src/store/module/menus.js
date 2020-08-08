@@ -15,10 +15,10 @@ export default{
             {title:'房产',
                 url:'/',
                 subMenu:[
-                    {title:'房产格局显示',url:'/',
+                    {title:'房产格局显示',url:'/properties',
                         subMenu:[
-                            {title:'默认格局',url:'/'},
-                            {title:'左倾式格局',url:'/properties-left-sidebar.html'},
+                            {title:'默认格局',url:'/house'},
+                            {title:'左倾式格局',url:'/house/properties-left-sidebar'},
                             {title:'右倾式格局',url:'/'}
                         ]},
                     {title:'房产列表显示',url:'/',
