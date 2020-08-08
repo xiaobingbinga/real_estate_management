@@ -19,45 +19,33 @@
             
             <form action="#">
               <div>
-                <input type="text" placeholder="位置">
+                <b-form-select v-model="selectedProvince" class="nice-select search-select"
+                               @change="setCity(selectedProvince)">
+                  <template #first>
+                    <b-form-select-option :value="null" disabled>请选择省份</b-form-select-option>
+                  </template>
+                  <b-form-select-option
+                          v-for="(onePro,idxPro) in address.districts"
+                          :key="idxPro"
+                          :value="onePro" >
+                    {{onePro.name}}
+                  </b-form-select-option>
+                </b-form-select>
               </div>
               
               <div>
-                <!--<select class="nice-select">-->
-                <!--  <option>所有城市</option>-->
-                <!--  <option>北京</option>-->
-                <!--  <option>上海</option>-->
-                <!--  <option>广州</option>-->
-                <!--  <option>深圳</option>-->
-                <!--  <option>成都</option>-->
-                <!--  <option>重庆</option>-->
-                <!--  <option>武汉</option>-->
-                <!--  <option>沈阳</option>-->
-                <!--  <option>福州</option>-->
-                <!--  <option>厦门</option>-->
-                <!--  <option>银川</option>-->
-                <!--  <option>拉萨</option>-->
-                <!--  <option>绵阳</option>-->
-                <!--  <option>遂宁</option>-->
-                <!--  <option>攀枝花</option>-->
-                <!--  <option>简阳</option>-->
-                <!--  <option>德阳</option>-->
-                <!--  <option>金堂</option>-->
-                <!--  <option>泸州</option>-->
-                <!--  <option>内江</option>-->
-                <!--  <option>阆中</option>-->
-                <!--</select>-->
-                <!--选择城市-->
                 <b-form-select v-model="selectedCity" class="nice-select search-select">
                   <template #first>
                     <b-form-select-option :value="null" disabled>请选择城市</b-form-select-option>
                   </template>
+                  <template v-if="city">
                   <b-form-select-option
-                          v-for="(oneCity,idxCity) in search.city.options"
+                          v-for="(oneCity,idxCity) in city.districts"
                           :key="idxCity"
-                          :value="oneCity.value">
-                    {{oneCity.tip}}
+                          :value="oneCity.adcode">
+                    {{oneCity.name}}
                   </b-form-select-option>
+                  </template>
                 </b-form-select>
               </div>
               
@@ -159,11 +147,20 @@
                 selectedHouseType:null,
                 selectedHouseNum:null,
                 selectedBathroom:null,
+                selectedProvince:null,
+                city:null
             }
         },
       computed:{
-          ...mapGetters('search',["search"])
+          ...mapGetters('search',["search"]),
+          ...mapGetters('address',["address"])
+      },
+      methods:{
+          setCity(obj){
+            this.city = obj
+          }
       }
+
     }
 </script>
 

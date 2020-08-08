@@ -11,6 +11,7 @@ import featureList from "./index/featureList";
 import houseList from "./index/houseList";
 import newsList from "./index/newsList";
 import serviceHouseList from "./index/serviceHouseList";
+import address from "./index/address";
 
 Vue.use(Vuex)
 
@@ -38,5 +39,6 @@ export default new Vuex.Store({
     newsList,
     view,
     serviceHouseList,
+    address
   }
 })
