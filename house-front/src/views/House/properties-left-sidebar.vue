@@ -1,4 +1,5 @@
 <template>
+    <div>
     <!--Page Banner Section start-->
     <div class="page-banner-section section">
         <div class="container">
@@ -19,7 +20,7 @@
     <div class="property-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
         <div class="container">
             <div class="row">
-
+<!--                右侧房产列表-->
                 <div class="col-lg-8 col-12 order-1 order-lg-2 mb-sm-50 mb-xs-50">
                     <div class="row">
 
@@ -404,12 +405,12 @@
                         </div>
                     </div>
                 </div>
-
+<!--                左侧搜索栏-->
                 <div class="col-lg-4 col-12 order-2 order-lg-1 pr-30 pr-sm-15 pr-xs-15">
 
                     <!--Sidebar start-->
                     <div class="sidebar">
-                        <h4 class="sidebar-title"><span class="text">Search Property</span><span class="shape"></span></h4>
+                        <h4 class="sidebar-title"><span class="text">搜索房产</span><span class="shape"></span></h4>
 
 
                         <!--Property Search start-->
@@ -439,7 +440,7 @@
                                         <option>绵阳</option>
                                         <option>遂宁</option>
                                         <option>攀枝花</option>
-                                        <<option>简阳</option>
+                                        <option>简阳</option>
                                         <option>德阳</option>
                                         <option>金堂</option>
                                         <option>泸州</option>
@@ -644,6 +645,7 @@
         </div>
     </div>
     <!--New property section end-->
+    </div>
 </template>
 
 <script>
