@@ -13,8 +13,9 @@
       <!--Section Title end-->
       <div class="row">
         <div class="col">
-          
-         <from-inner/>
+          <div class="property-search">
+            <from-inner/>
+          </div>
         
         </div>
       </div>

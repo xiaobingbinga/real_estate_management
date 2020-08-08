@@ -1,6 +1,5 @@
 <template>
-    <div class="property-search">
-
+    <div>
         <form action="#">
             <div>
                 <b-form-select v-model="selectedProvince" class="nice-select search-select"
