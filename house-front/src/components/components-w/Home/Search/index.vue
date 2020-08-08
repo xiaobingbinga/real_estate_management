@@ -48,7 +48,7 @@
                 <!--  <option v-if="property.locations.length === 0" disabled>空</option>-->
                 <!--  <option v-for="(location, i) in property.locations" :key="i">{{location}}</option>-->
                 <!--</select>-->
-                <b-form-select v-model="location" :options="property.locations"></b-form-select>
+                <b-form-select @change="getCity" v-model="location" :options="property.locations"></b-form-select>
               </div>
 
               <div>
@@ -177,6 +177,11 @@
               ]
           }
         }
+      }
+    },
+    methods:{
+      getCity(){
+        this.$emit("getCity",this.property.locations[this.location].text)
       }
     }
   }

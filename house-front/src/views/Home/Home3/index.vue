@@ -3,10 +3,20 @@
     <!--Hero Section start-->
     <div class="hero-section section position-relative">
 
-      <!--Hero Map-->
-      <div id="hero-map">
-        <baidu-map class="bm-view" ak="3SltoXj9AV0CpKQX2TymnPvWttzX0kYZ"></baidu-map>
-      </div>
+            <!--Hero Map-->
+            <div id="hero-map">
+                <template>
+                    <div>
+                        <baidu-map
+                                class="bm-view"
+                                :center="city"
+                                :zoom="zoom">
+                          <bm-scale anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-scale>
+                          <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
+                        </baidu-map>
+                    </div>
+                </template>
+            </div>
 
       <!--Hero Map Property Controler-->
       <div class="map-property-controls"></div>
@@ -14,9 +24,9 @@
     </div>
     <!--Hero Section end-->
 
-    <!--搜索 start-->
-    <house-search></house-search>
-    <!--搜索 end-->
+        <!--搜索 start-->
+        <house-search @getCity="setCity"></house-search>
+        <!--搜索 end-->
 
     <!--特色房产 start-->
     <house-module
@@ -236,10 +246,11 @@
     </house-module>
     <!--新增房产 end-->
 
-    <!--数据模块 start-->
-    <div class="funfact-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20" style="background-image: url(assets/images/bg/cta-bg.jpg)">
-      <div class="container">
-        <div class="row">
+        <!--数据模块 start-->
+        <div class="funfact-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20"
+             style="background-image: url(assets/images/bg/cta-bg.jpg)">
+            <div class="container">
+                <div class="row">
 
           <!--Funfact start-->
           <div class="single-fact col-lg-3 col-6 mb-30">
@@ -385,300 +396,310 @@
   import houseModule from "@/components/components-w/Home/Module"
   import BaiduMap from 'vue-baidu-map/components/map/Map.vue'
 
-  export default {
-    name: "index",
-    components: {
-      houseSearch,
-      houseSlider,
-      houseProperty,
-      houseModule,
-      houseWelcome,
-      houseDownload,
-      houseAgent,
-      houseReview,
-      houseNews,
-      BaiduMap
-    },
-    data () {
-      return {
-        featureProperties: [
-          {
-            id: 1,
-            isHot: false,
-            isNew: false,
-            isAd: false,
-            isSpecial: false,
-            pictureUrl: 'assets/images/property/property-1.jpg',
-            square: 5,
-            roomNumber: 6,
-            bathroomNumber: 6,
-            garageNumber: 6,
-            title: '大豪宅',
-            address: '锦江区东大街下东大街568号',
-            price: '550',
-            typeName: '出售'
-          },
-          {
-            id: 1,
-            isHot: false,
-            isNew: false,
-            isAd: false,
-            isSpecial: false,
-            pictureUrl: 'assets/images/property/property-2.jpg',
-            square: 5,
-            roomNumber: 6,
-            bathroomNumber: 6,
-            garageNumber: 6,
-            title: '江南宅院',
-            address: '锦江区东大街下东大街568号',
-            price: '550',
-            typeName: '出售'
-          },
-          {
-            id: 1,
-            isHot: false,
-            isNew: false,
-            isAd: false,
-            isSpecial: false,
-            pictureUrl: 'assets/images/property/property-3.jpg',
-            square: 5,
-            roomNumber: 6,
-            bathroomNumber: 6,
-            garageNumber: 6,
-            title: '江南宅院',
-            address: '锦江区东大街下东大街568号',
-            price: '550',
-            typeName: '出售'
-          },
-          {
-            id: 1,
-            isHot: false,
-            isNew: false,
-            isAd: false,
-            isSpecial: false,
-            pictureUrl: 'assets/images/property/property-4.jpg',
-            square: 5,
-            roomNumber: 6,
-            bathroomNumber: 6,
-            garageNumber: 6,
-            title: '江南宅院',
-            address: '锦江区东大街下东大街568号',
-            price: '550',
-            typeName: '出售'
-          },
-          {
-            id: 1,
-            isHot: false,
-            isNew: false,
-            isAd: false,
-            isSpecial: false,
-            pictureUrl: 'assets/images/property/property-5.jpg',
-            square: 5,
-            roomNumber: 6,
-            bathroomNumber: 6,
-            garageNumber: 6,
-            title: '江南宅院',
-            address: '锦江区东大街下东大街568号',
-            price: '550',
-            typeName: '出售'
-          },
-          {
-            id: 1,
-            isHot: false,
-            isNew: false,
-            isAd: false,
-            isSpecial: false,
-            pictureUrl: 'assets/images/property/property-6.jpg',
-            square: 5,
-            roomNumber: 6,
-            bathroomNumber: 6,
-            garageNumber: 6,
-            title: '江南宅院',
-            address: '锦江区东大街下东大街568号',
-            price: '550',
-            typeName: '出售'
-          }
-        ],
-        newProperties: [
-          {
-            id: 1,
-            isHot: false,
-            isNew: true,
-            isAd: false,
-            isSpecial: false,
-            pictureUrl: 'assets/images/property/property-1.jpg',
-            square: 5,
-            roomNumber: 6,
-            bathroomNumber: 6,
-            garageNumber: 6,
-            title: '大豪宅',
-            address: '锦江区东大街下东大街568号',
-            price: '550',
-            typeName: '出售'
-          },
-          {
-            id: 1,
-            isHot: false,
-            isNew: true,
-            isAd: false,
-            isSpecial: false,
-            pictureUrl: 'assets/images/property/property-2.jpg',
-            square: 5,
-            roomNumber: 6,
-            bathroomNumber: 6,
-            garageNumber: 6,
-            title: '江南宅院',
-            address: '锦江区东大街下东大街568号',
-            price: '550',
-            typeName: '出售'
-          },
-          {
-            id: 1,
-            isHot: false,
-            isNew: true,
-            isAd: false,
-            isSpecial: false,
-            pictureUrl: 'assets/images/property/property-3.jpg',
-            square: 5,
-            roomNumber: 6,
-            bathroomNumber: 6,
-            garageNumber: 6,
-            title: '江南宅院',
-            address: '锦江区东大街下东大街568号',
-            price: '550',
-            typeName: '出售'
-          },
-          {
-            id: 1,
-            isHot: false,
-            isNew: true,
-            isAd: false,
-            isSpecial: false,
-            pictureUrl: 'assets/images/property/property-4.jpg',
-            square: 5,
-            roomNumber: 6,
-            bathroomNumber: 6,
-            garageNumber: 6,
-            title: '江南宅院',
-            address: '锦江区东大街下东大街568号',
-            price: '550',
-            typeName: '出售'
-          },
-          {
-            id: 1,
-            isHot: false,
-            isNew: true,
-            isAd: false,
-            isSpecial: false,
-            pictureUrl: 'assets/images/property/property-5.jpg',
-            square: 5,
-            roomNumber: 6,
-            bathroomNumber: 6,
-            garageNumber: 6,
-            title: '江南宅院',
-            address: '锦江区东大街下东大街568号',
-            price: '550',
-            typeName: '出售'
-          },
-          {
-            id: 1,
-            isHot: false,
-            isNew: true,
-            isAd: false,
-            isSpecial: false,
-            pictureUrl: 'assets/images/property/property-6.jpg',
-            square: 5,
-            roomNumber: 6,
-            bathroomNumber: 6,
-            garageNumber: 6,
-            title: '江南宅院',
-            address: '锦江区东大街下东大街568号',
-            price: '550',
-            typeName: '出售'
-          }
-        ],
-        agents: [
-          {
-            id: 1,
-            photo: 'assets/images/agent/agent-1.jpg',
-            name: '唐纳德.菲尔',
-            phone: '(756) 447 5779',
-            email: 'info@example.com',
-            properties: 5
-          },
-          {
-            id: 1,
-            photo: 'assets/images/agent/agent-2.jpg',
-            name: '唐纳德.菲尔',
-            phone: '(756) 447 5779',
-            email: 'info@example.com',
-            properties: 5
-          },
-          {
-            id: 1,
-            photo: 'assets/images/agent/agent-3.jpg',
-            name: '唐纳德.菲尔',
-            phone: '(756) 447 5779',
-            email: 'info@example.com',
-            properties: 5
-          },
-          {
-            id: 1,
-            photo: 'assets/images/agent/agent-4.jpg',
-            name: '唐纳德.菲尔',
-            phone: '(756) 447 5779',
-            email: 'info@example.com',
-            properties: 5
-          },
-          {
-            id: 1,
-            photo: 'assets/images/agent/agent-5.jpg',
-            name: '唐纳德.菲尔',
-            phone: '(756) 447 5779',
-            email: 'info@example.com',
-            properties: 5
-          }
-        ],
-        reviews: [
-          {
-            id: 1,
-          }
-        ],
-        news: [
-          {
-            id: 1,
-            userId: 1,
-            imageUrl: 'assets/images/news/news-1.jpg',
-            name: '唐纳德',
-            issuingTime: '2018年12月30日',
-            title: '豪华公寓楼',
-            content: '房产交易平台 the best theme for  elit, sed do to eiumod tempor dolor sit amet.',
-          },
-          {
-            id: 1,
-            userId: 1,
-            imageUrl: 'assets/images/news/news-2.jpg',
-            name: '唐纳德',
-            issuingTime: '2018年12月30日',
-            title: '豪华公寓楼',
-            content: '房产交易平台 the best theme for  elit, sed do to eiumod tempor dolor sit amet.',
-          },
-          {
-            id: 1,
-            userId: 1,
-            imageUrl: 'assets/images/news/news-3.jpg',
-            name: '唐纳德',
-            issuingTime: '2018年12月30日',
-            title: '豪华公寓楼',
-            content: '房产交易平台 the best theme for  elit, sed do to eiumod tempor dolor sit amet.',
-          },
-        ],
-        publicPath: process.env.BASE_URL
-      }
+    export default {
+        name: "index",
+        components: {
+            houseSearch,
+            houseSlider,
+            houseProperty,
+            houseModule,
+            houseWelcome,
+            houseDownload,
+            houseAgent,
+            houseReview,
+            houseNews,
+            BaiduMap
+        },
+        data() {
+            return {
+                city: "成都",
+                zoom: 15,
+                featureProperties: [
+                    {
+                        id: 1,
+                        isHot: false,
+                        isNew: false,
+                        isAd: false,
+                        isSpecial: false,
+                        pictureUrl: 'assets/images/property/property-1.jpg',
+                        square: 5,
+                        roomNumber: 6,
+                        bathroomNumber: 6,
+                        garageNumber: 6,
+                        title: '大豪宅',
+                        address: '锦江区东大街下东大街568号',
+                        price: '550',
+                        typeName: '出售'
+                    },
+                    {
+                        id: 1,
+                        isHot: false,
+                        isNew: false,
+                        isAd: false,
+                        isSpecial: false,
+                        pictureUrl: 'assets/images/property/property-2.jpg',
+                        square: 5,
+                        roomNumber: 6,
+                        bathroomNumber: 6,
+                        garageNumber: 6,
+                        title: '江南宅院',
+                        address: '锦江区东大街下东大街568号',
+                        price: '550',
+                        typeName: '出售'
+                    },
+                    {
+                        id: 1,
+                        isHot: false,
+                        isNew: false,
+                        isAd: false,
+                        isSpecial: false,
+                        pictureUrl: 'assets/images/property/property-3.jpg',
+                        square: 5,
+                        roomNumber: 6,
+                        bathroomNumber: 6,
+                        garageNumber: 6,
+                        title: '江南宅院',
+                        address: '锦江区东大街下东大街568号',
+                        price: '550',
+                        typeName: '出售'
+                    },
+                    {
+                        id: 1,
+                        isHot: false,
+                        isNew: false,
+                        isAd: false,
+                        isSpecial: false,
+                        pictureUrl: 'assets/images/property/property-4.jpg',
+                        square: 5,
+                        roomNumber: 6,
+                        bathroomNumber: 6,
+                        garageNumber: 6,
+                        title: '江南宅院',
+                        address: '锦江区东大街下东大街568号',
+                        price: '550',
+                        typeName: '出售'
+                    },
+                    {
+                        id: 1,
+                        isHot: false,
+                        isNew: false,
+                        isAd: false,
+                        isSpecial: false,
+                        pictureUrl: 'assets/images/property/property-5.jpg',
+                        square: 5,
+                        roomNumber: 6,
+                        bathroomNumber: 6,
+                        garageNumber: 6,
+                        title: '江南宅院',
+                        address: '锦江区东大街下东大街568号',
+                        price: '550',
+                        typeName: '出售'
+                    },
+                    {
+                        id: 1,
+                        isHot: false,
+                        isNew: false,
+                        isAd: false,
+                        isSpecial: false,
+                        pictureUrl: 'assets/images/property/property-6.jpg',
+                        square: 5,
+                        roomNumber: 6,
+                        bathroomNumber: 6,
+                        garageNumber: 6,
+                        title: '江南宅院',
+                        address: '锦江区东大街下东大街568号',
+                        price: '550',
+                        typeName: '出售'
+                    }
+                ],
+                newProperties: [
+                    {
+                        id: 1,
+                        isHot: false,
+                        isNew: true,
+                        isAd: false,
+                        isSpecial: false,
+                        pictureUrl: 'assets/images/property/property-1.jpg',
+                        square: 5,
+                        roomNumber: 6,
+                        bathroomNumber: 6,
+                        garageNumber: 6,
+                        title: '大豪宅',
+                        address: '锦江区东大街下东大街568号',
+                        price: '550',
+                        typeName: '出售'
+                    },
+                    {
+                        id: 1,
+                        isHot: false,
+                        isNew: true,
+                        isAd: false,
+                        isSpecial: false,
+                        pictureUrl: 'assets/images/property/property-2.jpg',
+                        square: 5,
+                        roomNumber: 6,
+                        bathroomNumber: 6,
+                        garageNumber: 6,
+                        title: '江南宅院',
+                        address: '锦江区东大街下东大街568号',
+                        price: '550',
+                        typeName: '出售'
+                    },
+                    {
+                        id: 1,
+                        isHot: false,
+                        isNew: true,
+                        isAd: false,
+                        isSpecial: false,
+                        pictureUrl: 'assets/images/property/property-3.jpg',
+                        square: 5,
+                        roomNumber: 6,
+                        bathroomNumber: 6,
+                        garageNumber: 6,
+                        title: '江南宅院',
+                        address: '锦江区东大街下东大街568号',
+                        price: '550',
+                        typeName: '出售'
+                    },
+                    {
+                        id: 1,
+                        isHot: false,
+                        isNew: true,
+                        isAd: false,
+                        isSpecial: false,
+                        pictureUrl: 'assets/images/property/property-4.jpg',
+                        square: 5,
+                        roomNumber: 6,
+                        bathroomNumber: 6,
+                        garageNumber: 6,
+                        title: '江南宅院',
+                        address: '锦江区东大街下东大街568号',
+                        price: '550',
+                        typeName: '出售'
+                    },
+                    {
+                        id: 1,
+                        isHot: false,
+                        isNew: true,
+                        isAd: false,
+                        isSpecial: false,
+                        pictureUrl: 'assets/images/property/property-5.jpg',
+                        square: 5,
+                        roomNumber: 6,
+                        bathroomNumber: 6,
+                        garageNumber: 6,
+                        title: '江南宅院',
+                        address: '锦江区东大街下东大街568号',
+                        price: '550',
+                        typeName: '出售'
+                    },
+                    {
+                        id: 1,
+                        isHot: false,
+                        isNew: true,
+                        isAd: false,
+                        isSpecial: false,
+                        pictureUrl: 'assets/images/property/property-6.jpg',
+                        square: 5,
+                        roomNumber: 6,
+                        bathroomNumber: 6,
+                        garageNumber: 6,
+                        title: '江南宅院',
+                        address: '锦江区东大街下东大街568号',
+                        price: '550',
+                        typeName: '出售'
+                    }
+                ],
+                agents: [
+                    {
+                        id: 1,
+                        photo: 'assets/images/agent/agent-1.jpg',
+                        name: '唐纳德.菲尔',
+                        phone: '(756) 447 5779',
+                        email: 'info@example.com',
+                        properties: 5
+                    },
+                    {
+                        id: 1,
+                        photo: 'assets/images/agent/agent-2.jpg',
+                        name: '唐纳德.菲尔',
+                        phone: '(756) 447 5779',
+                        email: 'info@example.com',
+                        properties: 5
+                    },
+                    {
+                        id: 1,
+                        photo: 'assets/images/agent/agent-3.jpg',
+                        name: '唐纳德.菲尔',
+                        phone: '(756) 447 5779',
+                        email: 'info@example.com',
+                        properties: 5
+                    },
+                    {
+                        id: 1,
+                        photo: 'assets/images/agent/agent-4.jpg',
+                        name: '唐纳德.菲尔',
+                        phone: '(756) 447 5779',
+                        email: 'info@example.com',
+                        properties: 5
+                    },
+                    {
+                        id: 1,
+                        photo: 'assets/images/agent/agent-5.jpg',
+                        name: '唐纳德.菲尔',
+                        phone: '(756) 447 5779',
+                        email: 'info@example.com',
+                        properties: 5
+                    }
+                ],
+                reviews: [
+                    {
+                        id: 1,
+                    }
+                ],
+                news: [
+                    {
+                        id: 1,
+                        userId: 1,
+                        imageUrl: 'assets/images/news/news-1.jpg',
+                        name: '唐纳德',
+                        issuingTime: '2018年12月30日',
+                        title: '豪华公寓楼',
+                        content: '房产交易平台 the best theme for  elit, sed do to eiumod tempor dolor sit amet.',
+                    },
+                    {
+                        id: 1,
+                        userId: 1,
+                        imageUrl: 'assets/images/news/news-2.jpg',
+                        name: '唐纳德',
+                        issuingTime: '2018年12月30日',
+                        title: '豪华公寓楼',
+                        content: '房产交易平台 the best theme for  elit, sed do to eiumod tempor dolor sit amet.',
+                    },
+                    {
+                        id: 1,
+                        userId: 1,
+                        imageUrl: 'assets/images/news/news-3.jpg',
+                        name: '唐纳德',
+                        issuingTime: '2018年12月30日',
+                        title: '豪华公寓楼',
+                        content: '房产交易平台 the best theme for  elit, sed do to eiumod tempor dolor sit amet.',
+                    },
+                ],
+                publicPath: process.env.BASE_URL
+            }
+        },
+        methods: {
+            setCity(location) {
+                this.city = location
+            }
+        }
     }
-  }
 </script>
 
 <style scoped>
-
+    .bm-view {
+        width: 100%;
+        height: calc(100vh - 90px);
+    }
 </style>
