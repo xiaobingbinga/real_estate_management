@@ -2,31 +2,28 @@
   <div>
     <!--Hero Section start-->
     <div class="hero-section section position-relative">
-
-            <!--Hero Map-->
-            <div id="hero-map">
-                <template>
-                    <div>
-                        <baidu-map
-                                class="bm-view"
-                                :center="city"
-                                :zoom="zoom">
-                          <bm-scale anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-scale>
-                          <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
-                        </baidu-map>
-                    </div>
-                </template>
-            </div>
-
+      <!--Hero Map-->
+      <div id="hero-map">
+          <template>
+              <div>
+                  <baidu-map
+                          class="bm-view"
+                          :center="city"
+                          :zoom="zoom">
+                    <bm-scale anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-scale>
+                    <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
+                  </baidu-map>
+              </div>
+          </template>
+      </div>
       <!--Hero Map Property Controler-->
       <div class="map-property-controls"></div>
-
     </div>
     <!--Hero Section end-->
 
-        <!--搜索 start-->
-        <house-search @getCity="setCity"></house-search>
-        <!--搜索 end-->
+    <!--搜索 start-->
+    <house-search @getCity="setCity"></house-search>
+    <!--搜索 end-->
 
     <!--特色房产 start-->
     <house-module

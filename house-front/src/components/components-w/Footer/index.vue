@@ -10,6 +10,13 @@
           <div class="footer-widget col-lg-3 col-md-6 col-12 mb-40">
             <img src="@/assets/images/logo-footer.png" alt="">
             <p>房产交易平台the best theme for elit, sed do to eiumod tempor dolor sit amet, ctetur adipiscing elit seddo dolor sit amet.</p>
+            <!--<div class="footer-social">-->
+            <!--<a href="#" class="facebook"><i class="fa fa-facebook"></i></a>-->
+            <!--<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>-->
+            <!--<a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>-->
+            <!--<a href="#" class="google"><i class="fa fa-google-plus"></i></a>-->
+            <!--<a href="#" class="pinterest"><i class="fa fa-pinterest-p"></i></a>-->
+            <!--</div>-->
           </div>
           <!--Footer Widget end-->
 

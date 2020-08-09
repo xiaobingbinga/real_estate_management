@@ -6,7 +6,9 @@
                 :total-rows="rows"
                 prev-text="< Prev"
                 next-text="Next >"
-                last-text="Last >>" class="house-page"></b-pagination>
+                last-text="Last >>" class="house-page">
+    <template #first-text><i class="fa fa-angle-double-left"></i><span>     </span>Frist</template>
+  </b-pagination>
 </template>
 
 <script>

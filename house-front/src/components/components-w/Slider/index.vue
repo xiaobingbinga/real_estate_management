@@ -103,12 +103,9 @@
     color: #ffffff;
   }
   .swiper-slide {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      /*font-weight: bold;*/
-      /*font-size: 50px;*/
-      /*background-color: #fff;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 </style>

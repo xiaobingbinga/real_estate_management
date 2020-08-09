@@ -22,7 +22,7 @@
                                 </span>
               </a>
             </div>
-            <div class="image"><img :src="`${publicPath}assets/images/others/app.png`" alt=""></div>
+            <div class="image"><img src="assets/images/others/app.png" alt=""></div>
           </div>
           <!--Download Content end-->
 
@@ -34,12 +34,7 @@
 
 <script>
   export default {
-    name: "HouseDownload",
-    data () {
-      return {
-        publicPath: process.env.BASE_URL
-      }
-    }
+    name: "HouseDownload"
   }
 </script>
 
