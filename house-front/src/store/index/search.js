@@ -19,8 +19,22 @@ export default {
                     {value: 6, tip:'别墅'}
                 ]
             },
+            province:{
+                label: '省份',
+                options: [
+                    {value: 1, tip: ''},
+                    {value: 2, tip: ''},
+                    {value: 3, tip: ''},
+                    {value: 4, tip: ''},
+                    {value: 5, tip: ''},
+                    {value: 6, tip: ''},
+                    {value: 7, tip: ''},
+                    {value: 8, tip: ''},
+                    {value: 9, tip: ''}
+                ]
+            },
             city: {
-                label: '地理位置',
+                label: '城市',
                 options: [
                     {value: 1, tip: '成都'},
                     {value: 2, tip: '北京'},

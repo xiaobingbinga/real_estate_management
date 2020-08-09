@@ -15,7 +15,8 @@ export default {
                 price:550,
                 leaseType:1,
                 isHot:1,
-                isSpecial:0
+                isSpecial:0,
+                description: 'Friuli-Venezia Giflia is the best theme for elit, sed door dolor sit amet, conse ctetur adipiscing elit, sed do eiud in tempor incididun'
             },
             {
                 id:2,
@@ -30,7 +31,8 @@ export default {
                 price:2550,
                 leaseType:1,
                 isHot:1,
-                isSpecial:0
+                isSpecial:0,
+                description: 'Marvel de Villa is the best theme for elit, sed door dolor sit amet, conse ctetur adipiscing elit, sed do eiud in tempor incididun'
             },
             {
                 id:3,
@@ -45,7 +47,8 @@ export default {
                 price:550,
                 leaseType:1,
                 isHot:1,
-                isSpecial:0
+                isSpecial:0,
+                description: 'Ruposi Bangla Cottage is the best theme for elit, sed door dolor sit amet, conse ctetur adipiscing elit, sed do eiud in tempor incididun'
             },
             {
                 id:4,
@@ -60,7 +63,8 @@ export default {
                 price:550,
                 leaseType:1,
                 isHot:1,
-                isSpecial:0
+                isSpecial:0,
+                description: 'MayaKanon de Villa is the best theme for elit, sed door dolor sit amet, conse ctetur adipiscing elit, sed do eiud in tempor incididun'
             },
             {
                 id:5,
@@ -75,7 +79,8 @@ export default {
                 price:2550,
                 leaseType:1,
                 isHot:1,
-                isSpecial:0
+                isSpecial:0,
+                description: 'Azorex de South Villa is the best theme for elit, sed door dolor sit amet, conse ctetur adipiscing elit, sed do eiud in tempor incididun'
             },
             {
                 id:6,
@@ -90,7 +95,8 @@ export default {
                 price:550,
                 leaseType:1,
                 isHot:1,
-                isSpecial:0
+                isSpecial:0,
+                description: 'Radison de Villa is the best theme for elit, sed door dolor sit amet, conse ctetur adipiscing elit, sed do eiud in tempor incididun'
             }
         ]
     },

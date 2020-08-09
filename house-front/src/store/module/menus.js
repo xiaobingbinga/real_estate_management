@@ -21,9 +21,9 @@ export default{
                             {title:'左倾式格局',url:'/house/properties-left-sidebar'},
                             {title:'右倾式格局',url:'/'}
                         ]},
-                    {title:'房产列表显示',url:'/',
+                    {title:'房产列表显示',url:'/properties',
                         subMenu:[
-                            {title: '左倾式',url:'/'},
+                            {title: '左倾式',url:'/house/properties-list-left-sidebar'},
                             {title: '右倾式',url:'/'}
                         ]},
                     {title:'房产阶梯式显示',url:'/',

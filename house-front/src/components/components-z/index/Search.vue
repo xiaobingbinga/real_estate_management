@@ -50,9 +50,10 @@
             selectedValue:{
                 rentType: null,
                 houseType: null,
+                province:null,
                 city: null,
                 roomNumber: null,
-                bathroomNumber: null,
+                bathroomNumber: null
             }
         }),
         computed:{

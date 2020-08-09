@@ -3,19 +3,19 @@
         <div class="image">
             <span class="label" v-if="houseInfo.isHot">热门</span>
             <span class="label" v-if="houseInfo.isSpecial">特色</span>
-            <a href="single-properties.html"><img :src="houseInfo.pictureUrl" alt=""></a>
+            <a href="single-properties.html"><img :src="`${publicPath}${houseInfo.pictureUrl}`" alt=""></a>
             <ul class="property-feature">
                 <li>
-                    <span class="area"><img src="assets/images/icons/area.png" alt="">{{houseInfo.square}} 平米</span>
+                    <span class="area"><img :src="`${publicPath}assets/images/icons/area.png`" alt="">{{houseInfo.square}} 平米</span>
                 </li>
                 <li>
-                    <span class="bed"><img src="assets/images/icons/bed.png" alt="">{{houseInfo.roomNumber}}</span>
+                    <span class="bed"><img :src="`${publicPath}assets/images/icons/bed.png`" alt="">{{houseInfo.roomNumber}}</span>
                 </li>
                 <li>
-                    <span class="bath"><img src="assets/images/icons/bath.png" alt="">{{houseInfo.bathroomNumber}}</span>
+                    <span class="bath"><img :src="`${publicPath}assets/images/icons/bath.png`" alt="">{{houseInfo.bathroomNumber}}</span>
                 </li>
                 <li>
-                    <span class="parking"><img src="assets/images/icons/parking.png" alt="">{{houseInfo.garageNumber}}</span>
+                    <span class="parking"><img :src="`${publicPath}assets/images/icons/parking.png`" alt="">{{houseInfo.garageNumber}}</span>
                 </li>
             </ul>
         </div>
@@ -28,12 +28,13 @@
                 <div class="type-wrap">
                     <span class="price">
                         ￥{{houseInfo.price}}
-                        <span v-if="houseInfo.rentType === 1">{{lessType[houseInfo.lessType]}}</span>
+                        <span v-if="houseInfo.rentType === 1">{{leaseType[houseInfo.leaseType]}}</span>
                     </span>
                     <span class="type" v-if="houseInfo.rentType === 1">出租</span>
                     <span class="type" v-if="houseInfo.rentType === 2">出售</span>
                 </div>
             </div>
+            <slot name="houseDescription" :description="houseInfo.description"></slot>
         </div>
     </div>
 </template>
@@ -41,7 +42,8 @@
 <script>
     export default {
         data:()=>({
-            lessType:['','天','周','月','季','年']
+            leaseType:['','天','周','月','季','年'],
+            publicPath:process.env.BASE_URL
         }),
         props:{
             msg:String,
