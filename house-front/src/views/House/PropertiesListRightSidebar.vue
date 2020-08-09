@@ -1,14 +1,14 @@
 <template>
     <div>
-        <house-page-banner title="Properties List Left Sidebar"/>
+        <house-page-banner title="Properties List Right Sidebar"/>
 
         <div class="property-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
             <div class="container">
                 <div class="row">
-                    <house-list rootClass="col-lg-8 col-12 order-1 order-lg-2 mb-sm-50 mb-xs-50"
+                    <house-list rootClass="col-lg-8 col-12 order-1 mb-sm-50 mb-xs-50"
                                 itemRootClass="property-item list col-md-6 col-12 mb-40"
                                 :houseList="houseList"/>
-                    <house-sidebar rootClass="col-lg-4 col-12 order-2 order-lg-1 pr-30 pr-sm-15 pr-xs-15"/>
+                    <house-sidebar rootClass="col-lg-4 col-12 order-2 pl-30 pl-sm-15 pl-xs-15"/>
                 </div>
             </div>
         </div>
