@@ -8,5 +8,8 @@ module.exports = {
                 'windows.jQuery': 'jquery'
             })
         ]
-    }
+    },
+  devServer: {
+    port: 80
+  }
 };
