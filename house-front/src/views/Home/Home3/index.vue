@@ -381,7 +381,6 @@
 </template>
 
 <script>
-  import houseSearch from "@/components/components-w/Home/Search"
   import houseWelcome from "@/components/components-w/Home/Welcome"
   import houseDownload from "@/components/components-w/Home/Download"
   import houseSlider from "@/components/components-w/Slider"
@@ -389,16 +388,13 @@
   import houseAgent from "@/components/components-w/Agent"
   import houseReview from "@/components/components-w/Home/Review"
   import houseNews from "@/components/components-w/News"
-  import houseModule from "@/components/components-w/Home/Module"
   import BaiduMap from 'vue-baidu-map/components/map/Map.vue'
 
     export default {
         name: "index",
         components: {
-            houseSearch,
             houseSlider,
             houseProperty,
-            houseModule,
             houseWelcome,
             houseDownload,
             houseAgent,
