@@ -24,297 +24,60 @@
                 <div class="col-lg-8 col-12 order-1 order-lg-2 mb-sm-50 mb-xs-50">
                     <div class="row">
 
-                        <!--Property start-->
-                        <div class="property-item col-md-6 col-12 mb-40">
-                            <div class="property-inner">
-                                <div class="image">
-                                    <a href="single-properties.html"><img :src="`${publicPath}assets/images/property/property-1.jpg`" alt=""></a>
-                                    <ul class="property-feature">
-                                        <li>
-                                            <span class="area"><img :src="`${publicPath}assets/images/icons/area.png`" alt="">550 平米</span>
-                                        </li>
-                                        <li>
-                                            <span class="bed"><img :src="`${publicPath}assets/images/icons/bed.png`" alt="">6</span>
-                                        </li>
-                                        <li>
-                                            <span class="bath"><img :src="`${publicPath}assets/images/icons/bath.png`" alt="">4</span>
-                                        </li>
-                                        <li>
-                                            <span class="parking"><img :src="`${publicPath}assets/images/icons/parking.png`" alt="">3</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="content">
-                                    <div class="left">
-                                        <h3 class="title"><a href="single-properties.html">江南宅院</a></h3>
-                                        <span class="location"><img :src="`${publicPath}assets/images/icons/marker.png`" alt="">锦江区东大街下东大街568号</span>
-                                    </div>
-                                    <div class="right">
-                                        <div class="type-wrap">
-                                            <span class="price">￥550<span>月</span></span>
-                                            <span class="type">出租</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Property end-->
 
-                        <!--Property start-->
-                        <div class="property-item col-md-6 col-12 mb-40">
+                        <div v-for="(oneFea,idxFea) in featureList"
+                             :key="idxFea"
+                             class="property-item col-md-6 col-12 mb-40">
                             <div class="property-inner">
                                 <div class="image">
-                                    <span class="label">特色</span>
-                                    <a href="single-properties.html"><img :src="`${publicPath}assets/images/property/property-2.jpg`" alt=""></a>
+                                    <span v-if="oneFea.isHot === 1" class="label">热门</span>
+                                    <span v-if="oneFea.isSpecial === 1" class="label">特色</span>
+                                    <a href="single-properties.html">
+                                        <img :src="`${publicPath}${oneFea.pictureUrl}`" alt=""></a>
                                     <ul class="property-feature">
                                         <li>
-                                            <span class="area"><img :src="`${publicPath}assets/images/icons/area.png`" alt="">550 平米</span>
+                                            <span class="area">
+                                                <img :src="`${publicPath}assets/images/icons/area.png`" alt="">
+                                                {{oneFea.square}} 平米</span>
                                         </li>
                                         <li>
-                                            <span class="bed"><img :src="`${publicPath}assets/images/icons/bed.png`" alt="">6</span>
+                                            <span class="bed">
+                                                <img :src="`${publicPath}assets/images/icons/bed.png`" alt="">
+                                                {{oneFea.roomNumber}}</span>
                                         </li>
                                         <li>
-                                            <span class="bath"><img :src="`${publicPath}assets/images/icons/bath.png`" alt="">4</span>
+                                            <span class="bath">
+                                                <img :src="`${publicPath}assets/images/icons/bath.png`" alt="">
+                                                {{oneFea.bathroomNumber}}</span>
                                         </li>
                                         <li>
-                                            <span class="parking"><img :src="`${publicPath}assets/images/icons/parking.png`" alt="">3</span>
+                                            <span class="parking">
+                                                <img :src="`${publicPath}assets/images/icons/parking.png`" alt="">
+                                                {{oneFea.garageNumber}}</span>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="content">
                                     <div class="left">
-                                        <h3 class="title"><a href="single-properties.html">木马山别墅</a></h3>
-                                        <span class="location"><img :src="`${publicPath}assets/images/icons/marker.png`" alt="">城北大道450附22号</span>
+                                        <h3 class="title"><a href="single-properties.html">{{oneFea.title}}</a></h3>
+                                        <span class="location">
+                                            <img :src="`${publicPath}assets/images/icons/marker.png`" alt="">
+                                            {{oneFea.address}}</span>
                                     </div>
                                     <div class="right">
                                         <div class="type-wrap">
-                                            <span class="price">￥2550</span>
-                                            <span class="type">出售</span>
+                                            <span class="price">￥{{oneFea.price}}</span>
+                                            <span v-if="oneFea.leaseType === 1" class="type">出租</span>
+                                            <span v-else class="type">出售</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!--Property end-->
 
-                        <!--Property start-->
-                        <div class="property-item col-md-6 col-12 mb-40">
-                            <div class="property-inner">
-                                <div class="image">
-                                    <span class="label">热门</span>
-                                    <a href="single-properties.html"><img :src="`${publicPath}assets/images/property/property-3.jpg`" alt=""></a>
-                                    <ul class="property-feature">
-                                        <li>
-                                            <span class="area"><img :src="`${publicPath}assets/images/icons/area.png`" alt="">550 平米</span>
-                                        </li>
-                                        <li>
-                                            <span class="bed"><img :src="`${publicPath}assets/images/icons/bed.png`" alt="">6</span>
-                                        </li>
-                                        <li>
-                                            <span class="bath"><img :src="`${publicPath}assets/images/icons/bath.png`" alt="">4</span>
-                                        </li>
-                                        <li>
-                                            <span class="parking"><img :src="`${publicPath}assets/images/icons/parking.png`" alt="">3</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="content">
-                                    <div class="left">
-                                        <h3 class="title"><a href="single-properties.html">皇家一号公寓</a></h3>
-                                        <span class="location"><img :src="`${publicPath}assets/images/icons/marker.png`" alt="">锦江区福字街215号</span>
-                                    </div>
-                                    <div class="right">
-                                        <div class="type-wrap">
-                                            <span class="price">￥550<span>月</span></span>
-                                            <span class="type">出租</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Property end-->
 
-                        <!--Property start-->
-                        <div class="property-item col-md-6 col-12 mb-40">
-                            <div class="property-inner">
-                                <div class="image">
-                                    <a href="single-properties.html"><img :src="`${publicPath}assets/images/property/property-4.jpg`" alt=""></a>
-                                    <ul class="property-feature">
-                                        <li>
-                                            <span class="area"><img :src="`${publicPath}assets/images/icons/area.png`" alt="">550 平米</span>
-                                        </li>
-                                        <li>
-                                            <span class="bed"><img :src="`${publicPath}assets/images/icons/bed.png`" alt="">6</span>
-                                        </li>
-                                        <li>
-                                            <span class="bath"><img :src="`${publicPath}assets/images/icons/bath.png`" alt="">4</span>
-                                        </li>
-                                        <li>
-                                            <span class="parking"><img :src="`${publicPath}assets/images/icons/parking.png`" alt="">3</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="content">
-                                    <div class="left">
-                                        <h3 class="title"><a href="single-properties.html">龙城一号别墅</a></h3>
-                                        <span class="location"><img :src="`${publicPath}assets/images/icons/marker.png`" alt="">龙泉驿区南山大道333号附12号</span>
-                                    </div>
-                                    <div class="right">
-                                        <div class="type-wrap">
-                                            <span class="price">￥550<span>月</span></span>
-                                            <span class="type">出租</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Property end-->
 
-                        <!--Property start-->
-                        <div class="property-item col-md-6 col-12 mb-40">
-                            <div class="property-inner">
-                                <div class="image">
-                                    <a href="single-properties.html"><img :src="`${publicPath}assets/images/property/property-5.jpg`" alt=""></a>
-                                    <ul class="property-feature">
-                                        <li>
-                                            <span class="area"><img :src="`${publicPath}assets/images/icons/area.png`" alt="">550 平米</span>
-                                        </li>
-                                        <li>
-                                            <span class="bed"><img :src="`${publicPath}assets/images/icons/bed.png`" alt="">6</span>
-                                        </li>
-                                        <li>
-                                            <span class="bath"><img :src="`${publicPath}assets/images/icons/bath.png`" alt="">4</span>
-                                        </li>
-                                        <li>
-                                            <span class="parking"><img :src="`${publicPath}assets/images/icons/parking.png`" alt="">3</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="content">
-                                    <div class="left">
-                                        <h3 class="title"><a href="single-properties.html">春天花园别墅</a></h3>
-                                        <span class="location"><img :src="`${publicPath}assets/images/icons/marker.png`" alt="">金牛区琴台西路668号</span>
-                                    </div>
-                                    <div class="right">
-                                        <div class="type-wrap">
-                                            <span class="price">￥2550</span>
-                                            <span class="type">出售</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Property end-->
 
-                        <!--Property start-->
-                        <div class="property-item col-md-6 col-12 mb-40">
-                            <div class="property-inner">
-                                <div class="image">
-                                    <span class="label">特色</span>
-                                    <a href="single-properties.html"><img :src="`${publicPath}assets/images/property/property-6.jpg`" alt=""></a>
-                                    <ul class="property-feature">
-                                        <li>
-                                            <span class="area"><img :src="`${publicPath}assets/images/icons/area.png`" alt="">550 平米</span>
-                                        </li>
-                                        <li>
-                                            <span class="bed"><img :src="`${publicPath}assets/images/icons/bed.png`" alt="">6</span>
-                                        </li>
-                                        <li>
-                                            <span class="bath"><img :src="`${publicPath}assets/images/icons/bath.png`" alt="">4</span>
-                                        </li>
-                                        <li>
-                                            <span class="parking"><img :src="`${publicPath}assets/images/icons/parking.png`" alt="">3</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="content">
-                                    <div class="left">
-                                        <h3 class="title"><a href="single-properties.html">万科西山别墅</a></h3>
-                                        <span class="location"><img :src="`${publicPath}assets/images/icons/marker.png`" alt="">高新区蜀都大道12号</span>
-                                    </div>
-                                    <div class="right">
-                                        <div class="type-wrap">
-                                            <span class="price">￥550<span>月</span></span>
-                                            <span class="type">出租</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Property end-->
-
-                        <!--Property start-->
-                        <div class="property-item col-md-6 col-12 mb-40">
-                            <div class="property-inner">
-                                <div class="image">
-                                    <a href="single-properties.html"><img :src="`${publicPath}assets/images/property/property-7.jpg`" alt=""></a>
-                                    <ul class="property-feature">
-                                        <li>
-                                            <span class="area"><img :src="`${publicPath}assets/images/icons/area.png`" alt="">550 平米</span>
-                                        </li>
-                                        <li>
-                                            <span class="bed"><img :src="`${publicPath}assets/images/icons/bed.png`" alt="">6</span>
-                                        </li>
-                                        <li>
-                                            <span class="bath"><img :src="`${publicPath}assets/images/icons/bath.png`" alt="">4</span>
-                                        </li>
-                                        <li>
-                                            <span class="parking"><img :src="`${publicPath}assets/images/icons/parking.png`" alt="">3</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="content">
-                                    <div class="left">
-                                        <h3 class="title"><a href="single-properties.html">江南宅院</a></h3>
-                                        <span class="location"><img :src="`${publicPath}assets/images/icons/marker.png`" alt="">锦江区东大街下东大街568号</span>
-                                    </div>
-                                    <div class="right">
-                                        <div class="type-wrap">
-                                            <span class="price">￥550<span>月</span></span>
-                                            <span class="type">出租</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Property end-->
-
-                        <!--Property start-->
-                        <div class="property-item col-md-6 col-12 mb-40">
-                            <div class="property-inner">
-                                <div class="image">
-                                    <span class="label">特色</span>
-                                    <a href="single-properties.html"><img :src="`${publicPath}assets/images/property/property-8.jpg`" alt=""></a>
-                                    <ul class="property-feature">
-                                        <li>
-                                            <span class="area"><img :src="`${publicPath}assets/images/icons/area.png`" alt="">550 平米</span>
-                                        </li>
-                                        <li>
-                                            <span class="bed"><img :src="`${publicPath}assets/images/icons/bed.png`" alt="">6</span>
-                                        </li>
-                                        <li>
-                                            <span class="bath"><img :src="`${publicPath}assets/images/icons/bath.png`" alt="">4</span>
-                                        </li>
-                                        <li>
-                                            <span class="parking"><img :src="`${publicPath}assets/images/icons/parking.png`" alt="">3</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="content">
-                                    <div class="left">
-                                        <h3 class="title"><a href="single-properties.html">木马山别墅</a></h3>
-                                        <span class="location"><img :src="`${publicPath}assets/images/icons/marker.png`" alt="">城北大道450附22号</span>
-                                    </div>
-                                    <div class="right">
-                                        <div class="type-wrap">
-                                            <span class="price">￥2550</span>
-                                            <span class="type">出售</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Property end-->
 
 
                     </div>
@@ -500,6 +263,7 @@
 
 <script>
     import FromInner from "../../components/components-j/home/FromInner";
+    import {mapGetters} from "vuex"
     export default {
         components:{FromInner},
         data() {
@@ -509,6 +273,9 @@
                 currentPage: 2,
                 publicPath: process.env.BASE_URL
             }
+        },
+        computed:{
+            ...mapGetters('featureList',['featureList'])
         }
     }
 </script>
