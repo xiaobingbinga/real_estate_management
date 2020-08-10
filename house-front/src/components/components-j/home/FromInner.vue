@@ -138,6 +138,19 @@
         }
     }
 </script>
+<style scoped>
+    ::v-deep div.vue-slider.vue-slider-ltr{
+        margin-top: 10px;
+    }
+    ::v-deep .vue-slider-dot-tooltip-top {
+        top: 0px;
+        left: 50%;
+        transform: translate(-50%,-100%);
+    }
+    ::v-deep .vue-slider-dot-tooltip-inner-top::after {
+        display: none;
+    }
+</style>
 
 <style>
 
