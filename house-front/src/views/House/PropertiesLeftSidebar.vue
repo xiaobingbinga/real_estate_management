@@ -94,6 +94,7 @@
                                     prev-text="< 上一页"
                                     next-text="下一页 >"
                                     class="page-pagination"
+                                    @change="change"
                             ></b-pagination>
 
                         </div>
@@ -268,10 +269,11 @@
         components:{FromInner},
         data() {
             return {
-                rows: 5,
-                perPage: 1,
-                currentPage: 2,
-                publicPath: process.env.BASE_URL
+                currHouse: [],//分页数据
+                rows: 6,//数据总条数
+                perPage: 1,//每页显示数据
+                currentPage: 1,//当前页数
+                publicPath: process.env.BASE_URL//路径数据
             }
         },
         computed:{
