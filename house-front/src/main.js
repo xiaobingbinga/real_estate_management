@@ -8,6 +8,9 @@ import '@/components/components-w'
 import BaiduMap from 'vue-baidu-map'
 Vue.use(BaiduMap, { ak: 'OvUmjogasSSR2GwbG2n8coZzbWgFhuyo'})
 
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
+
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)

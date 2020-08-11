@@ -54,6 +54,35 @@ const routes = [
     path:'/house/single-properties-left-sidebar',
     name:'Properties',
     component:() => import('@/views/House/Single/SinglePropertiesLeftSidebar')
+  },
+  {
+    path: '/login',
+    redirect: '/login/login-form',
+    component: () => import('@/views/LoginAndRegister'),
+    children: [
+      {
+        path: '/login/login-form',
+        name: 'Login',
+        component: () => import('@/views/LoginAndRegister/Login')
+      },
+      {
+        path: '/register',
+        redirect: '/register/register-by-phone',
+        component: () => import('@/views/LoginAndRegister/Register'),
+        children: [
+          {
+            path: '/register/register-by-account',
+            name: 'RegisterByAccount',
+            component: () => import('@/views/LoginAndRegister/RegisterByAccount')
+          },
+          {
+            path: '/register/register-by-phone',
+            name: 'RegisterByPhone',
+            component: () => import('@/views/LoginAndRegister/RegisterByPhone')
+          }
+        ]
+      }
+    ]
   }
 ];
 
