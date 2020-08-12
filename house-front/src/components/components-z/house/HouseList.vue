@@ -1,4 +1,5 @@
 <template>
+
     <div :class="rootClass">
         <div class="row">
             <div :class="itemRootClass"
@@ -13,6 +14,7 @@
                     </template>
                 </house-inner>
             </div>
+
         </div>
 
         <div class="row mt-20">
@@ -23,6 +25,7 @@
                               :per-page="perPage"
                               align="center"
                               size="lg"
+                              aria-control s="my-table"
                               pills
                               :hide-goto-end-buttons="true"
                               :hide-goto-start-buttons="true"
