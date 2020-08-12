@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Component
 public class UserTest {
-    public User addUser(Integer id){
+    public User addUser(Integer id) {
         User user = new User();
         user.setId(id);
         user.setName("恭喜你成功了！");
