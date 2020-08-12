@@ -33,7 +33,7 @@ export default{
                         ]},
                     {title:'单个房产显示',url:'/',
                         subMenu:[
-                            {title:'左倾式',url:'/'},
+                            {title:'左倾式',url:'/house/single-properties-left-sidebar'},
                             {title:'右倾式',url:'/'}
                         ]}
                 ]},
