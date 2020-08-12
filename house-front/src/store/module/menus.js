@@ -33,7 +33,7 @@ export default{
                         ]},
                     {title:'单个房产显示',url:'/',
                         subMenu:[
-                            {title:'左倾式',url:'/'},
+                            {title:'左倾式',url:'/house/single-properties-left-sidebar'},
                             {title:'右倾式',url:'/'}
                         ]}
                 ]},
@@ -75,7 +75,7 @@ export default{
                 url:'/',
                 subMenu:[
                     {title:'关于我们',url:'/'},
-                    {title:'添加房产',url:'/'},
+                    {title:'添加房产',url:'/display/add-properties'},
                     {title:'联系我们',url:'/'},
                     {title:'2列画廊展示',url:'/'},
                     {title:'3列画廊展示',url:'/'},

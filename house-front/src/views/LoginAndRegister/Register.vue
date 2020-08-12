@@ -1,5 +1,5 @@
 <template>
-  <div id="register-tab" v-else class="tab-pane show active">
+  <div id="register-tab" class="tab-pane show active">
     <!--注册方式选择栏-->
     <ul class="register-type-tab-list nav">
       <li><router-link to="/register/register-by-phone" active-class="active" data-toggle="tab">手机号注册(推荐)</router-link></li>

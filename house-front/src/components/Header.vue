@@ -41,8 +41,8 @@
                     <!--User start-->
                     <div class="col mr-sm-50 mr-xs-50">
                         <div class="header-user">
-                            <a href="/login-register" class="user-toggle">
-                                <i class="pe-7s-user"></i><span>登录或注册</span></a>
+                            <router-link to="/login" class="user-toggle">
+                                <i class="pe-7s-user"></i><span>登录或注册</span></router-link>
                         </div>
                     </div>
                     <!--User end-->
