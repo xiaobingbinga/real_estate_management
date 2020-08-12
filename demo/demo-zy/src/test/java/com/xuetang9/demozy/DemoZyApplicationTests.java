@@ -8,6 +8,7 @@ class DemoZyApplicationTests {
 
     @Test
     void contextLoads() {
+        String url = "http://192.168.3.36/";
     }
 
 }

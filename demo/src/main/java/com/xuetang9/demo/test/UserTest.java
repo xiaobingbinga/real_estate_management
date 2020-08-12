@@ -1,6 +1,7 @@
 package com.xuetang9.demo.test;
 
 import com.xuetang9.demo.domain.User;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -12,8 +13,12 @@ import java.util.List;
  * @Address: 成都市锦江区西部国际金融中心老九学堂
  * @Version: v1.0
  */
+@Component
 public class UserTest {
-    public String selectAll(List<User> users){
-        return users.get(0).getName();
+    public User addUser(Integer id){
+        User user = new User();
+        user.setId(id);
+        user.setName("恭喜你成功了！");
+        return user;
     }
 }
