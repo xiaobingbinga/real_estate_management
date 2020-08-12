@@ -3,16 +3,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.xuetang9</groupId>
-    <artifactId>demo</artifactId>
+    <artifactId>demo-ly</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo</name>
+    <name>demo-ly</name>
     <description>Demo project for Spring Boot</description>
-
-    <modules>
-        <module>demo-zy</module>
-        <module>demo-jjh</module>
-        <module>demo-ly</module>
-    </modules>
+    <parent>
+        <artifactId>demo</artifactId>
+        <groupId>com.xuetang9</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,7 +22,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>
@@ -68,7 +67,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.3.0.RELEASE</version>
                 <configuration>
-                    <mainClass>com.xuetang9.demo.DemoApplication</mainClass>
+                    <mainClass>com.xuetang9.demoly.DemoLyApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

@@ -10,6 +10,8 @@ module.exports = {
         ]
     },
   devServer: {
+      //自动打开页面
+      open: true,
     port: 80
   }
 };
