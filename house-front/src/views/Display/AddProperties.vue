@@ -359,9 +359,9 @@
                     constructionYear:
                         ['1 年以上','2 年以上','3 年以上','4 年以上','5 年以上','6 年以上','7 年以上','8 年以上','9 年以上'],
                     houseNum:['1','2','3','4','5','6','7','8','9'],
-                    toiletsNum:this.houseNum,
+                    toiletsNum:['1','2','3','4','5','6','7','8','9'],
                     kitchen:['1','2','3'],
-                    parkingSpace:this.kitchen,
+                    parkingSpace:['1','2','3'],
                     bool:['有','没有']
                 },
                 selectedStatus:null,
