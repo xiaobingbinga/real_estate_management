@@ -1,14 +1,13 @@
-package com.xuetang9.demozy;
+package com.xuetang9.demoly;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoZyApplicationTests {
+class DemoLyApplicationTests {
 
     @Test
     void contextLoads() {
-        String url = "http://192.168.3.36/";
     }
 
 }

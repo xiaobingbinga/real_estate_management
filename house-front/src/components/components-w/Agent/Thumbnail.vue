@@ -26,16 +26,18 @@
     props: {
       agent: {
         type: Object,
-        default: {
-          id: 1,
-          photo: 'assets/images/agent/agent-1.jpg',
-          name: 'Donald Palmer',
-          phone: '(756) 447 5779',
-          properties: 5,
-          facebook: 'javascript:;',
-          twitter: 'javascript:;',
-          linkedin: 'javascript:;',
-          google: 'javascript:;'
+        default: () => {
+          return {
+            id: 1,
+            photo: 'assets/images/agent/agent-1.jpg',
+            name: 'Donald Palmer',
+            phone: '(756) 447 5779',
+            properties: 5,
+            facebook: 'javascript:;',
+            twitter: 'javascript:;',
+            linkedin: 'javascript:;',
+            google: 'javascript:;'
+          }
         }
       }
     },
