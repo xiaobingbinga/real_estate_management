@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="demo" />
+        <module name="house-api" />
+        <module name="demo-zy" />
+        <module name="demo-lyt" />
+        <module name="demo-jjh" />
+        <module name="demo-ly" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="demo" target="1.8" />
+      <module name="demo-jjh" target="1.8" />
+      <module name="demo-ly" target="1.8" />
+      <module name="demo-lyt" target="1.8" />
+      <module name="demo-zy" target="1.8" />
+      <module name="house-api" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
