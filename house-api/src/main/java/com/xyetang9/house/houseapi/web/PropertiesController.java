@@ -6,6 +6,7 @@ import com.xyetang9.house.houseapi.dto.properties.ConditionTo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.*;
 
 /**
