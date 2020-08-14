@@ -1,4 +1,4 @@
-package com.xuetang9.house.houseeureka1;
+package com.xuetang9.house.houseeureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
