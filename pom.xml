@@ -14,6 +14,7 @@
         <module>house-eureka</module>
         <module>house-model</module>
         <module>house-mapper</module>
+        <module>house-util</module>
     </modules>
 
     <properties>
