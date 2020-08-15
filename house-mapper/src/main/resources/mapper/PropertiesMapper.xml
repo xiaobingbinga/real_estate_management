@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuetang9.house.mapper.PropertiesMapper">
+  <resultMap id="BaseResultMap" type="com.xuetang9.house.domain.Properties">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="owner_id" jdbcType="BIGINT" property="ownerId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="status_id" jdbcType="INTEGER" property="statusId" />
+    <result column="lease_type" jdbcType="INTEGER" property="leaseType" />
+    <result column="lease" jdbcType="INTEGER" property="lease" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="rent_type" jdbcType="INTEGER" property="rentType" />
+    <result column="price" jdbcType="REAL" property="price" />
+    <result column="square" jdbcType="REAL" property="square" />
+    <result column="picture_url" jdbcType="VARCHAR" property="pictureUrl" />
+    <result column="video_url" jdbcType="VARCHAR" property="videoUrl" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="year_type" jdbcType="INTEGER" property="yearType" />
+    <result column="room_number" jdbcType="INTEGER" property="roomNumber" />
+    <result column="bathroom_number" jdbcType="INTEGER" property="bathroomNumber" />
+    <result column="kitchen_number" jdbcType="INTEGER" property="kitchenNumber" />
+    <result column="garage_number" jdbcType="INTEGER" property="garageNumber" />
+    <result column="is_realty_management" jdbcType="TINYINT" property="isRealtyManagement" />
+    <result column="is_electric" jdbcType="TINYINT" property="isElectric" />
+    <result column="is_natural_gas" jdbcType="TINYINT" property="isNaturalGas" />
+    <result column="is_water" jdbcType="TINYINT" property="isWater" />
+    <result column="is_air_conditioning" jdbcType="TINYINT" property="isAirConditioning" />
+    <result column="is_furniture" jdbcType="TINYINT" property="isFurniture" />
+    <result column="is_balcony" jdbcType="TINYINT" property="isBalcony" />
+    <result column="is_cableTV" jdbcType="TINYINT" property="isCabletv" />
+    <result column="is_parking" jdbcType="TINYINT" property="isParking" />
+    <result column="is_lift" jdbcType="TINYINT" property="isLift" />
+    <result column="is_pool" jdbcType="TINYINT" property="isPool" />
+    <result column="is_dishwater" jdbcType="TINYINT" property="isDishwater" />
+    <result column="is_refrigerator" jdbcType="TINYINT" property="isRefrigerator" />
+    <result column="is_kitchen_utensils" jdbcType="TINYINT" property="isKitchenUtensils" />
+    <result column="recommend" jdbcType="INTEGER" property="recommend" />
+    <result column="is_hot" jdbcType="TINYINT" property="isHot" />
+    <result column="is_new" jdbcType="TINYINT" property="isNew" />
+    <result column="is_ad" jdbcType="TINYINT" property="isAd" />
+    <result column="is_special" jdbcType="TINYINT" property="isSpecial" />
+  </resultMap>
+</mapper>

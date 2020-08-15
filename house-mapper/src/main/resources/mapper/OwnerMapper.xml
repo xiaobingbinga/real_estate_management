@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuetang9.house.mapper.OwnerMapper">
+  <resultMap id="BaseResultMap" type="com.xuetang9.house.domain.Owner">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="agent_id" jdbcType="BIGINT" property="agentId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="web_site" jdbcType="VARCHAR" property="webSite" />
+    <result column="qq_site" jdbcType="VARCHAR" property="qqSite" />
+    <result column="friend_site" jdbcType="VARCHAR" property="friendSite" />
+    <result column="douyin_site" jdbcType="VARCHAR" property="douyinSite" />
+    <result column="personal_video_site" jdbcType="VARCHAR" property="personalVideoSite" />
+    <result column="ximalaya_site" jdbcType="VARCHAR" property="ximalayaSite" />
+    <result column="zifubao_site" jdbcType="VARCHAR" property="zifubaoSite" />
+  </resultMap>
+</mapper>

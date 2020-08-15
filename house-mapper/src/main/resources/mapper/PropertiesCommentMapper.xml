@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuetang9.house.mapper.PropertiesCommentMapper">
+  <resultMap id="BaseResultMap" type="com.xuetang9.house.domain.PropertiesComment">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="pro_id" jdbcType="INTEGER" property="proId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+  </resultMap>
+</mapper>

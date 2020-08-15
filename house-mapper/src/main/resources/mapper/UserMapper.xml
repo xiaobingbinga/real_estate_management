@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuetang9.house.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.xuetang9.house.domain.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="nikename" jdbcType="VARCHAR" property="nikename" />
+    <result column="brief" jdbcType="VARCHAR" property="brief" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="head" jdbcType="VARCHAR" property="head" />
+    <result column="reg_time" jdbcType="TIMESTAMP" property="regTime" />
+    <result column="status_id" jdbcType="INTEGER" property="statusId" />
+    <result column="ut_id" jdbcType="INTEGER" property="utId" />
+  </resultMap>
+</mapper>

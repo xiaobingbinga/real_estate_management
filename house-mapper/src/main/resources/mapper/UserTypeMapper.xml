@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuetang9.house.mapper.UserTypeMapper">
+  <resultMap id="BaseResultMap" type="com.xuetang9.house.domain.UserType">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="ut_id" jdbcType="INTEGER" property="utId" />
+    <result column="ut_name" jdbcType="VARCHAR" property="utName" />
+  </resultMap>
+</mapper>
