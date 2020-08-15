@@ -12,6 +12,7 @@
     <modules>
         <module>house-api</module>
         <module>house-eureka1</module>
+        <module>house-model</module>
     </modules>
 
     <properties>
