@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE generatorConfiguration
+    PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+    "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--读取配置文件-->
+    <properties resource="application.properties" />
+    <context id="Mysql" targetRuntime="tk.mybatis.mapper.generator.TkMyBatis3SimpleImpl" defaultModelType="flat">
+        <!--序列化插件-->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <!--让Mapper继承TKMapper接口-->
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property value="tk.mybatis.mapper.common.Mapper" name="mappers" />
+        </plugin>
+        <commentGenerator>
+            <!-- 抑制警告 -->
+            <property name="suppressTypeWarnings" value="true" />
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true" />
+            <!-- 是否生成注释代时间戳-->
+            <property name="suppressDate" value="false" />
+        </commentGenerator>
+        <jdbcConnection driverClass="${spring.datasource.driver-class-name}" connectionURL="${spring.datasource.url}"
+            userId="${spring.datasource.username}" password="${spring.datasource.password}">
+            <!--注意：这一句配置,如果漏掉，如果执行全部重新生成数据库表的话将会导致将其他数据的表生成出来-->
+            <property name="nullCatalogMeansCurrent" value="true" />
+        </jdbcConnection>
+        <javaModelGenerator targetPackage="com.xuetang9.house.domain" targetProject="../house-model/src/main/java"/>
+        <sqlMapGenerator targetPackage="mapper" targetProject="./src/main/resources" />
+        <javaClientGenerator targetPackage="com.xuetang9.house.mapper" targetProject="./src/main/java"
+            type="XMLMAPPER" />
+        <table tableName="%" />
+    </context>
+</generatorConfiguration>

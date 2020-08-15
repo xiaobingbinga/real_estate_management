@@ -11,8 +11,9 @@
 
     <modules>
         <module>house-api</module>
-        <module>house-eureka1</module>
+        <module>house-eureka</module>
         <module>house-model</module>
+        <module>house-mapper</module>
     </modules>
 
     <properties>
