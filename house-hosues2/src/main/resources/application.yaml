@@ -1,0 +1,9 @@
+server:
+  port: 11003
+spring:
+  application:
+    name: house-hosues
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:11000/eureka/,http://127.0.0.1:12000/eureka/,http://127.0.0.1:13000/eureka/
