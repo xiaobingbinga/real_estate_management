@@ -25,6 +25,7 @@
 
     <dependencies>
 
+
         <!--        配置熔断器-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -55,6 +56,18 @@
         <dependency>
             <groupId>com.xuetang9.house</groupId>
             <artifactId>house-model</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!--        数据库访问模块-->
+        <dependency>
+            <groupId>com.xuetang9.house</groupId>
+            <artifactId>house-mapper</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!--        公用工具类模块-->
+        <dependency>
+            <groupId>com.xuetang9.house</groupId>
+            <artifactId>house-util</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

@@ -1,12 +1,20 @@
 package com.xuetang9.househouses.web;
 
+import com.xuetang9.house.domain.Properties;
+import com.xuetang9.house.domain.PropertiesComment;
 import com.xuetang9.house.dto.properties.AddTo;
 import com.xuetang9.house.dto.properties.ConditionTo;
 import com.xuetang9.house.vo.JsonResult;
+import com.xuetang9.househouses.service.HouseInfoService;
+import com.xuetang9.househouses.service.PropertiesCommentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 
 /**
@@ -21,16 +29,54 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/properties")
 public class HouseInfoController {
 
+    @Autowired
+    private HouseInfoService houseInfoService;
+
+    @Autowired
+    private PropertiesCommentService propertiesCommentService;
+
 
     /**
      * 查看房产详细信息
-     * @param conditionTo
+     * @param id
      * @return
      */
-    @PostMapping("/properties-info")
-    public JsonResult houseInfoByCondition(ConditionTo conditionTo){
+    @GetMapping("/properties-info")
+    public JsonResult houseInfoByCondition(Integer id){
         JsonResult jsonResult = new JsonResult();
+        Properties properties = houseInfoService.getById(id);
+        try {
+            jsonResult.setCode(200);
+            jsonResult.setData(properties);
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonResult.setCode(1000);
+            jsonResult.setMessage("数据库查询失败");
+        }
 
+        return jsonResult;
+    }
+
+
+    /**
+     * @Description: houseInfoByReply 根据房产id查询用户回复
+     * @param: [id]
+     * @return: com.xuetang9.house.vo.JsonResult
+     * @auther: 天冬
+     * @date: 2020-08-16 17:11
+     */
+    @GetMapping("/reply")
+    public JsonResult houseInfoByReply(Integer id){
+        JsonResult jsonResult = new JsonResult();
+        List<PropertiesComment> propertiesComments = propertiesCommentService.select(id);
+        try {
+            jsonResult.setCode(200);
+            jsonResult.setData(propertiesComments);
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonResult.setCode(1000);
+            jsonResult.setMessage("数据库查询失败");
+        }
         return jsonResult;
     }
 
@@ -40,9 +86,21 @@ public class HouseInfoController {
      * @param addInfo
      * @return
      */
+    @PostMapping("/add-properties")
     public JsonResult newHouseInfo(AddTo addInfo){
         JsonResult jsonResult = new JsonResult();
-
+        int num = houseInfoService.add(addInfo);
+        if (num == 1){
+            try {
+                jsonResult.setCode(200);
+                jsonResult.setMessage("新增成功");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else {
+            jsonResult.setCode(1000);
+            jsonResult.setMessage("数据库增加失败");
+        }
         return jsonResult;
     }
 

@@ -52,7 +52,7 @@ const routes = [
   }, {
     path: '/house/add-house-details',
     name: 'addHouseDetails',
-    component: () => import('@/views/House/AddHouseDetails')
+    component: () => import('@/views/Display/AddProperties')
   },
   {
     path:'/house/single-properties-left-sidebar',

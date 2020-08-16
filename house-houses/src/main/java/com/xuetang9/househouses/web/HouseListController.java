@@ -5,6 +5,8 @@ import com.xuetang9.house.domain.Properties;
 import com.xuetang9.house.dto.properties.ConditionTo;
 import com.xuetang9.house.dto.properties.PageTo;
 import com.xuetang9.house.vo.JsonResult;
+import com.xuetang9.househouses.service.HouseListService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +25,9 @@ import java.util.List;
 @RequestMapping("/properties")
 public class HouseListController {
 
+    @Autowired
+    private HouseListService houseListService;
+
     /**
      * 根据条件返回房产信息
      * @return
@@ -30,7 +35,15 @@ public class HouseListController {
     @PostMapping("/condition")
     public JsonResult houseListByCondition(ConditionTo conditionTo){
         JsonResult jsonResult = new JsonResult();
-
+        List<Properties> properties = houseListService.selectCondition(conditionTo);
+        try {
+            jsonResult.setCode(200);
+            jsonResult.setData(properties);
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonResult.setCode(1000);
+            jsonResult.setMessage("数据库查询失败");
+        }
         return jsonResult;
     }
 
@@ -42,7 +55,15 @@ public class HouseListController {
     @GetMapping("/properties-add")
     public JsonResult houseListByAdd(){
         JsonResult jsonResult = new JsonResult();
-
+        List<Properties> properties = houseListService.selectNew(6);
+        try {
+            jsonResult.setCode(200);
+            jsonResult.setData(properties);
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonResult.setCode(1000);
+            jsonResult.setMessage("数据库查询失败");
+        }
         return jsonResult;
     }
 
@@ -51,21 +72,37 @@ public class HouseListController {
      * @return
      */
     @GetMapping("/condition-features")
-    public JsonResult houseListByFeatures(){
+    public JsonResult houseListByFeatures(Integer num){
         JsonResult jsonResult = new JsonResult();
-
+        List<Properties> properties = houseListService.selectSpecial(num);
+        try {
+            jsonResult.setCode(200);
+            jsonResult.setData(properties);
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonResult.setCode(1000);
+            jsonResult.setMessage("数据库查询失败");
+        }
         return jsonResult;
     }
 
     /**
      * 推荐指定数量的广告位房产
-     * @param number
+     * @param num
      * @return
      */
-    @GetMapping("advertising")
-    public JsonResult houseListByAdvert(int number){
+    @GetMapping("/advertising")
+    public JsonResult houseListByAdvert(Integer num){
         JsonResult jsonResult = new JsonResult();
-
+        List<Properties> properties = houseListService.selectAd(num);
+        try {
+            jsonResult.setCode(200);
+            jsonResult.setData(properties);
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonResult.setCode(1000);
+            jsonResult.setMessage("数据库查询失败");
+        }
         return jsonResult;
     }
 
@@ -88,7 +125,15 @@ public class HouseListController {
     @PostMapping("/list")
     public JsonResult houseListByPage(PageTo pageTo) {
         JsonResult jsonResult = new JsonResult();
-
+        List<Properties> properties = houseListService.listByPage(pageTo.getPageNum(),pageTo.getPageSize());
+        try {
+            jsonResult.setCode(200);
+            jsonResult.setData(properties);
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonResult.setCode(1000);
+            jsonResult.setMessage("数据库查询失败");
+        }
         return jsonResult;
     }
 

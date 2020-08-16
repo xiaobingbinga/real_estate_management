@@ -15,6 +15,8 @@ import lombok.Data;
 @Data
 @ApiModel("房产查询传输对象")
 public class ConditionTo {
+    @ApiModelProperty(value = "唯一标识",example = "1",required = true)
+    private Integer id;
     @ApiModelProperty(value = "状态编号",example = "1",required = true)
     private Integer statusId;
     @ApiModelProperty(value = "房产类型",example = "1",required = true)
