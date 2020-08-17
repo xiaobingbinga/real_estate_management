@@ -16,7 +16,6 @@ import java.util.List;
  * @Address: 成都市锦江区西部国际金融中心老九学堂
  * @Version: v1.0
  */
-@Service
 public interface HouseListService extends BaseService<Properties,Integer> {
     List<DisplayVo> selectCondition(ConditionTo conditionTo);
 

@@ -34,7 +34,7 @@ public class HouseListController {
      * @return
      */
     @PostMapping("/condition")
-    public JsonResult houseListByCondition(ConditionTo conditionTo){
+    public JsonResult houseListByCondition(@RequestBody ConditionTo conditionTo){
         JsonResult jsonResult = new JsonResult();
         List<DisplayVo> displayVos = houseListService.selectCondition(conditionTo);
         try {
@@ -124,7 +124,7 @@ public class HouseListController {
      * @return
      */
     @PostMapping("/list")
-    public JsonResult houseListByPage(PageTo pageTo) {
+    public JsonResult houseListByPage(@RequestBody PageTo pageTo) {
         JsonResult jsonResult = new JsonResult();
         List<DisplayVo> displayVos = houseListService.selectAll(pageTo.getPageNum(),pageTo.getPageSize());
         try {
