@@ -1,5 +1,10 @@
 package com.xuetang9.house.houselogin.service;
 
+import com.xuetang9.house.houselogin.domain.User;
+import com.xuetang9.house.houselogin.exception.FailLoginException;
+
+import java.util.Map;
+
 /**
  * @ClassName LoginService
  * @Description: TODO
@@ -9,6 +14,6 @@ package com.xuetang9.house.houselogin.service;
  */
 public interface LoginService {
 
-    boolean Login(String username, String password);
+    User Login(String username, String password) throws FailLoginException;
 
 }

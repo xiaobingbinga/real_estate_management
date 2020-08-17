@@ -3,6 +3,7 @@ package com.xuetang9.house.vo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * @ClassName: JsonResult
@@ -13,6 +14,7 @@ import lombok.Data;
  * @Version: v1.0
  */
 @Data
+@Accessors(chain = true)
 @ApiModel("响应消息实体")
 public class JsonResult<T> {
 
