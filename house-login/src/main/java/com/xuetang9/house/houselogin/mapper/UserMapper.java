@@ -4,7 +4,6 @@ import com.xuetang9.house.houselogin.domain.User;
 import com.xuetang9.house.houselogin.domain.UserExample;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
