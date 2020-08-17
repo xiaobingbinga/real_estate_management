@@ -11,13 +11,14 @@ import com.aliyuncs.profile.DefaultProfile;
 import static java.lang.Math.random;
 
 /**
- * @Author lyt
- * @Date 2020/8/17
- * @Copyright lyt
- * @Describe
+ * @ClassName SmsUtil
+ * @Description: TODO
+ * @Author Mr_W
+ * @Date 2020/8/17 11:52
+ * @Version V1.0
  */
 public class SmsUtil {
-    private static String Uid = "LTAI4FhnmBj778obyo48BQYA";
+    private static String Uid = "LTAI4FhnmBj778obyo48BQY";
 
     private static String Key = "5yNJSfavsDwHLl1Wk7GF8OT6BTrdGY";
 

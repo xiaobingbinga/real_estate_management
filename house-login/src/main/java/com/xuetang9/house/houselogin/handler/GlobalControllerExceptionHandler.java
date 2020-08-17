@@ -1,5 +1,6 @@
 package com.xuetang9.house.houselogin.handler;
 
+import com.aliyuncs.exceptions.ClientException;
 import com.xuetang9.house.houselogin.annotation.ControllerExceptionHandler;
 import com.xuetang9.house.houselogin.exception.FailLoginException;
 import com.xuetang9.house.vo.JsonResult;
@@ -32,6 +33,12 @@ public class GlobalControllerExceptionHandler {
     public JsonResult handlerFailLoginException(FailLoginException e){
         log.error("登录失败" + e, e);
         return new JsonResult<Map>().setCode(401).setMessage("登录失败");
+    }
+
+    @ExceptionHandler(ClientException.class)
+    public JsonResult handlerVerifyCodeException(ClientException e){
+        log.error("验证码发送失败" + e, e);
+        return new JsonResult<Map>().setCode(602).setMessage("验证码发送失败");
     }
 
 }
