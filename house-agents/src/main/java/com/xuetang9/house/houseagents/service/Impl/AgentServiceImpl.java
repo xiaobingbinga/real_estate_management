@@ -1,13 +1,11 @@
 package com.xuetang9.house.houseagents.service.Impl;
 
 import com.github.pagehelper.Page;
-import com.netflix.discovery.converters.Auto;
+import com.github.pagehelper.PageHelper;
 import com.xuetang9.house.domain.Agency;
 import com.xuetang9.house.domain.Agent;
 import com.xuetang9.house.domain.Owner;
 import com.xuetang9.house.domain.User;
-import com.xuetang9.house.dto.agent.AgentTo;
-import com.xuetang9.house.dto.properties.PageTo;
 import com.xuetang9.house.houseagents.domain.vo.AgentInfoVo;
 import com.xuetang9.house.houseagents.domain.vo.AgentListVo;
 import com.xuetang9.house.houseagents.service.AgentService;
@@ -16,12 +14,8 @@ import com.xuetang9.house.mapper.AgentMapper;
 import com.xuetang9.house.mapper.OwnerMapper;
 import com.xuetang9.house.mapper.UserMapper;
 import com.xuetang9.house.service.impl.BaseServiceImpl;
-import io.swagger.models.auth.In;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import sun.management.resources.agent;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.ArrayList;
@@ -46,7 +40,8 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent,Long, AgentMapper> i
     @Autowired
     private AgencyMapper agencyMapper;
 
-
+    @Autowired
+    private AgentMapper agentMapper;
 
 
     /**
@@ -57,9 +52,11 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent,Long, AgentMapper> i
     private List<AgentListVo> getAgentVo(List<Agent> agents){
         List<AgentListVo> agentVos = new ArrayList<>();
         for(Agent agent : agents){
+
             AgentListVo agentVo = new AgentListVo();
             agentVo.setUserId(agent.getUserId());
             agentVo.setEmail(agent.getEmail());
+            agentVo.setPhoto(agent.getPhoto());
             // 查询该代理人的电话和真实名称
             User user = userMapper.selectByPrimaryKey(agentVo.getUserId());
             agentVo.setName(user.getName());
@@ -85,7 +82,8 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent,Long, AgentMapper> i
         // 查找数据库代理人表返回所有星级为5星的代理人信息（代理人用户编号，代理人电子邮箱）
         Agent agentExample = new Agent();
         agentExample.setCommendStar(5);
-        List<Agent> agents =  super.list(agentExample);
+        // List<Agent> agents =  super.list(agentExample);
+        List<Agent> agents = agentMapper.selectAgentListInfo(agentExample);
         // 封装信息
         return getAgentVo(agents);
     }
@@ -99,8 +97,10 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent,Long, AgentMapper> i
      */
     @Override
     public List<AgentListVo> listAgentVoByPage(int pageIndex, int pageSize) {
-        List<Agent> agents = super.listByPage(pageIndex,pageSize);
-        return getAgentVo(agents);
+        // List<Agent> agents = super.listByPage(pageIndex,pageSize);
+        Page<Agent> page = PageHelper.startPage(pageIndex, pageSize);
+        agentMapper.selectAgentListInfo(new Agent());
+        return getAgentVo(page);
     }
 
     /**
@@ -112,10 +112,10 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent,Long, AgentMapper> i
     public List<AgentListVo> listAgentVoByAgency(long agencyId) {
         Agent agent = new Agent();
         agent.setAgencyId(agencyId);
-        List<Agent> agents = super.list(agent);
+        // List<Agent> agents = super.list(agent);
+        List<Agent> agents = agentMapper.selectAgentListInfo(agent);
         return getAgentVo(agents);
     }
-
 
 
     /**

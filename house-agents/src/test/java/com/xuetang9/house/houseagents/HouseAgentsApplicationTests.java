@@ -35,8 +35,12 @@ class HouseAgentsApplicationTests {
     @Test
     void contextLoads() {
 
-
-        System.out.println(agencyService.agencyInfoById(1L));
+        // System.out.println(agentListController.agentListByStar());
+        // System.out.println(agentListController.agentListByAnency(1));
+        PageTo pageTo = new PageTo();
+        pageTo.setPageSize(5);
+        pageTo.setPageNum(2);
+        System.out.println(agentListController.agentListByPage(pageTo));
 
     }
 
