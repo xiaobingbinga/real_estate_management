@@ -18,6 +18,9 @@ import javax.persistence.Column;
 @ApiModel("新增房产信息传输对象")
 public class AddTo {
 
+    @ApiModelProperty(value = "用户Id",example = "1",required = true)
+    private String ownerId;
+
     @ApiModelProperty(value = "房产标题",example = "依澜雅居",required = true)
     private String title;
 

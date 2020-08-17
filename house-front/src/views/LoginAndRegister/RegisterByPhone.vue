@@ -10,7 +10,7 @@
         <input type="text" name="username" v-model.trim="$v.registerByPhoneForm.authCode.$model" placeholder="输入验证码">
         <div :class="{ error : !$v.registerByPhoneForm.authCode.required }" class="zone-height">验证码必填</div>
       </div>
-      <button class="col-5 btn btn2" style="height: 50px">发送验证</button>
+      <button class="col-5 btn btn2" :class="{ 'disable-button' : isSend }" type="button" style="height: 50px" @click="sendAuthCode" :disabled="isSend">{{ sendAuthCodeButton }}</button>
       <div class="col-12 mb-30" :class="{ 'input-error': $v.registerByPhoneForm.name.$error }">
         <input type="text" name="username" v-model.trim="$v.registerByPhoneForm.name.$model" placeholder="输入真实姓名">
         <div :class="{ error : !$v.registerByPhoneForm.name.required }" class="zone-height">姓名必填</div>
@@ -52,10 +52,14 @@
 <script>
   import { required, minLength, maxLength, sameAs } from "vuelidate/lib/validators";
   import { regex } from 'vuelidate/lib/validators/common'
+  // import Login from "apis/login";
   let phoneCheck = regex('phoneNumber', /^1(3|4|5|7|8)\d{9}$/);
   export default {
     name: "RegisterByPhone",
     data: () => ({
+      sendAuthCodeButton: '发送验证',
+      isSend: false,
+      authCode: '',
       registerByPhoneForm: {
         phone: '',
         authCode: '',
@@ -103,12 +107,34 @@
           this.submitStatus = 'PENDING';
           console.log('成功')
         }
+      },
+      sendAuthCode(){
+        if (!this.$v.registerByPhoneForm.phone.required && !this.$v.registerByPhoneForm.phone.required){
+          this.$v.registerByPhoneForm.phone.$touch();
+          return;
+        }
+        if (this.isSend) return;
+        // Login.sendAuthCode(this.registerByPhoneForm.phone).then(res => {
+        //   console.log(res.data);
+        //   this.authCode = res.data;
+        // });
+        this.isSend = true;
+        this.sendAuthCodeButton = '45 s';
+        let sec = setInterval(() => {
+          let second = Number.parseInt(this.sendAuthCodeButton);
+          this.sendAuthCodeButton = second - 1 + ' s';
+          !second && (this.sendAuthCodeButton = '发送验证') && !(this.isSend = false) && clearInterval(sec);
+        }, 1000);
       }
     }
   }
 </script>
 
 <style scoped>
+  .disable-button:hover{
+    background-color: #004395;
+    color: #fff;
+  }
   .zone-height{
     height: 0px;
     transition: 0.3s;

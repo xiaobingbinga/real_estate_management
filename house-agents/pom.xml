@@ -17,24 +17,30 @@
     </properties>
 
     <dependencies>
-<!--        实体类模块-->
+        <!--        实体类模块-->
         <dependency>
             <groupId>com.xuetang9.house</groupId>
             <artifactId>house-model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-<!--        数据库访问模块-->
+        <!--        数据库访问模块-->
         <dependency>
             <groupId>com.xuetang9.house</groupId>
             <artifactId>house-mapper</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-<!--        公用工具类模块-->
+        <!--        公用工具类模块-->
         <dependency>
             <groupId>com.xuetang9.house</groupId>
             <artifactId>house-util</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
 
         <!--        web-->
         <dependency>

@@ -45,4 +45,34 @@
     <result column="is_ad" jdbcType="TINYINT" property="isAd" />
     <result column="is_special" jdbcType="TINYINT" property="isSpecial" />
   </resultMap>
+
+  <sql id="simpleDto">
+      <!--@sql select -->id,title,address,rent_type,lease_type,price,picture_url,description,square,room_number,bathroom_number,garage_number,is_hot,is_special<!--@sql from properties; -->
+  </sql>
+
+  <select id="selectAllSimple" resultType="com.xuetang9.house.dto.properties.PropertiesSimpleDto">
+    select <include refid="simpleDto"/> from properties;
+  </select>
+
+  <select id="selectDtoByCondition" resultType="com.xuetang9.house.dto.properties.PropertiesSimpleDto"
+          parameterType="com.xuetang9.house.dto.properties.ConditionTo">
+    select <include refid="simpleDto"/> from properties
+    <where>
+      <if test="statusId != null"> status_id = #{statusId} </if>
+      <if test="type != null"> and type = #{type} </if>
+      <if test="city != null and city != ''"> and city = #{city} </if>
+      <if test="roomNumber != null"> and room_number = #{roomNumber} </if>
+      <if test="bathroomNumber != null"> and bathroom_number = #{bathroomNumber} </if>
+    </where>
+  </select>
+
+  <select id="selectSimpleListByCondition" resultType="com.xuetang9.house.dto.properties.PropertiesSimpleDto">
+    select <include refid="simpleDto"/> from properties
+    <where>
+      <if test="isAd != null">is_ad = 1</if>
+      <if test="isHot != null">and is_hot = 1</if>
+      <if test="isSpecial != null">and is_special = 1</if>
+      <if test="isNew != null">and is_new = 1</if>
+    </where>
+  </select>
 </mapper>
