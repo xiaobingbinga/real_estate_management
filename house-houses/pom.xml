@@ -25,6 +25,12 @@
 
     <dependencies>
 
+        <!--        lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
 
         <!--        配置熔断器-->
         <dependency>

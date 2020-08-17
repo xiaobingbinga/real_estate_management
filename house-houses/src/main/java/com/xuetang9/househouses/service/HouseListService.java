@@ -3,6 +3,7 @@ package com.xuetang9.househouses.service;
 import com.xuetang9.house.domain.Properties;
 import com.xuetang9.house.dto.properties.ConditionTo;
 import com.xuetang9.house.service.BaseService;
+import com.xuetang9.househouses.domain.vo.DisplayVo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,11 +18,13 @@ import java.util.List;
  */
 @Service
 public interface HouseListService extends BaseService<Properties,Integer> {
-    List<Properties> selectCondition(ConditionTo conditionTo);
+    List<DisplayVo> selectCondition(ConditionTo conditionTo);
 
-    List<Properties> selectNew(int i);
+    List<DisplayVo> selectNew(int i);
 
-    List<Properties> selectAd(int number);
+    List<DisplayVo> selectAd(int number);
 
-    List<Properties> selectSpecial(int i);
+    List<DisplayVo> selectSpecial(int i);
+
+    List<DisplayVo> selectAll(Integer pageNum, Integer pageSize);
 }

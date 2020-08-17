@@ -5,6 +5,7 @@ import com.xuetang9.house.domain.Properties;
 import com.xuetang9.house.dto.properties.ConditionTo;
 import com.xuetang9.house.dto.properties.PageTo;
 import com.xuetang9.house.vo.JsonResult;
+import com.xuetang9.househouses.domain.vo.DisplayVo;
 import com.xuetang9.househouses.service.HouseListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
@@ -35,10 +36,10 @@ public class HouseListController {
     @PostMapping("/condition")
     public JsonResult houseListByCondition(ConditionTo conditionTo){
         JsonResult jsonResult = new JsonResult();
-        List<Properties> properties = houseListService.selectCondition(conditionTo);
+        List<DisplayVo> displayVos = houseListService.selectCondition(conditionTo);
         try {
             jsonResult.setCode(200);
-            jsonResult.setData(properties);
+            jsonResult.setData(displayVos);
         } catch (Exception e) {
             e.printStackTrace();
             jsonResult.setCode(1000);
@@ -55,10 +56,10 @@ public class HouseListController {
     @GetMapping("/properties-add")
     public JsonResult houseListByAdd(){
         JsonResult jsonResult = new JsonResult();
-        List<Properties> properties = houseListService.selectNew(6);
+        List<DisplayVo> displayVos = houseListService.selectNew(6);
         try {
             jsonResult.setCode(200);
-            jsonResult.setData(properties);
+            jsonResult.setData(displayVos);
         } catch (Exception e) {
             e.printStackTrace();
             jsonResult.setCode(1000);
@@ -74,10 +75,10 @@ public class HouseListController {
     @GetMapping("/condition-features")
     public JsonResult houseListByFeatures(Integer num){
         JsonResult jsonResult = new JsonResult();
-        List<Properties> properties = houseListService.selectSpecial(num);
+        List<DisplayVo> displayVos = houseListService.selectSpecial(num);
         try {
             jsonResult.setCode(200);
-            jsonResult.setData(properties);
+            jsonResult.setData(displayVos);
         } catch (Exception e) {
             e.printStackTrace();
             jsonResult.setCode(1000);
@@ -94,10 +95,10 @@ public class HouseListController {
     @GetMapping("/advertising")
     public JsonResult houseListByAdvert(Integer num){
         JsonResult jsonResult = new JsonResult();
-        List<Properties> properties = houseListService.selectAd(num);
+        List<DisplayVo> displayVos = houseListService.selectAd(num);
         try {
             jsonResult.setCode(200);
-            jsonResult.setData(properties);
+            jsonResult.setData(displayVos);
         } catch (Exception e) {
             e.printStackTrace();
             jsonResult.setCode(1000);
@@ -125,10 +126,10 @@ public class HouseListController {
     @PostMapping("/list")
     public JsonResult houseListByPage(PageTo pageTo) {
         JsonResult jsonResult = new JsonResult();
-        List<Properties> properties = houseListService.listByPage(pageTo.getPageNum(),pageTo.getPageSize());
+        List<DisplayVo> displayVos = houseListService.selectAll(pageTo.getPageNum(),pageTo.getPageSize());
         try {
             jsonResult.setCode(200);
-            jsonResult.setData(properties);
+            jsonResult.setData(displayVos);
         } catch (Exception e) {
             e.printStackTrace();
             jsonResult.setCode(1000);
