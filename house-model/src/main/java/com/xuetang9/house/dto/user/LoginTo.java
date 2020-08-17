@@ -19,6 +19,6 @@ public class LoginTo {
     private String account;
     @ApiModelProperty(value = "密码",example = "123456",required = true)
     private String password;
-    @ApiModelProperty(value = "手机",example = "18353145781")
-    private String mobile;
+//    @ApiModelProperty(value = "手机",example = "18353145781")
+//    private String mobile;
 }

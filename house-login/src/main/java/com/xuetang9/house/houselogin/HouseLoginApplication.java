@@ -7,7 +7,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-@MapperScan("com.xuetang9.house.mapper")
+@MapperScan("com.xuetang9.house.houselogin.mapper")
 public class HouseLoginApplication {
 
     public static void main(String[] args) {
