@@ -25,4 +25,17 @@
     <result column="linkedin" jdbcType="VARCHAR" property="linkedin" />
     <result column="google" jdbcType="VARCHAR" property="google" />
   </resultMap>
+
+  <select id="selectAgentListInfo" resultType="com.xuetang9.house.domain.Agent" parameterType="com.xuetang9.house.domain.Agent">
+    select user_id as userId, email , photo from agent
+       <where>
+            <if test="commendStar != null">
+              and commend_star = #{commendStar}
+            </if>
+            <if test="agencyId != null">
+             and agency_id = #{agencyId}
+            </if>
+       </where>
+  </select>
+
 </mapper>

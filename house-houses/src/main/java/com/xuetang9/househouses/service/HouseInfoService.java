@@ -3,6 +3,7 @@ package com.xuetang9.househouses.service;
 import com.xuetang9.house.domain.Properties;
 import com.xuetang9.house.dto.properties.AddTo;
 import com.xuetang9.house.service.BaseService;
+import org.springframework.stereotype.Service;
 
 /**
  * @ClassName: HouseInfoService

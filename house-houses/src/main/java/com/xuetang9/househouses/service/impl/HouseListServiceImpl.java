@@ -4,10 +4,14 @@ import com.xuetang9.house.domain.Properties;
 import com.xuetang9.house.dto.properties.ConditionTo;
 import com.xuetang9.house.mapper.PropertiesMapper;
 import com.xuetang9.house.service.impl.BaseServiceImpl;
+import com.xuetang9.househouses.domain.vo.DisplayVo;
 import com.xuetang9.househouses.service.HouseListService;
+import com.xuetang9.househouses.utils.HouseUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -23,32 +27,42 @@ public class HouseListServiceImpl extends BaseServiceImpl<Properties,Integer,Pro
     implements HouseListService {
 
 
+
     @Override
-    public List<Properties> selectCondition(ConditionTo conditionTo) {
+    public List<DisplayVo> selectCondition(ConditionTo conditionTo) {
         Properties properties = new Properties();
         BeanUtils.copyProperties(conditionTo,properties);
-        System.out.println(properties);
-        return super.list(properties);
+        List<Properties> properties1 = super.list(properties);
+        return HouseUtil.copyList(properties1);
     }
 
     @Override
-    public List<Properties> selectNew(int i) {
+    public List<DisplayVo> selectNew(int i) {
         Properties properties = new Properties();
         properties.setNews((byte) 1);
-        return super.listByPage(1,i,properties);
+        List<Properties> properties1 = super.listByPage(1,i,properties);
+        return HouseUtil.copyList(properties1);
     }
 
     @Override
-    public List<Properties> selectAd(int number) {
+    public List<DisplayVo> selectAd(int number) {
         Properties properties = new Properties();
         properties.setAd((byte) 1);
-        return super.listByPage(1,number,properties);
+        List<Properties> properties1 = super.listByPage(1,number,properties);
+        return HouseUtil.copyList(properties1);
     }
 
     @Override
-    public List<Properties> selectSpecial(int i) {
+    public List<DisplayVo> selectSpecial(int i) {
         Properties properties = new Properties();
         properties.setSpecial((byte) 1);
-        return super.listByPage(1,i,properties);
+        List<Properties> properties1 = super.listByPage(1,i,properties);
+        return HouseUtil.copyList(properties1);
+    }
+
+    @Override
+    public List<DisplayVo> selectAll(Integer pageNum, Integer pageSize) {
+        List<Properties> properties = super.listByPage(pageNum,pageSize);
+        return HouseUtil.copyList(properties);
     }
 }

@@ -14,7 +14,6 @@ import java.util.List;
  * @Address: 成都市锦江区西部国际金融中心老九学堂
  * @Version: v1.0
  */
-@Service
 public interface PropertiesCommentService extends BaseService<PropertiesComment,Integer> {
     List<PropertiesComment> select(Integer id);
 }

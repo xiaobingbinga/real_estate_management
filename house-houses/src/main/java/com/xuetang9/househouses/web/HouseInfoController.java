@@ -9,10 +9,7 @@ import com.xuetang9.househouses.service.HouseInfoService;
 import com.xuetang9.househouses.service.PropertiesCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -41,8 +38,8 @@ public class HouseInfoController {
      * @param id
      * @return
      */
-    @GetMapping("/properties-info")
-    public JsonResult houseInfoByCondition(Integer id){
+    @GetMapping("/properties-info/{id}")
+    public JsonResult houseInfoByCondition(@PathVariable("id") Integer id){
         JsonResult jsonResult = new JsonResult();
         Properties properties = houseInfoService.getById(id);
         try {
@@ -87,7 +84,7 @@ public class HouseInfoController {
      * @return
      */
     @PostMapping("/add-properties")
-    public JsonResult newHouseInfo(AddTo addInfo){
+    public JsonResult newHouseInfo(@RequestBody AddTo addInfo){
         JsonResult jsonResult = new JsonResult();
         int num = houseInfoService.add(addInfo);
         if (num == 1){
@@ -103,9 +100,5 @@ public class HouseInfoController {
         }
         return jsonResult;
     }
-
-
-
-
 
 }
