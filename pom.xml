@@ -16,6 +16,7 @@
         <module>house-mapper</module>
         <module>house-util</module>
         <module>house-login</module>
+        <module>house-gateway</module>
     </modules>
 
     <properties>
