@@ -6,6 +6,9 @@ import com.xuetang9.house.dto.properties.ConditionTo;
 import com.xuetang9.house.dto.properties.PropertiesSimpleDto;
 import com.xuetang9.house.househosues2.service.PropertiesService;
 import com.xuetang9.house.vo.JsonResult;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,12 +22,14 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/properties")
+@Api(tags = "房产数据访问接口")
 public class HouseController {
 
     @Autowired
     private PropertiesService propertiesService;
 
     @GetMapping("/list")
+    @ApiOperation(value = "房产列表数据接口",tags = "房产数据访问接口")
     public JsonResult getList(@RequestParam(defaultValue = "1") int pageNumber,
                               @RequestParam(defaultValue = "5") int pageSize){
         JsonResult jsonResult = new JsonResult();
@@ -40,7 +45,10 @@ public class HouseController {
     }
 
     @PostMapping("/condition")
-    public JsonResult search(ConditionTo condition, int pageNum, int pageSize){
+    @ApiOperation(value = "房产信息搜索接口",tags = "房产数据访问接口")
+    public JsonResult search(@RequestBody @ApiParam(value = "查询对象",required = true) ConditionTo condition,
+                             @RequestParam(defaultValue = "1") int pageNum,
+                             @RequestParam(defaultValue = "5") int pageSize){
         JsonResult jsonResult = new JsonResult();
         List<PropertiesSimpleDto> list = propertiesService.listByCondition(condition, pageNum, pageSize);
         if (list.size() != 0){
@@ -54,6 +62,7 @@ public class HouseController {
     }
 
     @GetMapping("/condition-features")
+    @ApiOperation(value = "特色房产列表接口",tags = "房产数据访问接口")
     public JsonResult getFeatures(){
         JsonResult jsonResult = new JsonResult();
         List<PropertiesSimpleDto> list = propertiesService.listFeatures();
@@ -68,6 +77,7 @@ public class HouseController {
     }
 
     @GetMapping("/properties-add")
+    @ApiOperation(value = "新增房产列表接口",tags = "房产数据访问接口")
     public JsonResult getNewProperties(){
         JsonResult jsonResult = new JsonResult();
         List<PropertiesSimpleDto> list = propertiesService.listNewProperties();
@@ -82,7 +92,8 @@ public class HouseController {
     }
 
     @GetMapping("/properties-info")
-    public JsonResult getDetails(@RequestParam Integer id){
+    @ApiOperation(value = "获取房产详情接口",tags = "房产数据访问接口")
+    public JsonResult getDetails(@RequestParam @ApiParam(value = "房产id",required = true) Integer id){
         JsonResult jsonResult = new JsonResult();
         Properties properties = propertiesService.getById(id);
         if (properties != null){
@@ -96,6 +107,7 @@ public class HouseController {
     }
 
     @GetMapping("/advertising")
+    @ApiOperation(value = "广告位房产列表接口",tags = "房产数据访问接口")
     public JsonResult getAdProperties(){
         JsonResult jsonResult = new JsonResult();
         List<PropertiesSimpleDto> list = propertiesService.listAdProperties();
@@ -110,6 +122,7 @@ public class HouseController {
     }
 
     @GetMapping("/hot")
+    @ApiOperation(value = "热门房产列表接口",tags = "房产数据访问接口")
     public JsonResult getHotProperties(){
         JsonResult jsonResult = new JsonResult();
         List<PropertiesSimpleDto> list = propertiesService.listHotProperties();
@@ -124,7 +137,8 @@ public class HouseController {
     }
 
     @PostMapping("/add-properties")
-    public JsonResult addProperties(@RequestBody Properties properties){
+    @ApiOperation(value = "新增房产接口",tags = "房产数据访问接口")
+    public JsonResult addProperties(@RequestBody @ApiParam(value = "新增房产数据对象",required = true) Properties properties){
         JsonResult jsonResult = new JsonResult();
         boolean success = propertiesService.save(properties) > 0;
         if (success){
