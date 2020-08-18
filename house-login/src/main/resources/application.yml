@@ -1,18 +1,19 @@
 spring:
   application.name: house-login
   datasource:
-    druid.url: jdbc:mysql://localhost:3306/house?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&verifyServerCertificate=false&useSSL=false&allowPublicKeyRetrieval=true
+    druid.url: jdbc:mysql://192.168.3.48:3306/cloudhouse?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&verifyServerCertificate=false&useSSL=false&allowPublicKeyRetrieval=true
     druid.driver-class-name: com.mysql.cj.jdbc.Driver
     druid.username: wangzhihao
     druid.password: root
   redis:
-    host:
+    host: 8.129.191.202
     port: 6379
     lettuce:
       pool.max-wait: 100000
       pool.max-idle: 10
       pool.max-active: 100
     timeout: 5000
+    password: 123456
 
 server.port: 11001
 eureka.client.service-url.defaultZone: http://127.0.0.1:11000/eureka/

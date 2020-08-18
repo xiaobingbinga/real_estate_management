@@ -5,10 +5,12 @@ import com.xuetang9.house.houselogin.annotation.ControllerExceptionHandler;
 import com.xuetang9.house.houselogin.exception.FailLoginException;
 import com.xuetang9.house.vo.JsonResult;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import springfox.documentation.spring.web.json.Json;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Map;
 
 /**
@@ -41,4 +43,15 @@ public class GlobalControllerExceptionHandler {
         return new JsonResult<Map>().setCode(602).setMessage("验证码发送失败");
     }
 
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public JsonResult handlerFailRegisterException(MethodArgumentNotValidException e) {
+        log.info("参数错误" + e);
+        return new JsonResult().setCode(606).setMessage("注册信息缺失");
+    }
+
+    @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+    public JsonResult handlerFinallyFailRegisterException(SQLIntegrityConstraintViolationException e) {
+        log.info("注册失败" + e, e);
+        return new JsonResult().setCode(605).setMessage("最终注册失败");
+    }
 }
