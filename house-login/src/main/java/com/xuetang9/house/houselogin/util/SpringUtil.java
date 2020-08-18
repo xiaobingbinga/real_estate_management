@@ -1,6 +1,7 @@
 package com.xuetang9.house.houselogin.util;
 
 import ch.qos.logback.core.spi.ContextAware;
+import com.xuetang9.house.houselogin.annotation.Util;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -18,6 +19,7 @@ import java.util.Locale;
  * @Date 2020/8/17 13:51
  * @Version V1.0
  */
+@Util
 public class SpringUtil implements ApplicationContextAware {
 
     private static ApplicationContext applicationContext;

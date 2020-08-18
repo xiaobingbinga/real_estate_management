@@ -1,10 +1,10 @@
 <template>
   <form @submit.prevent="submit">
     <div class="row">
-      <div class="col-12 mb-30" :class="{ 'input-error': $v.registerByPhoneForm.phone.$error }">
-        <input type="text" name="username" v-model.trim="$v.registerByPhoneForm.phone.$model" placeholder="输入手机号">
-        <div :class="{ error : !$v.registerByPhoneForm.phone.required }" class="zone-height">手机号必填</div>
-        <div :class="{ error : !$v.registerByPhoneForm.phone.phoneCheck }" class="zone-height">请输入正确手机号</div>
+      <div class="col-12 mb-30" :class="{ 'input-error': $v.registerByPhoneForm.mobile.$error }">
+        <input type="text" name="username" v-model.trim="$v.registerByPhoneForm.mobile.$model" placeholder="输入手机号">
+        <div :class="{ error : !$v.registerByPhoneForm.mobile.required }" class="zone-height">手机号必填</div>
+        <div :class="{ error : !$v.registerByPhoneForm.mobile.phoneCheck }" class="zone-height">请输入正确手机号</div>
       </div>
       <div class="col-6 mb-30" :class="{ 'input-error': $v.registerByPhoneForm.authCode.$error }">
         <input type="text" name="username" v-model.trim="$v.registerByPhoneForm.authCode.$model" placeholder="输入验证码">
@@ -61,7 +61,7 @@
       isSend: false,
       authCode: '',
       registerByPhoneForm: {
-        phone: '',
+        mobile: '',
         authCode: '',
         name: '',
         nickName: '',
@@ -71,7 +71,7 @@
     }),
     validations: {
       registerByPhoneForm: {
-        phone: {
+        mobile: {
           required,
           phoneCheck
         },
@@ -109,8 +109,8 @@
         }
       },
       sendAuthCode(){
-        if (!this.$v.registerByPhoneForm.phone.required && !this.$v.registerByPhoneForm.phone.required){
-          this.$v.registerByPhoneForm.phone.$touch();
+        if (!this.$v.registerByPhoneForm.mobile.required && !this.$v.registerByPhoneForm.mobile.required){
+          this.$v.registerByPhoneForm.mobile.$touch();
           return;
         }
         if (this.isSend) return;
