@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuetang9.househouses.mapper.DisplayVoMapper">
+
+    <sql id="displayVo">
+        `id`,`title`,`city`,`address`,`rent_type`,`price`,`square`,`picture_url`,`room_number`,
+        `bathroom_number`,`garage_number`,`is_hot` `hot`,`is_new` `news`,`is_special` `special`
+    </sql>
+
+    <select id="selectDisplayNew" resultType="com.xuetang9.househouses.domain.vo.DisplayVo">
+        select <include refid="displayVo"></include>
+        from `properties` where `is_new` = 1 order by `id` desc
+    </select>
+</mapper>

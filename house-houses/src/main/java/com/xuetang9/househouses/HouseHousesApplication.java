@@ -17,7 +17,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableCircuitBreaker
 @SpringBootApplication(excludeName = {"com.xuetang9.househouses.web"})
 //@SpringCloudApplication
-@MapperScan("com.xuetang9.house.mapper")
+@MapperScan({"com.xuetang9.house.mapper","com.xuetang9.househouses.mapper"})
 @ComponentScan("com.xuetang9.househouses.web")
 @ComponentScan("com.xuetang9.house.config")
 public class HouseHousesApplication {
