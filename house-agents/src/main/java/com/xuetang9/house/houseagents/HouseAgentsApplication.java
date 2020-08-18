@@ -5,13 +5,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import tk.mybatis.spring.annotation.MapperScan;
 
-@SpringBootApplication
+@SpringCloudApplication
 @MapperScan("com.xuetang9.house.mapper")
-@EnableDiscoveryClient //注册为Eureka的客户端
+@EnableSwagger2
 public class HouseAgentsApplication {
 
     public static void main(String[] args) {
@@ -19,6 +21,7 @@ public class HouseAgentsApplication {
     }
 
     @Bean
+    // @LoadBalanced
     public RestTemplate restTemplate(){
         return new RestTemplate();
     }

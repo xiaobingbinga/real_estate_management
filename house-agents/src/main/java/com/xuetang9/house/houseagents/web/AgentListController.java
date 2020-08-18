@@ -35,7 +35,7 @@ public class AgentListController {
      * 推荐顶级代理人
      * @return
      */
-    @GetMapping("recommend")
+    @GetMapping("/recommend")
     public JsonResult agentListByStar(){
         JsonResult jsonResult = new JsonResult();
         try{
