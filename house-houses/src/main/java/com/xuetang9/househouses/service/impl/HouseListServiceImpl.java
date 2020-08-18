@@ -1,13 +1,17 @@
 package com.xuetang9.househouses.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.xuetang9.house.domain.Properties;
 import com.xuetang9.house.dto.properties.ConditionTo;
 import com.xuetang9.house.mapper.PropertiesMapper;
 import com.xuetang9.house.service.impl.BaseServiceImpl;
 import com.xuetang9.househouses.domain.vo.DisplayVo;
+import com.xuetang9.househouses.mapper.DisplayVoMapper;
 import com.xuetang9.househouses.service.HouseListService;
 import com.xuetang9.househouses.utils.HouseUtil;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,6 +31,9 @@ public class HouseListServiceImpl extends BaseServiceImpl<Properties,Integer,Pro
     implements HouseListService {
 
 
+    @Autowired
+    private DisplayVoMapper displayVoMapper;
+
 
     @Override
     public List<DisplayVo> selectCondition(ConditionTo conditionTo) {
@@ -38,10 +45,9 @@ public class HouseListServiceImpl extends BaseServiceImpl<Properties,Integer,Pro
 
     @Override
     public List<DisplayVo> selectNew(int i) {
-        Properties properties = new Properties();
-        properties.setNews((byte) 1);
-        List<Properties> properties1 = super.listByPage(1,i,properties);
-        return HouseUtil.copyList(properties1);
+        Page<DisplayVo> page = PageHelper.startPage(1,i);
+        displayVoMapper.selectDisplayNew(1);
+        return page;
     }
 
     @Override
