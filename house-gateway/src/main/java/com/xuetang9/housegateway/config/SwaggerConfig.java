@@ -20,11 +20,14 @@ import java.util.Set;
  * @Version V1.0
  */
 @Component
-@AllArgsConstructor
 public class SwaggerConfig implements SwaggerResourcesProvider {
 
     private static final String SWAGGER2URL = "/v2/api-docs";
     private final RouteLocator routeLocator;
+
+    public SwaggerConfig(RouteLocator routeLocator){
+        this.routeLocator = routeLocator;
+    }
 
     @Value("${spring.application.name}")
     private String applicationName;
