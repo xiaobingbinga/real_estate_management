@@ -7,5 +7,5 @@ package com.xuetang9.house.houseagents.client;
  * @data: 2020年08月17日19:43
  * @address：成都市锦江区西部金融中心
  */
-public class UsreClient {
+public class UserClient {
 }
