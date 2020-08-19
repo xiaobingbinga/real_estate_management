@@ -4,6 +4,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.persistence.Column;
+import javax.persistence.Table;
+
 /**
  * @version 1.0
  * @desc:
@@ -13,10 +16,12 @@ import lombok.Data;
  */
 @Data
 @ApiModel("代理人详细信息展示传输对象")
+@Table(name = "agency")
 public class AgentInfoVo {
 
     /* 代理人的所有详细信息 */
 
+    @Column(name = "user_id")
     @ApiModelProperty(name = "用户编号",example = "1")
     private Long userId;
 

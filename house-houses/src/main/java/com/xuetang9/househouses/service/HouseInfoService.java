@@ -3,6 +3,7 @@ package com.xuetang9.househouses.service;
 import com.xuetang9.house.domain.Properties;
 import com.xuetang9.house.dto.properties.AddTo;
 import com.xuetang9.house.service.BaseService;
+import com.xuetang9.househouses.domain.vo.PropertiesVo;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,4 +16,6 @@ import org.springframework.stereotype.Service;
  */
 public interface HouseInfoService extends BaseService<Properties,Integer> {
     int add(AddTo addInfo);
+
+    PropertiesVo getByIdVo(Integer id);
 }

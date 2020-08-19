@@ -5,8 +5,11 @@ import com.xuetang9.house.dto.properties.PageTo;
 import com.xuetang9.house.houseagents.domain.vo.AgencyListVo;
 import com.xuetang9.house.houseagents.service.AgencyService;
 import com.xuetang9.house.vo.JsonResult;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,10 +22,11 @@ import java.util.List;
  * @data: 2020年08月15日20:56
  * @address：成都市锦江区西部金融中心
  */
-@CacheConfig
 @RequestMapping("/agency")
 @RestController
 public class AgencyListController {
+
+
 
     @Autowired
     private AgencyService agencyService;
@@ -32,7 +36,7 @@ public class AgencyListController {
      * @param pageTo
      * @return
      */
-    @RequestMapping("/agency-list")
+    @PostMapping("/agency-list")
     public JsonResult angecyListByPage(PageTo pageTo){
         JsonResult jsonResult = new JsonResult();
 

@@ -9,6 +9,54 @@
 
     <select id="selectDisplayNew" resultType="com.xuetang9.househouses.domain.vo.DisplayVo">
         select <include refid="displayVo"></include>
-        from `properties` where `is_new` = 1 order by `id` desc
+        from `properties` where `is_new` = #{num} order by `id` desc
     </select>
+
+    <select id="selectCondition" parameterType="com.xuetang9.house.dto.properties.ConditionTo"
+            resultType="com.xuetang9.househouses.domain.vo.DisplayVo">
+        select <include refid="displayVo"></include>
+        from `properties`
+        <where>
+            <if test="id != null">
+                `id` = #{id}
+            </if>
+            <if test="ownerId != null">
+                and `owner_id` = #{ownerId}
+            </if>
+            <if test="statusId != null">
+                and `status_id` = #{statusId}
+            </if>
+            <if test="type">
+                and `type` = #{type}
+            </if>
+            <if test="city">
+                and `city` = #{city}
+            </if>
+            <if test="roomNumber != null">
+                and `room_number` = #{roomNumber}
+            </if>
+            <if test="bathroomNumber != null">
+                and `bathroom_number` = #{bathroomNumber}
+            </if>
+            <if test="startPrice != null and endPrice != null">
+                and `price` between #{startPrice} and #{endPrice}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectDisplaySpecial" resultType="com.xuetang9.househouses.domain.vo.DisplayVo">
+        select <include refid="displayVo"></include>
+        from `properties` where `is_special` = #{i} order by `id` desc
+    </select>
+
+    <select id="selectDisplayAd" resultType="com.xuetang9.househouses.domain.vo.DisplayVo">
+        select <include refid="displayVo"></include>
+        from `properties` where `is_ad` = #{i} order by `id` desc
+    </select>
+
+    <select id="selectAllPage" resultType="com.xuetang9.househouses.domain.vo.DisplayVo">
+        select <include refid="displayVo"></include>
+        from `properties` order by `id` desc
+    </select>
+
 </mapper>
