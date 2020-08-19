@@ -14,7 +14,8 @@ import lombok.Data;
  */
 @Data
 @ApiModel("登录数据传输对象")
-public class LoginTo {
+public class LoginTo  {
+
     @ApiModelProperty(value = "账号",example = "admin",required = true)
     private String account;
     @ApiModelProperty(value = "密码",example = "123456",required = true)

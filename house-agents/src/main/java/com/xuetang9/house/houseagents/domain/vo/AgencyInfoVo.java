@@ -1,5 +1,6 @@
 package com.xuetang9.house.houseagents.domain.vo;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -16,6 +17,7 @@ public class AgencyInfoVo {
 
     @ApiModelProperty(name = "代理商编号")
     private Long id;
+
 
     @ApiModelProperty(name = "代理商名称")
     private String name;

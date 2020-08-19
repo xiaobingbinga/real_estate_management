@@ -15,8 +15,6 @@ import lombok.Data;
 @ApiModel("分页信息传输对象")
 public class PageTo {
 
-
-
     @ApiModelProperty(value = "每页显示数据条数",example = "5",required = true)
     private Integer pageSize;
 

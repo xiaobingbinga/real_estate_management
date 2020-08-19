@@ -41,7 +41,7 @@ class HouseAgentsApplicationTests {
         pageTo.setPageSize(5);
         pageTo.setPageNum(2);
         System.out.println(agentListController.agentListByPage(pageTo));
-
+        System.out.println(agentListController.agentListByStar());
     }
 
 }

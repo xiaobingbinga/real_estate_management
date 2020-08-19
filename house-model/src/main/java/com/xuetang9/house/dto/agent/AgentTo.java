@@ -17,6 +17,6 @@ import lombok.Data;
 public class AgentTo {
     @ApiModelProperty(value = "代理人唯一标识",example = "1",required = true)
     private Integer id;
-    @ApiModelProperty(value = "账号标识",example = "3",required = true)
+    @ApiModelProperty(value = "代理人用户唯一标识",example = "3",required = true)
     private Integer userId;
 }
