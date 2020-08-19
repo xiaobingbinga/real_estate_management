@@ -12,6 +12,7 @@ import com.xuetang9.house.mapper.AgentMapper;
 import com.xuetang9.house.mapper.OwnerMapper;
 import com.xuetang9.house.mapper.UserMapper;
 import com.xuetang9.house.service.impl.BaseServiceImpl;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
@@ -80,20 +81,16 @@ public class AgencyServiceImpl extends BaseServiceImpl<Agency, Long, AgencyMappe
         // 查询该代理商的所属用户
         User user = userMapper.selectByPrimaryKey(agency.getUserId());
 
-        agencyInfoVo.setId(agency.getId());
+        BeanUtils.copyProperties(agency,agencyInfoVo);
+        BeanUtils.copyProperties(user,agencyInfoVo);
 
-        agencyInfoVo.setEmail(agency.getEmail());
-        agencyInfoVo.setIcon(agency.getIcon());
-        agencyInfoVo.setLicense(agency.getLicense());
-        agencyInfoVo.setAddress(user.getAddress());
-        agencyInfoVo.setPhone(user.getPhone());
-
+        // 代理商名称
         agencyInfoVo.setName(null);
+        // 代理商简介
         agencyInfoVo.setBrief(null);
 
         agencyInfoVo.setAgentCount(hashMap.get("agentCount"));
         agencyInfoVo.setPropertiesCount(hashMap.get("propertiesCount"));
-
         return agencyInfoVo;
     }
 

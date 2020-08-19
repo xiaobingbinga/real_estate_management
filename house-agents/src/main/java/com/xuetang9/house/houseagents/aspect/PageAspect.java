@@ -1,5 +1,11 @@
 package com.xuetang9.house.houseagents.aspect;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.xuetang9.house.dto.properties.PageTo;
+import com.xuetang9.house.vo.JsonResult;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -15,12 +21,39 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class PageAspect  {
-    @Pointcut("execution(*com.xuetang9.house.vo.JsonResult com.xuetang9.house.houseagents.web.*.*(*)throws * )")
+    // 定义web包下所有的方法
+    @Pointcut("execution(public *com.xuetang9.house.vo.JsonResult com.xuetang9.house.houseagents.web..*.*(com.xuetang9.house.dto.properties.PageTo))")
     public void aspect(){};
 
-    @Before("aspect()")
-    public void before(){
-        System.out.println("这是前置建议");
+    /**
+     * 判断分页参数是否完整
+     * @param joinPoint
+     * @return
+     * @throws Throwable
+     */
+    @Around("aspect()")
+    public Object before(ProceedingJoinPoint joinPoint) throws Throwable {
+        
+        Object[] objects = joinPoint.getArgs();
+        for(Object object: objects){
+            if(object instanceof PageTo){
+                PageTo pageTo = (PageTo) object;
+                if(pageTo.getPageNum() <= 0 || pageTo.getPageSize() <= 0){
+                    JsonResult jsonResult = new JsonResult();
+                    jsonResult.setMessage("分页参数校验失败");
+                    jsonResult.setCode(1001);
+                    return jsonResult;
+                }
+            }
+        }
+
+        return joinPoint.proceed(joinPoint.getArgs());
     }
+
+
+
+
+
+
 
 }
