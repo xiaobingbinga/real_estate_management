@@ -29,4 +29,14 @@ public class ConditionTo {
     private Integer roomNumber;
     @ApiModelProperty(value = "卫生间数",example = "1",required = true)
     private Integer bathroomNumber;
+    @ApiModelProperty(value = "开始价格段",example = "100",required = true)
+    private Integer startPrice;
+    @ApiModelProperty(value = "结束价格段",example = "10000",required = true)
+    private Integer endPrice;
+
+
+    @ApiModelProperty(value = "页码",example = "1",required = true)
+    private Integer pageNum;
+    @ApiModelProperty(value = "每页展示个数",example = "5",required = true)
+    private Integer pageSize;
 }

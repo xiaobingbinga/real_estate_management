@@ -37,10 +37,9 @@ public class HouseListServiceImpl extends BaseServiceImpl<Properties,Integer,Pro
 
     @Override
     public List<DisplayVo> selectCondition(ConditionTo conditionTo) {
-        Properties properties = new Properties();
-        BeanUtils.copyProperties(conditionTo,properties);
-        List<Properties> properties1 = super.list(properties);
-        return HouseUtil.copyList(properties1);
+        Page<DisplayVo> page = PageHelper.startPage(conditionTo.getPageNum(),conditionTo.getPageSize());
+        displayVoMapper.selectCondition(conditionTo);
+        return page;
     }
 
     @Override
@@ -52,23 +51,22 @@ public class HouseListServiceImpl extends BaseServiceImpl<Properties,Integer,Pro
 
     @Override
     public List<DisplayVo> selectAd(int number) {
-        Properties properties = new Properties();
-        properties.setAd((byte) 1);
-        List<Properties> properties1 = super.listByPage(1,number,properties);
-        return HouseUtil.copyList(properties1);
+        Page<DisplayVo> page = PageHelper.startPage(1,number);
+        displayVoMapper.selectDisplayAd(1);
+        return page;
     }
 
     @Override
     public List<DisplayVo> selectSpecial(int i) {
-        Properties properties = new Properties();
-        properties.setSpecial((byte) 1);
-        List<Properties> properties1 = super.listByPage(1,i,properties);
-        return HouseUtil.copyList(properties1);
+        Page<DisplayVo> page = PageHelper.startPage(1,i);
+        displayVoMapper.selectDisplaySpecial(1);
+        return page;
     }
 
     @Override
     public List<DisplayVo> selectAll(Integer pageNum, Integer pageSize) {
-        List<Properties> properties = super.listByPage(pageNum,pageSize);
-        return HouseUtil.copyList(properties);
+        Page<DisplayVo> page = PageHelper.startPage(pageNum,pageSize);
+        displayVoMapper.selectAllPage();
+        return page;
     }
 }

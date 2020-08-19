@@ -5,6 +5,7 @@ import com.xuetang9.house.domain.PropertiesComment;
 import com.xuetang9.house.dto.properties.AddTo;
 import com.xuetang9.house.dto.properties.ConditionTo;
 import com.xuetang9.house.vo.JsonResult;
+import com.xuetang9.househouses.domain.vo.PropertiesVo;
 import com.xuetang9.househouses.service.HouseInfoService;
 import com.xuetang9.househouses.service.PropertiesCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class HouseInfoController {
     @GetMapping("/properties-info/{id}")
     public JsonResult houseInfoByCondition(@PathVariable("id") Integer id){
         JsonResult jsonResult = new JsonResult();
-        Properties properties = houseInfoService.getById(id);
+        PropertiesVo properties = houseInfoService.getByIdVo(id);
         try {
             jsonResult.setCode(200);
             jsonResult.setData(properties);

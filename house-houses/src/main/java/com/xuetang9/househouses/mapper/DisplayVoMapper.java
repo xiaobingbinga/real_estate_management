@@ -1,6 +1,7 @@
 package com.xuetang9.househouses.mapper;
 
 
+import com.xuetang9.house.dto.properties.ConditionTo;
 import com.xuetang9.househouses.domain.vo.DisplayVo;
 import tk.mybatis.mapper.common.Mapper;
 
@@ -17,4 +18,12 @@ import java.util.List;
 public interface DisplayVoMapper extends Mapper<DisplayVo> {
 
     List<DisplayVo> selectDisplayNew(int num);
+
+    List<DisplayVo> selectCondition(ConditionTo conditionTo);
+
+    List<DisplayVo> selectDisplaySpecial(int i);
+
+    List<DisplayVo> selectDisplayAd(int i);
+
+    List<DisplayVo> selectAllPage();
 }
