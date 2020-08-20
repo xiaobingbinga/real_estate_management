@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuetang9.house.mapper.AgentMapperS">
+    <resultMap id="BaseResultMap" type="com.xuetang9.house.domain.Agent">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <result column="user_id" jdbcType="BIGINT" property="userId" />
+        <result column="agency_id" jdbcType="BIGINT" property="agencyId" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="certification" jdbcType="VARCHAR" property="certification" />
+        <result column="commend_star" jdbcType="INTEGER" property="commendStar" />
+        <result column="web_site" jdbcType="VARCHAR" property="webSite" />
+        <result column="qq_site" jdbcType="VARCHAR" property="qqSite" />
+        <result column="friend_site" jdbcType="VARCHAR" property="friendSite" />
+        <result column="douyin_site" jdbcType="VARCHAR" property="douyinSite" />
+        <result column="personal_video_site" jdbcType="VARCHAR" property="personalVideoSite" />
+        <result column="ximalaya_site" jdbcType="VARCHAR" property="ximalayaSite" />
+        <result column="zifubao_site" jdbcType="VARCHAR" property="zifubaoSite" />
+        <result column="photo" jdbcType="VARCHAR" property="photo" />
+        <result column="score" jdbcType="INTEGER" property="score" />
+        <result column="facebook" jdbcType="VARCHAR" property="facebook" />
+        <result column="twitter" jdbcType="VARCHAR" property="twitter" />
+        <result column="linkedin" jdbcType="VARCHAR" property="linkedin" />
+        <result column="google" jdbcType="VARCHAR" property="google" />
+    </resultMap>
+
+    <select id="selectByCount" resultType="Integer">
+        select count(*) from agent where user_id = #{id}
+    </select>
+
+    <select id="selectByPage" resultType="com.xuetang9.house.domain.Agent">
+        select qq_site,friend_site,douyin_site,personal_video_site,email from agent limit #{param1},#{param2}
+    </select>
+
+    <select id="selectById" resultType="com.xuetang9.house.domain.Agent">
+        select email,web_site,certification from agent where id=#{id}
+    </select>
+</mapper> 

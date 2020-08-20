@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuetang9.house.mapper.PropertiesMapperS">
+    <select id="selectByOwnerId" resultType="com.xuetang9.house.domain.Properties">
+        select square,room_number,bathroom_number,address,garage_number,`type` from properties where id=#{id}
+    </select>
+</mapper> 
