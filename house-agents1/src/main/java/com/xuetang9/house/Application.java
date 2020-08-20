@@ -11,10 +11,10 @@ import tk.mybatis.spring.annotation.MapperScan;
  * @USER: 柳宇
  * @DATETIME: 2020/8/16 - 21:30
  **/
-@SpringBootApplication(excludeName ="com.xuetang9.house.web")
+@SpringBootApplication(excludeName ={"com.xuetang9.house.web"})
 @EnableEurekaClient
 @MapperScan("com.xuetang9.house.mapper")
-@ComponentScan("com.xuetang9.house")
+@ComponentScan("com.xuetang9.house.web")
 @ComponentScan("com.xuetang9.house.config")
 @EnableFeignClients
 public class Application {
