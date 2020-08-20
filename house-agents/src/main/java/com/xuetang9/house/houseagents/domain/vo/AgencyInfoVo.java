@@ -18,7 +18,6 @@ public class AgencyInfoVo {
     @ApiModelProperty(name = "代理商编号")
     private Long id;
 
-
     @ApiModelProperty(name = "代理商名称")
     private String name;
 
@@ -35,10 +34,10 @@ public class AgencyInfoVo {
     private String license;
 
     @ApiModelProperty(name = "代理商座机")
-    private String Phone;
+    private String phone;
 
     @ApiModelProperty(name = "代理商地址")
-    private String Address;
+    private String address;
 
     @ApiModelProperty(name = "代理商名下代理人数量")
     private Integer agentCount;

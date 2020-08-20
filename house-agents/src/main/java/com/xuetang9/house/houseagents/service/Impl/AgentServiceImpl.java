@@ -60,7 +60,7 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent,Long, AgentMapper> i
             // 查询该代理人的电话和真实名称
             User user = userMapper.selectByPrimaryKey(agentVo.getUserId());
             agentVo.setName(user.getName());
-            agentVo.setPhone(user.getPhone());
+            agentVo.setMobile(user.getMobile());
             // 封装代理的房产数量
             Example example = new Example(Owner.class);
             Example.Criteria criteria = example.createCriteria();
@@ -151,20 +151,19 @@ public class AgentServiceImpl extends BaseServiceImpl<Agent,Long, AgentMapper> i
 
         // 进行数据封装
         // 代理人用户信息
-        agentInfoVo.setUserId(agent.getUserId()); // 用户编号
-        agentInfoVo.setEmail(agent.getEmail());  // 代理人邮箱
-        agentInfoVo.setUserAddress(agencyUser.getAddress()); //代理人地址
-        agentInfoVo.setUserName(agentUser.getName()); // 代理人真实姓名
-        agentInfoVo.setUserPhone(agentUser.getPhone());    // 代理人座机
-        agentInfoVo.setPhoto(agent.getPhoto());     // 代理人照片
-        agentInfoVo.setBrief(agentUser.getBrief()); // 代理人说明
-        agentInfoVo.setWebSite(agent.getWebSite()); // 代理人个人网站
-        agentInfoVo.setPropertiesCount(propertiesCount); // 代理人代理房产数量
-        // 代理商信息
-        agentInfoVo.setAgencyId(agency.getId()); // 代理商ID
-        agentInfoVo.setLicense(agency.getLicense()); //执照编号
-        agentInfoVo.setAgencyPhone(agencyUser.getPhone()); // 代理商座机
-        agentInfoVo.setAgencyAddress(agencyUser.getAddress()); // 代理商地址
+        agentInfoVo.setUserId(agent.getUserId());
+        agentInfoVo.setEmail(agent.getEmail());
+        agentInfoVo.setUserAddress(agencyUser.getAddress());
+        agentInfoVo.setUserName(agentUser.getName());
+        agentInfoVo.setMobile(agentUser.getMobile());
+        agentInfoVo.setPhoto(agent.getPhoto());
+        agentInfoVo.setBrief(agentUser.getBrief());
+        agentInfoVo.setWebSite(agent.getWebSite());
+        agentInfoVo.setPropertiesCount(propertiesCount);
+        agentInfoVo.setAgencyId(agency.getId());
+        agentInfoVo.setLicense(agency.getLicense());
+        agentInfoVo.setAgencyPhone(agencyUser.getMobile());
+        agentInfoVo.setAgencyAddress(agencyUser.getAddress());
 
         return agentInfoVo;
     }

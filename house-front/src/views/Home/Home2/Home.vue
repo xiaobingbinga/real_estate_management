@@ -13,18 +13,19 @@
       :showPageDot="true"
       :list="houseFeaturesList"
       :swiperOption="estateSwiperOption">
-      <template  #item="{itemData}">
-      <div class="property-item col">
-        <estate-sketch :info="itemData"></estate-sketch>
-      </div>
-    </template>
+      <template #item="{itemData}">
+        <div class="property-item col">
+          <estate-sketch :info="itemData"></estate-sketch>
+        </div>
+      </template>
     </my-carousel>
     <!--欢迎标语-->
-    <div class="feature-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+    <div
+      class="feature-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
       <div class="container">
-      
-        <div class="feature-wrap row row-25">
         
+        <div class="feature-wrap row row-25">
+          
           <!--Feature start-->
           <div class="col-lg-4 col-sm-6 col-12 mb-50">
             <div class="feature">
@@ -36,7 +37,7 @@
             </div>
           </div>
           <!--Feature end-->
-        
+          
           <!--Feature start-->
           <div class="col-lg-4 col-sm-6 col-12 mb-50">
             <div class="feature">
@@ -48,7 +49,7 @@
             </div>
           </div>
           <!--Feature end-->
-        
+          
           <!--Feature start-->
           <div class="col-lg-4 col-sm-6 col-12 mb-50">
             <div class="feature">
@@ -60,7 +61,7 @@
             </div>
           </div>
           <!--Feature end-->
-        
+          
           <!--Feature start-->
           <div class="col-lg-4 col-sm-6 col-12 mb-50">
             <div class="feature">
@@ -72,7 +73,7 @@
             </div>
           </div>
           <!--Feature end-->
-        
+          
           <!--Feature start-->
           <div class="col-lg-4 col-sm-6 col-12 mb-50">
             <div class="feature">
@@ -84,7 +85,7 @@
             </div>
           </div>
           <!--Feature end-->
-        
+          
           <!--Feature start-->
           <div class="col-lg-4 col-sm-6 col-12 mb-50">
             <div class="feature">
@@ -96,9 +97,9 @@
             </div>
           </div>
           <!--Feature end-->
-      
+        
         </div>
-    
+      
       </div>
     </div>
     <!--App下载-->
@@ -117,7 +118,7 @@
       :showPageDot="false"
       :list="agentList"
       :swiperOption="agentSwiperOption">
-      <template  #item="{itemData}">
+      <template #item="{itemData}">
         <my-agent :agent="itemData"></my-agent>
       </template>
     </my-carousel>
@@ -133,28 +134,29 @@
         <estate-news :news-info="itemData"></estate-news>
       </template>
     </my-carousel>
-  
+    
     <!--合作伙伴-->
     <brand/>
-    
+  
   </div>
 </template>
 
 <script>
-  import HeroCarousel from "../../../components/components-j/until/HeroCarousel";
-  import EstateList from "../../../components/components-j/estate/EstateList";
-  import Down from "../../../components/components-j/home/Down";
-  import Service from "../../../components/components-j/home/Service";
-  import MyCarousel from "../../../components/components-j/until/MyCarousel";
-  import EstateSketch from "../../../components/components-j/estate/EstateSketch";
-  import FunFact from "../../../components/components-j/home/FunFact";
-  import MyAgent from "../../../components/components-j/agent/MyAgent";
-  import EstateNews from "../../../components/components-j/news/EstateNews";
-  import Brand from "../../../components/components-j/home/Brand";
-  import MySearch from "../../../components/components-j/home/MySearch";
+    import HeroCarousel from "../../../components/components-j/until/HeroCarousel";
+    import EstateList from "../../../components/components-j/estate/EstateList";
+    import Down from "../../../components/components-j/home/Down";
+    import Service from "../../../components/components-j/home/Service";
+    import MyCarousel from "../../../components/components-j/until/MyCarousel";
+    import EstateSketch from "../../../components/components-j/estate/EstateSketch";
+    import FunFact from "../../../components/components-j/home/FunFact";
+    import MyAgent from "../../../components/components-j/agent/MyAgent";
+    import EstateNews from "../../../components/components-j/news/EstateNews";
+    import Brand from "../../../components/components-j/home/Brand";
+    import MySearch from "../../../components/components-j/home/MySearch";
+
     export default {
         name: "Home",
-        components:{
+        components: {
             EstateList,
             Down,
             Service,
@@ -167,42 +169,42 @@
             Brand,
             MySearch
         },
-        data(){
-            return{
+        data() {
+            return {
                 // 搜索条件
-                conditions:[
+                conditions: [
                     {
-                        title:"状态",
-                        options:[
-                            '租房','卖房'
+                        title: "状态",
+                        options: [
+                            '租房', '卖房'
                         ],
-                        type:'select'
+                        type: 'select'
                     },
                     {
-                        title:'类型',
+                        title: '类型',
                         options: [
-                            "公寓","咖啡馆","住宅","餐馆","商店","别墅"
+                            "公寓", "咖啡馆", "住宅", "餐馆", "商店", "别墅"
                         ],
-                        type:'select'
+                        type: 'select'
                     },
                     {
-                        title:'地理位置',
+                        title: '地理位置',
                         options: [
-                            "成都","北京","上海","广州","深圳","重庆","武汉","沈阳","福州","厦门"
-                            ,"银川","拉萨","绵阳","遂宁","攀枝花","简阳","德阳","金堂","泸州","内江"
-                            ,"阆中"
-                        ],
-                    },
-                    {
-                        title:'房间数',
-                        options: [
-                            1,2,3,4,5,6
+                            "成都", "北京", "上海", "广州", "深圳", "重庆", "武汉", "沈阳", "福州", "厦门"
+                            , "银川", "拉萨", "绵阳", "遂宁", "攀枝花", "简阳", "德阳", "金堂", "泸州", "内江"
+                            , "阆中"
                         ],
                     },
                     {
-                        title:'卫生间数量',
+                        title: '房间数',
                         options: [
-                            1,2,3,4,5,6
+                            1, 2, 3, 4, 5, 6
+                        ],
+                    },
+                    {
+                        title: '卫生间数量',
+                        options: [
+                            1, 2, 3, 4, 5, 6
                         ],
                     },
                 ],
@@ -211,12 +213,12 @@
                 //特色房产列表
                 houseFeaturesList: [],
                 //新增房产列表
-                houseNewsList:[],
+                houseNewsList: [],
                 // 房产轮播配置
                 estateSwiperOption: {
                     slidesPerView: 3,
                     spaceBetween: 0,
-                    loop:true,
+                    loop: true,
                     pagination: {
                         el: '.swiper-pagination',
                         clickable: true
@@ -230,7 +232,7 @@
                 agentSwiperOption: {
                     slidesPerView: 4,
                     spaceBetween: 0,
-                    loop:true,
+                    loop: true,
                     pagination: {
                         el: '.swiper-pagination',
                         clickable: true
@@ -240,106 +242,123 @@
                         prevEl: '.slick-prev'
                     }
                 },
+                agentList:[],
                 // 代理人列表
-                agentList:[
-                    {
-                        name:"唐纳德.菲尔",
-                        mobile:'(756) 447 5779',
-                        email:'info@example.com',
-                        houseCount:5,
-                        pictureUrl:"assets/images/agent/agent-1.jpg"
-                    },
-                    {
-                        name:"朱.汉密尔顿",
-                        mobile:'(756) 447 5779',
-                        email:'info@example.com',
-                        houseCount:2,
-                        pictureUrl:"assets/images/agent/agent-2.jpg"
-                    },
-                    {
-                        name:"克莉期丁.吉尔波特",
-                        mobile:'(756) 447 5779',
-                        email:'info@example.com',
-                        houseCount:4,
-                        pictureUrl:"assets/images/agent/agent-3.jpg"
-                    },
-                    {
-                        name:"杰森.帕特",
-                        mobile:'(756) 447 5779',
-                        email:'info@example.com',
-                        houseCount:3,
-                        pictureUrl:"assets/images/agent/agent-4.jpg"
-                    },
-                    {
-                        name:"德布拉.依尔斯",
-                        mobile:'(756) 447 5779',
-                        email:'info@example.com',
-                        houseCount:1,
-                        pictureUrl:"assets/images/agent/agent-5.jpg"
-                    }
-                ],
+                // agentList: [
+                //     {
+                //         id: 1,
+                //         name: "唐纳德.菲尔",
+                //         mobile: '(756) 447 5779',
+                //         email: 'info@example.com',
+                //         count: 5,
+                //         photo: "assets/images/agent/agent-1.jpg"
+                //     },
+                //     {
+                //         id: 2,
+                //         name: "朱.汉密尔顿",
+                //         mobile: '(756) 447 5779',
+                //         email: 'info@example.com',
+                //         count: 2,
+                //         photo: "assets/images/agent/agent-2.jpg"
+                //     },
+                //     {
+                //         id: 3,
+                //         name: "克莉期丁.吉尔波特",
+                //         mobile: '(756) 447 5779',
+                //         email: 'info@example.com',
+                //         count: 4,
+                //         photo: "assets/images/agent/agent-3.jpg"
+                //     },
+                //     {
+                //         id: 4,
+                //         name: "杰森.帕特",
+                //         mobile: '(756) 447 5779',
+                //         email: 'info@example.com',
+                //         count: 3,
+                //         photo: "assets/images/agent/agent-4.jpg"
+                //     },
+                //     {
+                //         id: 5,
+                //         name: "德布拉.依尔斯",
+                //         mobile: '(756) 447 5779',
+                //         email: 'info@example.com',
+                //         count: 1,
+                //         photo: "assets/images/agent/agent-5.jpg"
+                //     }
+                // ],
                 //房产新闻列表
-                newsList:[
+                newsList: [
                     {
-                        id:1,
-                        imageUrl:"assets/images/news/news-1.jpg",
-                        name:"唐纳德",
-                        issuingTime:"2018年12月30日",
-                        title:"豪华公寓楼",
-                        summary:"房产交易平台 the best theme for  elit, sed do to eiumod tempor dolor sit amet."
+                        id: 1,
+                        imageUrl: "assets/images/news/news-1.jpg",
+                        name: "唐纳德",
+                        issuingTime: "2018年12月30日",
+                        title: "豪华公寓楼",
+                        summary: "房产交易平台 the best theme for  elit, sed do to eiumod tempor dolor sit amet."
                     },
                     {
-                        id:2,
-                        imageUrl:"assets/images/news/news-2.jpg",
-                        name:"唐纳德",
-                        issuingTime:"2018年12月30日",
-                        title:"豪华公寓楼",
-                        summary:"房产交易平台 the best theme for  elit, sed do to eiumod tempor dolor sit amet."
+                        id: 2,
+                        imageUrl: "assets/images/news/news-2.jpg",
+                        name: "唐纳德",
+                        issuingTime: "2018年12月30日",
+                        title: "豪华公寓楼",
+                        summary: "房产交易平台 the best theme for  elit, sed do to eiumod tempor dolor sit amet."
                     },
                     {
-                        id:3,
-                        imageUrl:"assets/images/news/news-3.jpg",
-                        name:"唐纳德",
-                        issuingTime:"2018年12月30日",
-                        title:"豪华公寓楼",
-                        summary:"房产交易平台 the best theme for  elit, sed do to eiumod tempor dolor sit amet."
+                        id: 3,
+                        imageUrl: "assets/images/news/news-3.jpg",
+                        name: "唐纳德",
+                        issuingTime: "2018年12月30日",
+                        title: "豪华公寓楼",
+                        summary: "房产交易平台 the best theme for  elit, sed do to eiumod tempor dolor sit amet."
                     },
                     {
-                        id:4,
-                        imageUrl:"assets/images/news/news-4.jpg",
-                        name:"唐纳德",
-                        issuingTime:"2018年12月30日",
-                        title:"豪华公寓楼",
-                        summary:"房产交易平台 the best theme for  elit, sed do to eiumod tempor dolor sit amet."
+                        id: 4,
+                        imageUrl: "assets/images/news/news-4.jpg",
+                        name: "唐纳德",
+                        issuingTime: "2018年12月30日",
+                        title: "豪华公寓楼",
+                        summary: "房产交易平台 the best theme for  elit, sed do to eiumod tempor dolor sit amet."
                     },
                 ]
             }
         },
-        methods:{
-          selectAdHouse(num){
-            this.axios.get(`/p/properties/advertising?num=${num}`).then(result => {
-              this.houseAdList = result.data.data
-            });
-          },
-          selectFeaturesHouse(num){
-            this.axios.get(`/p/properties/condition-features?num=${num}`).then(result => {
-              this.houseFeaturesList = result.data.data
-            })
-          },
-          selectNewsHouse(){
-            this.axios.get(`/p/properties/properties-add`).then(result => {
-              this.houseNewsList = result.data.data
-            })
-          }
+        methods: {
+            // 查询广告房产
+            selectAdHouse(num) {
+                this.axios.get(`/p/properties/advertising?num=${num}`).then(result => {
+                    this.houseAdList = result.data.data
+                });
+            },
+            // 查询特色房产
+            selectFeaturesHouse(num) {
+                this.axios.get(`/p/properties/condition-features?num=${num}`).then(result => {
+                    this.houseFeaturesList = result.data.data
+                })
+            },
+            // 查询新增房产
+            selectNewsHouse() {
+                this.axios.get(`/p/properties/properties-add`).then(result => {
+                    this.houseNewsList = result.data.data
+                })
+            },
+            // 查询我的代理
+            selectMyAgent(){
+                this.axios.get("/ag/agent/recommend").then( result => {
+                    if(result.data.code == 200){
+                        this.agentList = result.data.data
+                    }
+                })
+            }
+
         },
-        created(){
-          this.selectAdHouse(2);
-          this.selectFeaturesHouse(6);
-          this.selectNewsHouse();
+        created() {
+            this.selectAdHouse(2);
+            this.selectFeaturesHouse(6);
+            this.selectNewsHouse();
+            this.selectMyAgent();
         }
     }
-    
-    
 
 
 </script>

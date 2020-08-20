@@ -22,7 +22,7 @@ public class AgentListVo {
     private String  email;
 
     @ApiModelProperty(name = "代理人手机号",example = "123222111")
-    private String phone;
+    private String mobile;
 
     @ApiModelProperty(name = "代理人真实信息",example = "罗玉凤")
     private String name;

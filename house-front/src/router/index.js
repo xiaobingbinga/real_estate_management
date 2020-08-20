@@ -49,7 +49,8 @@ const routes = [
     path:'/house/properties-list-right-sidebar',
     name:'propertiesListRightSidebar',
     component:() => import('@/views/House/PropertiesListRightSidebar')
-  }, {
+  },
+  {
     path: '/house/add-house-details',
     name: 'addHouseDetails',
     component: () => import('@/views/Display/AddProperties')
@@ -92,6 +93,30 @@ const routes = [
     path:'/display/add-properties',
     name:'AddProperties',
     component:() => import('@/views/Display/AddProperties')
+  },
+    // 代理人列表
+  {
+    path: '/agent/list',
+    name: "AgentList",
+    component: ()=>import('@/views/Agent/AgentList')
+  },
+   // 代理人详细信息
+  {
+    path: '/agent/info',
+    name: "AgentInfo",
+    component: ()=>import('@/views/Agent/AgentInfo')
+  },
+  // 代理商列表
+  {
+    path: '/agency/list',
+    name: "AgencyList",
+    component: ()=>import('@/views/Agent/AgencyList')
+  },
+  // 代理商详情
+  {
+    path: '/agency/info',
+    name: "AgencyInfo",
+    component:()=>import('@/views/Agent/AgencyInfo')
   }
 ];
 

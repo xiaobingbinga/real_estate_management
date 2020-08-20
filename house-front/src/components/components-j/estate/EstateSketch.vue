@@ -1,24 +1,24 @@
 <template>
   <!--:class="rootClass?'rootClass':''"-->
-  <div  :class= "showClass? 'property-item  col-lg-4 col-md-6 col-12 mb-40':''">
-    <div class="property-inner " >
+  <div :class="showClass? 'property-item  col-lg-4 col-md-6 col-12 mb-40':''">
+    <div class="property-inner ">
       <div class="image ">
         <span class="label" v-if="info.hot === 1">热门</span>
         <span class="label" v-else-if="info.special === 1">特色</span>
         
-        <a href="single-properties.html"><img :src="info.pictureUrl" alt=""></a>
+        <a href="single-properties.html"><img :src="`${info.pictureUrl}`" alt=""></a>
         <ul class="property-feature" style="margin-bottom: 0">
           <li>
-            <span class="area"><img src="assets/images/icons/area.png" alt="">{{info.square}} 平米</span>
+            <span class="area"><img :src="`${publicPath}assets/images/icons/area.png`" alt="">{{info.square}} 平米</span>
           </li>
           <li>
-            <span class="bed"><img src="assets/images/icons/bed.png" alt="">{{info.roomNumber}}</span>
+            <span class="bed"><img :src="`${publicPath}assets/images/icons/bed.png`" alt="">{{info.roomNumber}}</span>
           </li>
           <li>
-            <span class="bath"><img src="assets/images/icons/bath.png" alt="">{{info.bathroomNumber}}</span>
+            <span class="bath"><img :src="`${publicPath}assets/images/icons/bath.png`" alt="">{{info.bathroomNumber}}</span>
           </li>
           <li>
-            <span class="parking"><img src="assets/images/icons/parking.png" alt="">{{info.garageNumber}}</span>
+            <span class="parking"><img :src="`${publicPath}assets/images/icons/parking.png`" alt="">{{info.garageNumber}}</span>
           </li>
         </ul>
       </div>
@@ -44,32 +44,34 @@
 <script>
     export default {
         name: "EstateSketch",
-        data(){
+        data() {
             return {
-              leaseType:["","天","周","月","季","年"]
+                leaseType: ["", "天", "周", "月", "季", "年"],
+                publicPath: process.env.BASE_URL
             }
         },
-        props:{
-            info:{
-                type:Object,
-                default(){
+        props: {
+            info: {
+                type: Object,
+                default() {
                     return {
-                        pictureUrl:'assets/images/property/property-1.jpg',
-                        square:550,
-                        roomNumber:6,
-                        bathroomNumber:4,
-                        garageNumber:3,
-                        title:'江南宅院',
-                        address:'锦江区东大街下东大街568号',
-                        price:550,
-                        leaseType:2,
-                        rentType:1,
+                        id:1,
+                        pictureUrl: 'assets/images/property/property-1.jpg',
+                        square: 550,
+                        roomNumber: 6,
+                        bathroomNumber: 4,
+                        garageNumber: 3,
+                        title: '江南宅院',
+                        address: '锦江区东大街下东大街568号',
+                        price: 550,
+                        leaseType: 2,
+                        rentType: 1,
                     }
                 }
             },
-            showClass:{
-                type:Boolean,
-                default:false
+            showClass: {
+                type: Boolean,
+                default: false
             }
         }
     }

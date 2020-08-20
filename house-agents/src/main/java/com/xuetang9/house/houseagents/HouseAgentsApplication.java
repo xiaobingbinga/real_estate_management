@@ -15,6 +15,9 @@ import org.springframework.web.client.RestTemplate;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import tk.mybatis.spring.annotation.MapperScan;
 
+import java.util.HashMap;
+
+
 // @EnableAspectJAutoProxy // 开启切面
 
 @EnableEurekaClient

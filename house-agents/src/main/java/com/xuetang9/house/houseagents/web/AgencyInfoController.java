@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.PrimitiveIterator;
 
 /**
@@ -34,6 +35,7 @@ public class AgencyInfoController {
      */
     @PostMapping("/agency-info")
     public JsonResult agencyInfo(AgencyTo agencyTo){
+
         JsonResult jsonResult = new JsonResult();
         try{
             AgencyInfoVo agencyInfoVo =  agencyService.agencyInfoById(agencyTo.getId());

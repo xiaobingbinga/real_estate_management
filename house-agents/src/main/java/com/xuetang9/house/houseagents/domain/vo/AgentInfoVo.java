@@ -38,7 +38,7 @@ public class AgentInfoVo {
     private String userAddress;
 
     @ApiModelProperty(name = "用户座机",example = "88888888")
-    private String userPhone;
+    private String mobile;
 
     @ApiModelProperty(name = "用户邮箱",example = "888888@qq.com")
     private String email;

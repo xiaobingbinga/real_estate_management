@@ -40,7 +40,7 @@ export default{
             {title:'房产代理',
                 url:'/',
                 subMenu:[
-                    {title:'代理人显示方式',url:'/',
+                    {title:'代理人显示方式',url:'/agent/list',
                         subMenu:[
                             {title:'三列显示',url:'/'},
                             {title:'四列显示',url:'/'}
@@ -52,13 +52,13 @@ export default{
                             {title: '四列显示',url:'/'},
                             {title: '四列两行',url:'/'}
                         ]},
-                    {title:'代理人详情',url:'/'},
+                    {title:'代理人详情',url:'/agent/info'},
                 ]},
             {title:'房产代理商',
-                url:'/',
+                url:'/agency/list',
                 subMenu:[
-                    {title:'房产代理商',url:'/'},
-                    {title:'代理商详情',url:'/'}
+                    {title:'房产代理商',url:'/agency/list'},
+                    {title:'代理商详情',url:'/agency/info'}
                 ]},
             {title:'房产新闻',
                 url:'/',
