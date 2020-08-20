@@ -15,7 +15,32 @@
                             <div v-for="(item,key) in search" :key="key"
                                  style="border:solid 5px rgba(0, 0, 0, 0.1);">
                                 <h4>{{item.label}}</h4>
-                                <b-form-select v-model="selectedValue[key]"
+
+                                <b-form-select v-if="key==='province'" v-model="selectedValue[key]"
+                                               class="nice-select search-select" @change="changeProvince">
+                                    <template #first>
+                                        <b-form-select-option :value="null" disabled>请选择</b-form-select-option>
+                                    </template>
+                                    <b-form-select-option v-for="item in address.districts"
+                                                          :key="item.adcode"
+                                                          :value="item.name">
+                                        {{item.name}}
+                                    </b-form-select-option>
+                                </b-form-select>
+
+                                <b-form-select v-else-if="key==='city'" v-model="selectedValue[key]"
+                                               class="nice-select search-select">
+                                    <template #first>
+                                        <b-form-select-option :value="null" disabled>请选择</b-form-select-option>
+                                    </template>
+                                    <b-form-select-option v-for="item in cities"
+                                                          :key="item.citycode"
+                                                          :value="item.name">
+                                        {{item.name}}
+                                    </b-form-select-option>
+                                </b-form-select>
+
+                                <b-form-select v-else v-model="selectedValue[key]"
                                                class="nice-select search-select">
                                     <template #first>
                                         <b-form-select-option :value="null" disabled>请选择</b-form-select-option>
@@ -54,12 +79,17 @@
                 city: null,
                 roomNumber: null,
                 bathroomNumber: null
-            }
+            },
+            cities:[]
         }),
         computed:{
-            ...mapGetters('search',['search'])
+            ...mapGetters('search',['search']),
+            ...mapGetters('address',['address'])
         },
         methods:{
+            changeProvince(){
+                this.cities = this.address.districts.filter(item => item.name === this.selectedValue.province)[0].districts
+            }
         }
     }
 </script>

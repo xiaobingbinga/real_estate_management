@@ -2,11 +2,11 @@ server:
   port: 11003
 spring:
   application:
-    name: house-hosues2
+    name: house-houses2
 eureka:
   client:
     service-url:
-      defaultZone: http://192.168.3.48:11000/eureka/,http://192.168.3.36:12000/eureka/
+      defaultZone: http://192.168.2.9:11000/eureka/,http://192.168.2.11:12000/eureka/
 #logging:
 #  level:
 #    root: debug
