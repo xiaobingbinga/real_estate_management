@@ -11,6 +11,6 @@
     </select>
 
     <select id="selectById" resultType="com.xuetang9.house.domain.User">
-        select id, userName,address,modile from user where id=#{id}
+        select id, name,address,mobile from user where id=#{id}
     </select>
 </mapper> 
