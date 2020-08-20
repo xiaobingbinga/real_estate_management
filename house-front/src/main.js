@@ -15,6 +15,7 @@ Vue.use(Vuelidate)
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
+// axios.defaults.baseURL = 'http://192.168.2.9:10000'
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(vueaxios,axios)
