@@ -18,5 +18,5 @@ public interface AgentMapperS {
 
     List<Agent> selectByPage(Integer pageNum, Integer pageSize);
 
-    List<Agent> selectById(Integer id);
+    Agent selectById(Integer id);
 }

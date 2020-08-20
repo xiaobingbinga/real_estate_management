@@ -35,6 +35,6 @@
     </select>
 
     <select id="selectById" resultType="com.xuetang9.house.domain.Agent">
-        select email,web_site,certification from agent where id=#{id}
+        select email,web_site,certification,id,agency_id  from agent where id=#{id}
     </select>
 </mapper> 

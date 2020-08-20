@@ -79,19 +79,19 @@ public class AgentConditionVo {
      * 房间数量
      */
     @ApiModelProperty(name = "",value = "房间数量")
-    private Long roomNumber;
+    private Integer roomNumber;
 
     /**
      * 卫生间数量
      */
     @ApiModelProperty(name = "",value = "卫生间数量")
-    private Long bathroomNumber;
+    private Integer bathroomNumber;
 
     /**
      * 车位个数
      */
     @ApiModelProperty(name = "",value = "车位个数")
-    private Long garageNumber;
+    private Integer garageNumber;
 
     /**
      * 房子地址
