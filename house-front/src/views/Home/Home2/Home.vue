@@ -2,7 +2,7 @@
   <div>
     <!--滑块组件-->
     <!--<slider title="蜗牛租房"></slider>-->
-    <hero-carousel :list="houseList"></hero-carousel>
+    <hero-carousel :list="houseAdList"></hero-carousel>
     <!--搜索条件-->
     <my-search/>
     <!--特色房产-->
@@ -11,7 +11,7 @@
       itemRootClass="property-carousel section"
       title="特色房产"
       :showPageDot="true"
-      :list="houseList"
+      :list="houseFeaturesList"
       :swiperOption="estateSwiperOption">
       <template  #item="{itemData}">
       <div class="property-item col">
@@ -104,9 +104,9 @@
     <!--App下载-->
     <down title="蜗牛租房"/>
     <!--我们的服务-->
-    <service/>
+    <service :estateInfos="houseAdList"/>
     <!--新增的房产信息-->
-    <estate-list title="新增的房产" :downurl="downUrls"></estate-list>
+    <estate-list title="新增的房产" :estateInfo="houseNewsList"/>
     <!--统计-->
     <fun-fact/>
     <!--我的代理-->
@@ -206,97 +206,12 @@
                         ],
                     },
                 ],
-                 // 下来连接
-                downUrls:[
-                    {
-                        icon:"fa fa-apple",
-                        title:"Apple store",
-                        url:"#"
-                    },
-                    {
-                        icon:"fa fa-android",
-                        title:"Google play",
-                        url:"#"
-                    }
-                ],
-                // 房产列表
-                houseList: [
-                    {
-                        id: 1,
-                        pictureUrl: "assets/images/property/property-1.jpg",
-                        square: 550,
-                        roomNumber: 5,
-                        bathroomNumber: 1,
-                        garageNumber: 2,
-                        title: "江南宅院",
-                        address: "锦江区东大街下东大街568号",
-                        rentType: 1,
-                        price: 550,
-                        leaseType: 1,
-                        isHot: 1,
-                        isSpecial: 0
-                    },
-                    {
-                        id: 2,
-                        pictureUrl: "assets/images/property/property-2.jpg",
-                        square: 550,
-                        roomNumber: 5,
-                        bathroomNumber: 1,
-                        garageNumber: 2,
-                        title: "江南宅院",
-                        address: "锦江区东大街下东大街568号",
-                        rentType: 2,
-                        price: 550,
-                        leaseType: 1,
-                        isHot: 1,
-                        isSpecial: 1
-                    },
-                    {
-                        id: 3,
-                        pictureUrl: "assets/images/property/property-3.jpg",
-                        square: 550,
-                        roomNumber: 5,
-                        bathroomNumber: 1,
-                        garageNumber: 2,
-                        title: "江南宅院",
-                        address: "锦江区东大街下东大街568号",
-                        rentType: 1,
-                        price: 550,
-                        leaseType: 1,
-                        isHot: 1,
-                        isSpecial: 0
-                    },
-                    {
-                        id: 4,
-                        pictureUrl: "assets/images/property/property-4.jpg",
-                        square: 550,
-                        roomNumber: 5,
-                        bathroomNumber: 1,
-                        garageNumber: 2,
-                        title: "江南宅院",
-                        address: "锦江区东大街下东大街568号",
-                        rentType: 1,
-                        price: 550,
-                        leaseType: 1,
-                        isHot: 1,
-                        isSpecial: 0
-                    },
-                    {
-                        id: 5,
-                        pictureUrl: "assets/images/property/property-5.jpg",
-                        square: 550,
-                        roomNumber: 5,
-                        bathroomNumber: 1,
-                        garageNumber: 2,
-                        title: "江南宅院",
-                        address: "锦江区东大街下东大街568号",
-                        rentType: 1,
-                        price: 550,
-                        leaseType: 1,
-                        isHot: 1,
-                        isSpecial: 0
-                    }
-                ],
+                // 广告位房产列表
+                houseAdList: [],
+                //特色房产列表
+                houseFeaturesList: [],
+                //新增房产列表
+                houseNewsList:[],
                 // 房产轮播配置
                 estateSwiperOption: {
                     slidesPerView: 3,
@@ -399,6 +314,28 @@
                     },
                 ]
             }
+        },
+        methods:{
+          selectAdHouse(num){
+            this.axios.get(`/p/properties/advertising?num=${num}`).then(result => {
+              this.houseAdList = result.data.data
+            });
+          },
+          selectFeaturesHouse(num){
+            this.axios.get(`/p/properties/condition-features?num=${num}`).then(result => {
+              this.houseFeaturesList = result.data.data
+            })
+          },
+          selectNewsHouse(){
+            this.axios.get(`/p/properties/properties-add`).then(result => {
+              this.houseNewsList = result.data.data
+            })
+          }
+        },
+        created(){
+          this.selectAdHouse(2);
+          this.selectFeaturesHouse(6);
+          this.selectNewsHouse();
         }
     }
     

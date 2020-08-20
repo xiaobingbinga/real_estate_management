@@ -128,34 +128,40 @@
                         nextEl: '.slick-next',
                         prevEl: '.slick-prev'
                     }
-                },
-                estateInfos: [
-                    {
-                        pictureUrl:"assets/images/property/property-13.jpg",
-                        title:"江南宅院",
-                        address:"成都双流机场大道568",
-                        price:"550",
-                        roomNumber:6,
-                        bathroomNumber:4,
-                        garageNumber:3,
-                        leaseType:2,
-                        rentType:1,
-                    },
-                    {
-                        pictureUrl:"assets/images/property/property-14.jpg",
-                        title:"江南宅院",
-                        address:"成都双流机场大道568",
-                        price:"550",
-                        roomNumber:4,
-                        bathroomNumber:4,
-                        garageNumber:3,
-                        leaseType:2,
-                        rentType:1,
-                    }
-                ]
+                }
             }
         },
-        
+        props:{
+          estateInfos:{
+            type:Array,
+            default(){
+              return[
+                {
+                  pictureUrl:"assets/images/property/property-13.jpg",
+                  title:"江南宅院",
+                  address:"成都双流机场大道568",
+                  price:"550",
+                  roomNumber:6,
+                  bathroomNumber:4,
+                  garageNumber:3,
+                  leaseType:2,
+                  rentType:1,
+                },
+                {
+                  pictureUrl:"assets/images/property/property-14.jpg",
+                  title:"江南宅院",
+                  address:"成都双流机场大道568",
+                  price:"550",
+                  roomNumber:4,
+                  bathroomNumber:4,
+                  garageNumber:3,
+                  leaseType:2,
+                  rentType:1
+                }
+              ]
+            }
+          }
+        }
     }
 </script>
 

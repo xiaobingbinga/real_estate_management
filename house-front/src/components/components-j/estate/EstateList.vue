@@ -12,7 +12,9 @@
       </div>
       <!--Section Title end-->
       <div class="row">
-          <estate-sketch :showClass="true" v-for="(estateInfo,index) in estateInfos" :key="index" :info="estateInfo" ></estate-sketch>
+          <estate-sketch :showClass="true"
+                         v-for="(estateInfoOne,index) in estateInfo"
+                         :key="index" :info="estateInfoOne" ></estate-sketch>
       </div>
     
     </div>
@@ -34,87 +36,91 @@
             title:{
                 type:String,
                 require:true
+            },
+            estateInfo:{
+              type: Array,
+              default(){
+                return [
+                  {
+                    pictureUrl:'assets/images/property/property-1.jpg',
+                    square:550,
+                    roomNumber:6,
+                    bathroomNumber:4,
+                    garageNumber:3,
+                    title:'江南宅院',
+                    address:'锦江区东大街下东大街568号',
+                    price:550,
+                    timeType:'月',
+                    rentType:1,
+                  },
+                  {
+                    tag:"特色",
+                    pictureUrl:'assets/images/property/property-2.jpg',
+                    square:550,
+                    roomNumber:6,
+                    bathroomNumber:4,
+                    garageNumber:3,
+                    title:'木马山别墅',
+                    address:'城北大道450附22号',
+                    price:2550,
+                    rentType:2,
+                  },
+                  {
+                    tag:'出售',
+                    pictureUrl:'assets/images/property/property-3.jpg',
+                    square:550,
+                    roomNumber:6,
+                    bathroomNumber:4,
+                    garageNumber:3,
+                    title:'皇家一号公寓',
+                    address:'锦江区福字街215号',
+                    price:550,
+                    timeType:'月',
+                    rentType:1,
+                  },
+                  {
+                    pictureUrl:'assets/images/property/property-4.jpg',
+                    square:550,
+                    roomNumber:6,
+                    bathroomNumber:4,
+                    garageNumber:3,
+                    title:'龙城一号别墅',
+                    address:'龙泉驿区南山大道333号附12号',
+                    price:550,
+                    timeType:'月',
+                    rentType:1,
+                  },
+                  {
+                    pictureUrl:'assets/images/property/property-5.jpg',
+                    square:550,
+                    roomNumber:6,
+                    bathroomNumber:4,
+                    garageNumber:3,
+                    title:'春天花园别墅',
+                    address:'金牛区琴台西路668号',
+                    price:2550,
+                    rentType:2,
+                  },
+                  {
+                    pictureUrl:'assets/images/property/property-6.jpg',
+                    square:550,
+                    roomNumber:6,
+                    bathroomNumber:4,
+                    garageNumber:3,
+                    title:'万科西山别墅',
+                    address:'高新区蜀都大道12号',
+                    price:550,
+                    timeType:"月",
+                    rentType:1,
+                  }
+
+
+                ]
+              }
             }
         },
         data(){
             return {
-                estateInfos:[
-                    {
-                        pictureUrl:'assets/images/property/property-1.jpg',
-                        square:550,
-                        roomNumber:6,
-                        bathroomNumber:4,
-                        garageNumber:3,
-                        title:'江南宅院',
-                        address:'锦江区东大街下东大街568号',
-                        price:550,
-                        timeType:'月',
-                        rentType:1,
-                    },
-                    {
-                        tag:"特色",
-                        pictureUrl:'assets/images/property/property-2.jpg',
-                        square:550,
-                        roomNumber:6,
-                        bathroomNumber:4,
-                        garageNumber:3,
-                        title:'木马山别墅',
-                        address:'城北大道450附22号',
-                        price:2550,
-                        rentType:2,
-                    },
-                    {
-                        tag:'出售',
-                        pictureUrl:'assets/images/property/property-3.jpg',
-                        square:550,
-                        roomNumber:6,
-                        bathroomNumber:4,
-                        garageNumber:3,
-                        title:'皇家一号公寓',
-                        address:'锦江区福字街215号',
-                        price:550,
-                        timeType:'月',
-                        rentType:1,
-                    },
-                    {
-                        pictureUrl:'assets/images/property/property-4.jpg',
-                        square:550,
-                        roomNumber:6,
-                        bathroomNumber:4,
-                        garageNumber:3,
-                        title:'龙城一号别墅',
-                        address:'龙泉驿区南山大道333号附12号',
-                        price:550,
-                        timeType:'月',
-                        rentType:1,
-                    },
-                    {
-                        pictureUrl:'assets/images/property/property-5.jpg',
-                        square:550,
-                        roomNumber:6,
-                        bathroomNumber:4,
-                        garageNumber:3,
-                        title:'春天花园别墅',
-                        address:'金牛区琴台西路668号',
-                        price:2550,
-                        rentType:2,
-                    },
-                    {
-                        pictureUrl:'assets/images/property/property-6.jpg',
-                        square:550,
-                        roomNumber:6,
-                        bathroomNumber:4,
-                        garageNumber:3,
-                        title:'万科西山别墅',
-                        address:'高新区蜀都大道12号',
-                        price:550,
-                        timeType:"月",
-                        rentType:1,
-                    }
-                    
-                    
-                ]
-              
             }
         }
     }

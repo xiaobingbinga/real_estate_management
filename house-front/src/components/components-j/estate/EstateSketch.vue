@@ -3,8 +3,8 @@
   <div  :class= "showClass? 'property-item  col-lg-4 col-md-6 col-12 mb-40':''">
     <div class="property-inner " >
       <div class="image ">
-        <span class="label" v-if="info.isHot === 1">热门</span>
-        <span class="label" v-else-if="info.isSpecial === 1">特色</span>
+        <span class="label" v-if="info.hot === 1">热门</span>
+        <span class="label" v-else-if="info.special === 1">特色</span>
         
         <a href="single-properties.html"><img :src="info.pictureUrl" alt=""></a>
         <ul class="property-feature" style="margin-bottom: 0">
