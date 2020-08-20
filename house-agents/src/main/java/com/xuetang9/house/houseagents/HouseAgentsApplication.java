@@ -19,11 +19,11 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 @EnableEurekaClient
 @EnableCircuitBreaker
-@SpringBootApplication(excludeName = "com.xuetang9.house.houseagents.web")
+@SpringBootApplication(excludeName = {"com.xuetang9.house.houseagents.web"})
 @ComponentScan("com.xuetang9.house.houseagents.web")
+@ComponentScan("com.xuetang9.house.config")
 @MapperScan("com.xuetang9.house.mapper")
 @EnableSwagger2
-// @ServletComponentScan
 public class HouseAgentsApplication {
 
     public static void main(String[] args) {
@@ -34,7 +34,6 @@ public class HouseAgentsApplication {
     // @LoadBalanced
     public RestTemplate restTemplate(){
         return new RestTemplate();
-
     }
 
 

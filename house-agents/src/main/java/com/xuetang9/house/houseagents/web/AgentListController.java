@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -57,19 +58,7 @@ public class AgentListController {
     }
 
 
-    /**
-     * 我的代理人
-     * @param loginTo
-     * @return
-     */
-    @PostMapping("/my-agent")
-    public JsonResult agentListByUserId(LoginTo loginTo){
-        JsonResult jsonResult = new JsonResult();
 
-        // 查找我的代理人
-
-        return jsonResult;
-    }
 
 
 

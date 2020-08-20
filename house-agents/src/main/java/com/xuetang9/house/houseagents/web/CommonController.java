@@ -1,6 +1,7 @@
 package com.xuetang9.house.houseagents.web;
 
 import com.xuetang9.house.vo.JsonResult;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CommonController {
 
-    @RequestMapping("/un_page")
+    @PostMapping("/un_page")
     public JsonResult missingPage(){
         JsonResult jsonResult = new JsonResult();
         jsonResult.setMessage("缺少分页数据");
