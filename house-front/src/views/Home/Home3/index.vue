@@ -11,8 +11,8 @@
               :center="city"
               :zoom="zoom">
               <bm-marker :position="{lng: 121.4095, lat: 31.1796}" :dragging="true" animation="BMAP_ANIMATION_BOUNCE"/>
-              <bm-scale anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-scale>
-              <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
+              <bm-scale anchor="BMAP_ANCHOR_TOP_RIGHT"/>
+              <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"/>
             </baidu-map>
           </div>
         </template>
@@ -23,7 +23,7 @@
     <!--Hero Section end-->
 
     <!--搜索 start-->
-    <house-search @getCity="setCity"></house-search>
+    <house-search @getCity="setCity"/>
     <!--搜索 end-->
 
     <!--特色房产 start-->
@@ -38,7 +38,7 @@
           :items="featureProperties"
           :num="3">
           <template #item="{item}">
-            <house-property :property="item"></house-property>
+            <house-property :property="item"/>
           </template>
         </house-slider>
       </template>
@@ -46,11 +46,11 @@
     <!--特色房产 end-->
 
     <!--欢迎模块 start-->
-    <house-welcome></house-welcome>
+    <house-welcome/>
     <!--欢迎模块 end-->
 
     <!--下载 start-->
-    <house-download></house-download>
+    <house-download/>
     <!--下载 end-->
 
     <!--服务 start-->
@@ -316,7 +316,7 @@
           :num="4"
           :showDot="false">
           <template #item="{item}">
-            <house-agent :agent="item"></house-agent>
+            <house-agent :agent="item"/>
           </template>
         </house-slider>
       </template>
@@ -335,7 +335,7 @@
           :num="3"
           :showDot="false">
           <template #item>
-            <house-review></house-review>
+            <house-review/>
           </template>
         </house-slider>
       </template>
@@ -354,7 +354,7 @@
           :num="3"
           :showDot="false">
           <template #item="{item}">
-            <house-news :news="item"></house-news>
+            <house-news :news="item"/>
           </template>
         </house-slider>
       </template>
@@ -409,104 +409,14 @@
       return {
         city: "成都",
         zoom: 15,
-        featureProperties: [
-          {
-            id: 1,
-            isHot: false,
-            isNew: false,
-            isAd: false,
-            isSpecial: false,
-            pictureUrl: 'assets/images/property/property-1.jpg',
-            square: 5,
-            roomNumber: 6,
-            bathroomNumber: 6,
-            garageNumber: 6,
-            title: '大豪宅',
-            address: '锦江区东大街下东大街568号',
-            price: '550',
-            typeName: '出售'
-          },
-          {
-            id: 1,
-            isHot: false,
-            isNew: false,
-            isAd: false,
-            isSpecial: false,
-            pictureUrl: 'assets/images/property/property-2.jpg',
-            square: 5,
-            roomNumber: 6,
-            bathroomNumber: 6,
-            garageNumber: 6,
-            title: '江南宅院',
-            address: '锦江区东大街下东大街568号',
-            price: '550',
-            typeName: '出售'
-          },
-          {
-            id: 1,
-            isHot: false,
-            isNew: false,
-            isAd: false,
-            isSpecial: false,
-            pictureUrl: 'assets/images/property/property-3.jpg',
-            square: 5,
-            roomNumber: 6,
-            bathroomNumber: 6,
-            garageNumber: 6,
-            title: '江南宅院',
-            address: '锦江区东大街下东大街568号',
-            price: '550',
-            typeName: '出售'
-          },
-          {
-            id: 1,
-            isHot: false,
-            isNew: false,
-            isAd: false,
-            isSpecial: false,
-            pictureUrl: 'assets/images/property/property-4.jpg',
-            square: 5,
-            roomNumber: 6,
-            bathroomNumber: 6,
-            garageNumber: 6,
-            title: '江南宅院',
-            address: '锦江区东大街下东大街568号',
-            price: '550',
-            typeName: '出售'
-          },
-          {
-            id: 1,
-            isHot: false,
-            isNew: false,
-            isAd: false,
-            isSpecial: false,
-            pictureUrl: 'assets/images/property/property-5.jpg',
-            square: 5,
-            roomNumber: 6,
-            bathroomNumber: 6,
-            garageNumber: 6,
-            title: '江南宅院',
-            address: '锦江区东大街下东大街568号',
-            price: '550',
-            typeName: '出售'
-          },
-          {
-            id: 1,
-            isHot: false,
-            isNew: false,
-            isAd: false,
-            isSpecial: false,
-            pictureUrl: 'assets/images/property/property-6.jpg',
-            square: 5,
-            roomNumber: 6,
-            bathroomNumber: 6,
-            garageNumber: 6,
-            title: '江南宅院',
-            address: '锦江区东大街下东大街568号',
-            price: '550',
-            typeName: '出售'
-          }
-        ],
+        //特色推荐房产，6个
+        featureProperties: [],
+        //我们的服务-广告位房产，2个
+        houseAdList: [],
+        //新增加的房产,6个
+        houseNewsList:[],
+        //我的代理人,6个
+        agentList:[],
         newProperties: [
           {
             id: 1,
@@ -687,7 +597,42 @@
     methods: {
       setCity(location) {
         this.city = location
+      },
+      selectFeaturesHouse(num){
+        this.axios.get(`/p/properties/condition-features?num=${num}`).then(result =>{
+          if (result.data.code === 200) {
+            this.featureProperties = result.data.data;
+          }
+        })
+      },
+      selectAdHouse(num){
+        this.axios.get(`/p/properties/advertising?num=${num}`).then(result => {
+          if (result.data.code === 200) {
+            this.houseAdList = result.data.data
+          }
+        });
+      },
+      selectNewsHouse() {
+        this.axios.get(`/p/properties/properties-add`).then(result => {
+          if (result.data.code === 200) {
+            this.houseNewsList = result.data.data
+          }
+        })
+      },
+      selectMyAgent(){
+        this.axios.get("/ag/agent/recommend").then( result => {
+          if(result.data.code === 200){
+            this.agentList = result.data.data
+          }
+        })
       }
+
+    },
+    created() {
+      this.selectFeaturesHouse(6);
+      this.selectAdHouse(2);
+      this.selectNewsHouse();
+      this.selectMyAgent();
     }
   }
 </script>

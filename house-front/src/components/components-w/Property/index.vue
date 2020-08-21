@@ -2,10 +2,10 @@
   <div :class="propertyClass">
     <div :class="propertyInnerClass">
       <div class="image">
-        <span v-if="property.isHot" class="label">热门</span>
-        <span v-else-if="property.isNew" class="label">新增</span>
-        <span v-else-if="property.isAd" class="label">广告</span>
-        <span v-else-if="property.isSpecial" class="label">特色</span>
+        <span v-if="property.hot" class="label">热门</span>
+<!--        <span v-else-if="property.news" class="label">新增</span>-->
+<!--        <span v-else-if="property.isAd" class="label">广告</span>-->
+        <span v-else-if="property.special" class="label">特色</span>
         <span v-else class="label"></span>
         <a :href="propertyUrl" @click="propertyClick"><img :src="`${publicPath}${property.pictureUrl}`" alt=""></a>
         <ul class="property-feature">

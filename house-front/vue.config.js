@@ -14,11 +14,11 @@ module.exports = {
         open: true,
         port: 80,
         proxy:{
-            "/p":{
+            "/p/":{
                 target:"http://192.168.2.9:10000",
                 changeOrigin: true,
             },
-            "/ag":{
+            "/ag/":{
                 target:"http://192.168.2.9:10000",
                 changeOrigin: true,
 

@@ -327,25 +327,31 @@
             // 查询广告房产
             selectAdHouse(num) {
                 this.axios.get(`/p/properties/advertising?num=${num}`).then(result => {
+                  if (result.data.code === 200) {
                     this.houseAdList = result.data.data
+                  }
                 });
             },
             // 查询特色房产
             selectFeaturesHouse(num) {
                 this.axios.get(`/p/properties/condition-features?num=${num}`).then(result => {
+                  if (result.data.code === 200) {
                     this.houseFeaturesList = result.data.data
+                  }
                 })
             },
             // 查询新增房产
             selectNewsHouse() {
                 this.axios.get(`/p/properties/properties-add`).then(result => {
+                  if (result.data.code === 200) {
                     this.houseNewsList = result.data.data
+                  }
                 })
             },
             // 查询我的代理
             selectMyAgent(){
                 this.axios.get("/ag/agent/recommend").then( result => {
-                    if(result.data.code == 200){
+                    if(result.data.code === 200){
                         this.agentList = result.data.data
                     }
                 })
