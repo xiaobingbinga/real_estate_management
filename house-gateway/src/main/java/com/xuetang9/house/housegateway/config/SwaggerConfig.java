@@ -1,6 +1,5 @@
-package com.xuetang9.housegateway.config;
+package com.xuetang9.house.housegateway.config;
 
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.route.Route;
 import org.springframework.cloud.gateway.route.RouteLocator;

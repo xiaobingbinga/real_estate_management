@@ -17,6 +17,8 @@
         <module>house-util</module>
         <module>house-login</module>
         <module>house-gateway</module>
+        <module>house-feign</module>
+        <module>house-uaa</module>
     </modules>
 
     <properties>
@@ -26,7 +28,7 @@
         <spring-boot.version>2.3.0.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR4</spring-cloud.version>
         <mysql.version>8.0.17</mysql.version>
-        <druid.version>1.1.10</druid.version>
+        <druid.version>1.1.21</druid.version>
         <mybatis-spring.version>2.1.1</mybatis-spring.version>
         <lombok.version>1.18.12</lombok.version>
         <springfox.version>2.9.2</springfox.version>
