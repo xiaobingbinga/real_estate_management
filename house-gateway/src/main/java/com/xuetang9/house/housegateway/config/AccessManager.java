@@ -51,9 +51,7 @@ public class AccessManager implements ReactiveAuthorizationManager<Authorization
     @Override
     public Mono<AuthorizationDecision> check(Mono<Authentication> authenticationMono, AuthorizationContext authorizationContext) {
         ServerWebExchange exchange = authorizationContext.getExchange();
-        // 请求资源
         String requestPath = exchange.getRequest().getURI().getPath();
-        // 是否直接放行
         if (permitAll(requestPath)) {
             return Mono.just(new AuthorizationDecision(true));
         }
