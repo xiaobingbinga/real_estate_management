@@ -33,7 +33,7 @@
                                     <span v-if="oneFea.isHot === 1" class="label">热门</span>
                                     <span v-if="oneFea.isSpecial === 1" class="label">特色</span>
                                     <a href="single-properties.html">
-                                        <img :src="`${publicPath}${oneFea.pictureUrl}`" alt=""></a>
+                                        <img :src="`${oneFea.pictureUrl}`" alt=""></a>
                                     <ul class="property-feature">
                                         <li>
                                             <span class="area">
@@ -95,7 +95,7 @@
                                     next-text="下一页 >"
                                     class="page-pagination"
                                     @change="change"
-                            ></b-pagination>
+                            />
 
                         </div>
                     </div>
@@ -172,7 +172,7 @@
 
                     <!--Sidebar start-->
                     <div class="sidebar">
-                        <h4 class="sidebar-title"><span class="text text-select-t">顶级代理人</span><span class="shape"></span></h4>
+                        <h4 class="sidebar-title"><span class="text text-select-t">顶级代理人</span><span class="shape"/></h4>
 
                         <!--Sidebar Agents start-->
                         <div class="sidebar-agent-list">
@@ -186,10 +186,10 @@
                                     <a href="#" class="phone">(756) 447 5779</a>
                                     <span class="properties">5房</span>
                                     <div class="social">
-                                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                        <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                                        <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+                                        <a href="#" class="facebook"><i class="fa fa-facebook"/></a>
+                                        <a href="#" class="twitter"><i class="fa fa-twitter"/></a>
+                                        <a href="#" class="linkedin"><i class="fa fa-linkedin"/></a>
+                                        <a href="#" class="google"><i class="fa fa-google-plus"/></a>
                                     </div>
                                 </div>
                             </div>
@@ -203,9 +203,9 @@
                                     <a href="#" class="phone">(756) 447 5779</a>
                                     <span class="properties">5房</span>
                                     <div class="social">
-                                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                        <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                                        <a href="#" class="facebook"><i class="fa fa-facebook"/></a>
+                                        <a href="#" class="twitter"><i class="fa fa-twitter"/></a>
+                                        <a href="#" class="instagram"><i class="fa fa-instagram"/></a>
                                     </div>
                                 </div>
                             </div>
@@ -219,10 +219,10 @@
                                     <a href="#" class="phone">(756) 447 5779</a>
                                     <span class="properties">5房</span>
                                     <div class="social">
-                                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                                        <a href="#" class="skype"><i class="fa fa-skype"></i></a>
-                                        <a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a>
+                                        <a href="#" class="facebook"><i class="fa fa-facebook"/></a>
+                                        <a href="#" class="twitter"><i class="fa fa-twitter"/></a>
+                                        <a href="#" class="skype"><i class="fa fa-skype"/></a>
+                                        <a href="#" class="pinterest"><i class="fa fa-pinterest"/></a>
                                     </div>
                                 </div>
                             </div>
@@ -234,7 +234,7 @@
 
                     <!--Sidebar start-->
                     <div class="sidebar">
-                        <h4 class="sidebar-title"><span class="text text-select-t">热门标签</span><span class="shape"></span></h4>
+                        <h4 class="sidebar-title"><span class="text text-select-t">热门标签</span><span class="shape"/></h4>
 
                         <!--Sidebar Tags start-->
                         <div class="sidebar-tags">
@@ -264,20 +264,41 @@
 
 <script>
     import FromInner from "../../components/components-j/home/FromInner";
-    import {mapGetters} from "vuex"
+    // import {mapGetters} from "vuex"
     export default {
         components:{FromInner},
         data() {
             return {
                 currHouse: [],//分页数据
-                rows: 6,//数据总条数
-                perPage: 1,//每页显示数据
+                rows: 60,//数据总条数
+                perPage: 6,//每页显示数据
                 currentPage: 1,//当前页数
+                featureList:null,//房产数据
                 publicPath: process.env.BASE_URL//路径数据
             }
         },
         computed:{
-            ...mapGetters('featureList',['featureList'])
+            // ...mapGetters('featureList',['featureList'])
+        },
+        methods:{
+            setCondition(){
+                console.log(this.$route.params.condition);
+                if (this.$route.params.condition != null){
+                    this.axios.post('/p/properties/condition',this.$route.params.condition)
+                        .then(result => {
+                            this.featureList = result.data.data;
+                        });
+                }else {
+                    this.axios.post('/p/properties/list',{pageNum:this.currentPage,pageSize:this.perPage})
+                        .then(result => {
+                            this.featureList = result.data.data;
+                        });
+                }
+
+            }
+        },
+        created() {
+            this.setCondition();
         }
     }
 </script>

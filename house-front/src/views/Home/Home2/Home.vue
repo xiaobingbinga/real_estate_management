@@ -2,7 +2,7 @@
   <div>
     <!--滑块组件-->
     <!--<slider title="蜗牛租房"></slider>-->
-    <hero-carousel :list="houseAdList"></hero-carousel>
+    <hero-carousel :list="houseAdList"/>
     <!--搜索条件-->
     <my-search/>
     <!--特色房产-->
@@ -15,7 +15,7 @@
       :swiperOption="estateSwiperOption">
       <template #item="{itemData}">
         <div class="property-item col">
-          <estate-sketch :info="itemData"></estate-sketch>
+          <estate-sketch :info="itemData"/>
         </div>
       </template>
     </my-carousel>
@@ -29,7 +29,7 @@
           <!--Feature start-->
           <div class="col-lg-4 col-sm-6 col-12 mb-50">
             <div class="feature">
-              <div class="icon"><i class="pe-7s-piggy"></i></div>
+              <div class="icon"><i class="pe-7s-piggy"/></div>
               <div class="content">
                 <h4>低价房</h4>
                 <p>便宜无好货，好货不便宜。。。请消费者自律呢</p>
@@ -41,7 +41,7 @@
           <!--Feature start-->
           <div class="col-lg-4 col-sm-6 col-12 mb-50">
             <div class="feature">
-              <div class="icon"><i class="pe-7s-science"></i></div>
+              <div class="icon"><i class="pe-7s-science"/></div>
               <div class="content">
                 <h4>现代设计</h4>
                 <p>便宜无好货，好货不便宜。。。请消费者自律呢</p>
@@ -53,7 +53,7 @@
           <!--Feature start-->
           <div class="col-lg-4 col-sm-6 col-12 mb-50">
             <div class="feature">
-              <div class="icon"><i class="pe-7s-display1"></i></div>
+              <div class="icon"><i class="pe-7s-display1"/></div>
               <div class="content">
                 <h4>优质房源</h4>
                 <p>便宜无好货，好货不便宜。。。请消费者自律呢</p>
@@ -65,7 +65,7 @@
           <!--Feature start-->
           <div class="col-lg-4 col-sm-6 col-12 mb-50">
             <div class="feature">
-              <div class="icon"><i class="pe-7s-signal"></i></div>
+              <div class="icon"><i class="pe-7s-signal"/></div>
               <div class="content">
                 <h4>免费Wifi</h4>
                 <p>便宜无好货，好货不便宜。。。请消费者自律呢</p>
@@ -77,7 +77,7 @@
           <!--Feature start-->
           <div class="col-lg-4 col-sm-6 col-12 mb-50">
             <div class="feature">
-              <div class="icon"><i class="pe-7s-map"></i></div>
+              <div class="icon"><i class="pe-7s-map"/></div>
               <div class="content">
                 <h4>最容易查找房源</h4>
                 <p>便宜无好货，好货不便宜。。。请消费者自律呢</p>
@@ -89,7 +89,7 @@
           <!--Feature start-->
           <div class="col-lg-4 col-sm-6 col-12 mb-50">
             <div class="feature">
-              <div class="icon"><i class="pe-7s-shield"></i></div>
+              <div class="icon"><i class="pe-7s-shield"/></div>
               <div class="content">
                 <h4>最可靠房源</h4>
                 <p>便宜无好货，好货不便宜。。。请消费者自律呢</p>
@@ -119,7 +119,7 @@
       :list="agentList"
       :swiperOption="agentSwiperOption">
       <template #item="{itemData}">
-        <my-agent :agent="itemData"></my-agent>
+        <my-agent :agent="itemData"/>
       </template>
     </my-carousel>
     <!--最近新闻-->
@@ -131,7 +131,7 @@
       :list="newsList"
       :swiperOption="estateSwiperOption">
       <template #item="{itemData}">
-        <estate-news :news-info="itemData"></estate-news>
+        <estate-news :news-info="itemData"/>
       </template>
     </my-carousel>
     

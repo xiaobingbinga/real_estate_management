@@ -22,7 +22,7 @@ import java.util.List;
  * @data: 2020年08月15日19:32
  * @address：成都市锦江区西部金融中心
  */
-@CacheConfig
+@CacheConfig 
 @RestController
 @RequestMapping("/properties")
 public class HouseInfoController {

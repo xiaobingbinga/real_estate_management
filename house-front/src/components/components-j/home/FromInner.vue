@@ -17,7 +17,7 @@
             </div>
 
             <div>
-                <b-form-select v-model="selectedCity" class="nice-select search-select">
+                <b-form-select v-model="condition.city" class="nice-select search-select">
                     <template #first>
                         <b-form-select-option :value="null" disabled>请选择城市</b-form-select-option>
                     </template>
@@ -34,7 +34,7 @@
 
             <!--类型-->
             <div>
-                <b-form-select v-model="selectedRentType" class="nice-select search-select ">
+                <b-form-select v-model="condition.statusId" class="nice-select search-select ">
                     <template #first>
                         <b-form-select-option :value="null" disabled>请选择租售类型</b-form-select-option>
                     </template>
@@ -47,7 +47,7 @@
             </div>
             <!--类型-->
             <div>
-                <b-form-select v-model="selectedHouseType" class="nice-select search-select ">
+                <b-form-select v-model="condition.type" class="nice-select search-select ">
                     <template #first>
                         <b-form-select-option :value="null" disabled>请选择房屋类型</b-form-select-option>
                     </template>
@@ -61,7 +61,7 @@
             </div>
             <!--房间数-->
             <div>
-                <b-form-select v-model="selectedHouseNum" class="nice-select search-select ">
+                <b-form-select v-model="condition.roomNumber" class="nice-select search-select ">
                     <template #first>
                         <b-form-select-option :value="null" disabled>请选择房间数</b-form-select-option>
                     </template>
@@ -74,7 +74,7 @@
             </div>
             <!--卫生间数-->
             <div>
-                <b-form-select v-model="selectedBathroom" class="nice-select search-select ">
+                <b-form-select v-model="condition.bathroomNumber" class="nice-select search-select ">
                     <template #first>
                         <b-form-select-option :value="null" disabled>请选择卫生间数</b-form-select-option>
                     </template>
@@ -100,7 +100,7 @@
                 </vue-slider>
             </div>
             <div>
-                <button>搜索</button>
+                <button @click="insurance()">搜索</button>
             </div>
         </form>
 
@@ -118,13 +118,21 @@
         data() {
             return {
                 sliderValue: [1250, 7500],
-                selectedCity:null,
-                selectedRentType:null,
-                selectedHouseType:null,
-                selectedHouseNum:null,
-                selectedBathroom:null,
                 selectedProvince:null,
-                city:null
+                city:null,
+                condition:{
+                    id:null,
+                    ownerId:null,
+                    statusId:null,
+                    type:null,
+                    city:null,
+                    roomNumber:null,
+                    bathroomNumber:null,
+                    startPrice:null,
+                    endPrice:null,
+                    pageNum:1,
+                    pageSize:6
+                }
             }
         },
         computed:{
@@ -134,6 +142,19 @@
         methods:{
             setCity(obj){
                 this.city = obj
+            },
+            insurance(){
+                this.condition.startPrice = this.sliderValue[0];
+                this.condition.endPrice = this.sliderValue[1];
+                if (this.condition.city != null){
+                    this.condition.city = this.condition.city.substring(0,this.condition.city.length-1);
+                }
+                this.$router.push({
+                    name:'propertiesLeftSidebar',
+                    params:{
+                        condition:this.condition
+                    }
+                })
             }
         }
     }
