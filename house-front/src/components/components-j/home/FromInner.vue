@@ -21,11 +21,11 @@
                     <template #first>
                         <b-form-select-option :value="null" disabled>请选择城市</b-form-select-option>
                     </template>
-                    <template v-if="city">
+                    <template v-if="citys">
                         <b-form-select-option
-                                v-for="(oneCity,idxCity) in city.districts"
+                                v-for="(oneCity,idxCity) in citys.districts"
                                 :key="idxCity"
-                                :value="oneCity.adcode">
+                                :value="oneCity.name">
                             {{oneCity.name}}
                         </b-form-select-option>
                     </template>
@@ -119,7 +119,7 @@
             return {
                 sliderValue: [1250, 7500],
                 selectedProvince:null,
-                city:null,
+                citys:null,
                 condition:{
                     id:null,
                     ownerId:null,
@@ -141,7 +141,7 @@
         },
         methods:{
             setCity(obj){
-                this.city = obj
+                this.citys = obj
             },
             insurance(){
                 this.condition.startPrice = this.sliderValue[0];

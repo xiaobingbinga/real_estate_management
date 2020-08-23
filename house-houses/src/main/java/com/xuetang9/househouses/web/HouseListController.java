@@ -1,6 +1,7 @@
 package com.xuetang9.househouses.web;
 
 
+import com.github.pagehelper.PageInfo;
 import com.xuetang9.house.domain.Properties;
 import com.xuetang9.house.dto.properties.ConditionTo;
 import com.xuetang9.house.dto.properties.PageTo;
@@ -39,7 +40,7 @@ public class HouseListController {
         List<DisplayVo> displayVos = houseListService.selectCondition(conditionTo);
         try {
             jsonResult.setCode(200);
-            jsonResult.setData(displayVos);
+            jsonResult.setData(new PageInfo<>(displayVos));
         } catch (Exception e) {
             e.printStackTrace();
             jsonResult.setCode(1000);
@@ -129,7 +130,7 @@ public class HouseListController {
         List<DisplayVo> displayVos = houseListService.selectAll(pageTo.getPageNum(),pageTo.getPageSize());
         try {
             jsonResult.setCode(200);
-            jsonResult.setData(displayVos);
+            jsonResult.setData(new PageInfo<>(displayVos));
         } catch (Exception e) {
             e.printStackTrace();
             jsonResult.setCode(1000);
@@ -137,8 +138,5 @@ public class HouseListController {
         }
         return jsonResult;
     }
-
-
-
 
 }

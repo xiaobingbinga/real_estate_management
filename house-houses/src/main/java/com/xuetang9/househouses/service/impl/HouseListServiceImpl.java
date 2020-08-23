@@ -2,6 +2,7 @@ package com.xuetang9.househouses.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.xuetang9.house.domain.Properties;
 import com.xuetang9.house.dto.properties.ConditionTo;
 import com.xuetang9.house.mapper.PropertiesMapper;

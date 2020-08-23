@@ -43,9 +43,42 @@
                                                 <input type="text" id="property_title">
                                             </div>
 
-                                            <div class="col-md-4 col-12 mb-30">
-                                                <label for="property_address">地址</label>
-                                                <input type="text" id="property_address">
+                                            <div class="col-md-2 col-12 mb-30">
+                                                <label>省份</label>
+                                                <b-form-select v-model="selectedProvince" class="nice-select search-select "
+                                                               @change="setCity(selectedProvince)">
+                                                    <template #first>
+                                                        <b-form-select-option :value="null" disabled>请选择省份</b-form-select-option>
+                                                    </template>
+                                                    <b-form-select-option
+                                                            v-for="(onePro,idxPro) in address.districts"
+                                                            :key="idxPro"
+                                                            :value="onePro" >
+                                                        {{onePro.name}}
+                                                    </b-form-select-option>
+                                                </b-form-select>
+                                            </div>
+
+                                            <div class="col-md-2 col-12 mb-30">
+                                                <label>城市</label>
+                                                <b-form-select v-model="condition.city" class="nice-select search-select ">
+                                                    <template #first>
+                                                        <b-form-select-option :value="null" disabled>请选择城市</b-form-select-option>
+                                                    </template>
+                                                    <template v-if="citys">
+                                                    <b-form-select-option
+                                                            v-for="(oneCity,idxCity) in citys.districts"
+                                                            :key="idxCity"
+                                                            :value="oneCity.name">
+                                                        {{oneCity.name}}
+                                                    </b-form-select-option>
+                                                    </template>
+                                                </b-form-select>
+                                            </div>
+
+                                            <div class="col-md-8 col-12 mb-30">
+                                                <label for="property_address">详细地址</label>
+                                                <input type="text" id="property_address" placeholder="请输入详细地址">
                                             </div>
 
 
@@ -53,14 +86,15 @@
 
                                             <div class="col-md-4 col-12 mb-30">
                                                 <label>状态</label>
-                                                <b-form-select v-model="selectedStatus" class="nice-select search-select ">
+                                                <b-form-select v-model="condition.statusId" class="nice-select search-select "
+                                                                @change="setStatusId(condition.statusId)">
                                                     <template #first>
                                                         <b-form-select-option :value="null" disabled>请选择房屋状态</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneStatus,idxStatus) in select.status"
-                                                            :key="idxStatus" :value="oneStatus">
-                                                        {{oneStatus}}
+                                                            v-for="(oneStatus,idxStatus) in search.rentType.options"
+                                                            :key="idxStatus" :value="oneStatus.value">
+                                                        {{oneStatus.tip}}
                                                     </b-form-select-option>
                                                 </b-form-select>
                                             </div>
@@ -70,26 +104,29 @@
                                                 <label>租期</label>
                                                 <b-form-select v-model="selectedLeaseTerm" class="nice-select search-select ">
                                                     <template #first>
-                                                        <b-form-select-option :value="null" disabled>请选择租期类型</b-form-select-option>
+                                                        <b-form-select-option :value="null" disabled>
+                                                            {{status !== 2 ? '请选择租期类型' : '永久'}}</b-form-select-option>
                                                     </template>
+                                                    <template v-if="status !== 2">
                                                     <b-form-select-option
-                                                            v-for="(oneLeaseTerm,idxLeaseTerm) in select.leaseTerm"
-                                                            :key="idxLeaseTerm" :value="oneLeaseTerm">
-                                                        {{oneLeaseTerm}}
+                                                            v-for="(oneLeaseTerm,idxLeaseTerm) in search.leaseTermType.options"
+                                                            :key="idxLeaseTerm" :value="oneLeaseTerm.value">
+                                                        {{oneLeaseTerm.tip}}
                                                     </b-form-select-option>
+                                                    </template>
                                                 </b-form-select>
                                             </div>
 
                                             <div class="col-md-4 col-12 mb-30">
                                                 <label>类型</label>
-                                                <b-form-select v-model="selectedTypes" class="nice-select search-select ">
+                                                <b-form-select v-model="condition.type" class="nice-select search-select ">
                                                     <template #first>
                                                         <b-form-select-option :value="null" disabled>请选择房屋类型</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneTypes,idxTypes) in select.types"
-                                                            :key="idxTypes" :value="oneTypes">
-                                                        {{oneTypes}}
+                                                            v-for="(oneTypes,idxTypes) in search.houseType.options"
+                                                            :key="idxTypes" :value="oneTypes.value">
+                                                        {{oneTypes.tip}}
                                                     </b-form-select-option>
                                                 </b-form-select>
                                             </div>
@@ -121,7 +158,7 @@
                                         <div class="row">
                                             <div class="col-12 mb-30">
                                                 <label>上传房屋图片</label>
-                                                <vue-dropzone id="dropzone" :options="dropzoneOptions"></vue-dropzone>
+                                                <vue-dropzone id="dropzone" :options="dropzoneOptions"/>
                                             </div>
 
                                             <div class="col-12 mb-30">
@@ -146,7 +183,7 @@
                                         <div class="row">
                                             <div class="col-12 mb-30">
                                                 <label for="property_description">描述</label>
-                                                <textarea id="property_description"></textarea>
+                                                <textarea id="property_description"/>
                                             </div>
 
                                             <div class="col-md-4 col-12 mb-30">
@@ -332,7 +369,7 @@
 <script>
     import vueDropzone from 'vue2-dropzone'
     import 'vue2-dropzone/dist/vue2Dropzone.min.css'
-
+    import {mapGetters} from 'vuex'
 
     export default {
         components: {
@@ -350,6 +387,15 @@
                     //最大文件数量
                     maxFiles: 1,
                     dictDefaultMessage: "<i class='pe-7s-cloud-upload'></i>点击或拖拽上传文件"
+                },
+                selectedProvince: null,
+                citys:null,
+                status:null,
+                condition:{
+                    city:null,
+                    statusId:null,
+                    type:null,
+
                 },
                 fromNum:1,
                 select:{
@@ -379,9 +425,19 @@
 
             }
         },
+        computed:{
+            ...mapGetters('address',["address"]),
+            ...mapGetters('search',['search'])
+        },
         methods:{
             setFromNum(num){
                 this.fromNum = num;
+            },
+            setCity(obj){
+                this.citys = obj
+            },
+            setStatusId(obj){
+                this.status = obj
             }
         }
     }

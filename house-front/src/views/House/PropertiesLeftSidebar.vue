@@ -270,7 +270,7 @@
         data() {
             return {
                 currHouse: [],//分页数据
-                rows: 60,//数据总条数
+                rows: 0,//数据总条数
                 perPage: 6,//每页显示数据
                 currentPage: 1,//当前页数
                 featureList:null,//房产数据
@@ -294,7 +294,6 @@
                             this.featureList = result.data.data;
                         });
                 }
-
             }
         },
         created() {
