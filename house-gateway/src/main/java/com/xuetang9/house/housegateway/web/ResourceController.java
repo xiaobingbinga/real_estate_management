@@ -1,4 +1,4 @@
-package com.xuetang9.housegateway.web;
+package com.xuetang9.house.housegateway.web;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

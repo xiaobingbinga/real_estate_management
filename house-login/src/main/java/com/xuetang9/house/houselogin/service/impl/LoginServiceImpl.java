@@ -5,6 +5,7 @@ import com.xuetang9.house.houselogin.domain.UserExample;
 import com.xuetang9.house.houselogin.exception.FailLoginException;
 import com.xuetang9.house.houselogin.mapper.UserMapper;
 import com.xuetang9.house.houselogin.service.LoginService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public class LoginServiceImpl implements LoginService {
         example.or().andAccountEqualTo(username);
         User user = userMapper.selectOneByExampleSelective(example, User.Column.password, User.Column.nikename,
                 User.Column.utId);
-        if (password.equals(user.getPassword())){
+        if (!new BCryptPasswordEncoder().matches(password, user.getPassword())){
             throw new FailLoginException("用户名或密码错误");
         }
         return user;

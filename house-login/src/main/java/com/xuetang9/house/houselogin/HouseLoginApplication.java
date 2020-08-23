@@ -2,10 +2,14 @@ package com.xuetang9.house.houselogin;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
-import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@SpringCloudApplication
+@SpringBootApplication
+@EnableDiscoveryClient
 @MapperScan("com.xuetang9.house.houselogin.mapper")
+@EnableFeignClients(basePackages = "com.xuetang9.house.house_feign.feign")
 public class HouseLoginApplication {
 
     public static void main(String[] args) {

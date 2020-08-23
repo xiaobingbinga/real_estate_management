@@ -5,6 +5,7 @@ import com.xuetang9.house.houselogin.annotation.ControllerExceptionHandler;
 import com.xuetang9.house.houselogin.exception.FailLoginException;
 import com.xuetang9.house.vo.JsonResult;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -34,7 +35,7 @@ public class GlobalControllerExceptionHandler {
     @ExceptionHandler(FailLoginException.class)
     public JsonResult handlerFailLoginException(FailLoginException e){
         log.error("登录失败" + e, e);
-        return new JsonResult<Map>().setCode(401).setMessage("登录失败");
+        return new JsonResult<Map>().setCode(401).setMessage("用户名或密码错误");
     }
 
     @ExceptionHandler(ClientException.class)
@@ -53,5 +54,11 @@ public class GlobalControllerExceptionHandler {
     public JsonResult handlerFinallyFailRegisterException(SQLIntegrityConstraintViolationException e) {
         log.info("注册失败" + e, e);
         return new JsonResult().setCode(605).setMessage("最终注册失败");
+    }
+
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public JsonResult handlerHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) {
+        log.info("token 获取失败" + e, e);
+        return new JsonResult().setCode(401).setMessage("token 获取失败");
     }
 }
