@@ -193,9 +193,9 @@
                                                         <b-form-select-option :value="null" disabled>请选择建造年份</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneConstructionYear,idxConstructionYear) in select.constructionYear"
-                                                            :key="idxConstructionYear" :value="oneConstructionYear">
-                                                        {{oneConstructionYear}}
+                                                            v-for="(oneConstructionYear,idxConstructionYear) in search.constructionYear.options"
+                                                            :key="idxConstructionYear" :value="oneConstructionYear.value">
+                                                        {{oneConstructionYear.tip}}
                                                     </b-form-select-option>
                                                 </b-form-select>
                                             </div>
@@ -207,9 +207,9 @@
                                                         <b-form-select-option :value="null" disabled>请选择房间数量</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneHouseNum,idxHouseNum) in select.houseNum"
-                                                            :key="idxHouseNum" :value="oneHouseNum">
-                                                        {{oneHouseNum}}
+                                                            v-for="(oneHouseNum,idxHouseNum) in search.roomNumber.options"
+                                                            :key="idxHouseNum" :value="oneHouseNum.value">
+                                                        {{oneHouseNum.tip}}
                                                     </b-form-select-option>
                                                 </b-form-select>
                                             </div>
@@ -221,9 +221,9 @@
                                                         <b-form-select-option :value="null" disabled>请选择卫生间数量</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneToiletsNum,idxToiletsNum) in select.toiletsNum"
-                                                            :key="idxToiletsNum" :value="oneToiletsNum">
-                                                        {{oneToiletsNum}}
+                                                            v-for="(oneToiletsNum,idxToiletsNum) in search.bathroomNumber.options"
+                                                            :key="idxToiletsNum" :value="oneToiletsNum.value">
+                                                        {{oneToiletsNum.tip}}
                                                     </b-form-select-option>
                                                 </b-form-select>
                                             </div>
@@ -235,9 +235,9 @@
                                                         <b-form-select-option :value="null" disabled>请选择厨房数量</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneKitchen,idxKitchen) in select.kitchen"
-                                                            :key="idxKitchen" :value="oneKitchen">
-                                                        {{oneKitchen}}
+                                                            v-for="(oneKitchen,idxKitchen) in search.kitchen.options"
+                                                            :key="idxKitchen" :value="oneKitchen.value">
+                                                        {{oneKitchen.tip}}
                                                     </b-form-select-option>
                                                 </b-form-select>
                                             </div>
@@ -249,9 +249,9 @@
                                                         <b-form-select-option :value="null" disabled>请选择车位数量</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneParkingSpace,idxParkingSpace) in select.parkingSpace"
-                                                            :key="idxParkingSpace" :value="oneParkingSpace">
-                                                        {{oneParkingSpace}}
+                                                            v-for="(oneParkingSpace,idxParkingSpace) in search.parkingSpace.options"
+                                                            :key="idxParkingSpace" :value="oneParkingSpace.value">
+                                                        {{oneParkingSpace.tip}}
                                                     </b-form-select-option>
                                                 </b-form-select>
                                             </div>
@@ -259,13 +259,13 @@
                                             <div class="col-md-4 col-12 mb-30">
                                                 <label>是否有物管</label>
                                                 <b-form-select v-model="selectedProperty" class="nice-select search-select ">
-                                                    <template #first>
-                                                        <b-form-select-option :value="null" disabled>是否有物业</b-form-select-option>
-                                                    </template>
+<!--                                                    <template #first>-->
+<!--                                                        <b-form-select-option :value="1" disabled>有</b-form-select-option>-->
+<!--                                                    </template>-->
                                                     <b-form-select-option
-                                                            v-for="(oneProperty,idxProperty) in select.bool"
-                                                            :key="idxProperty" :value="oneProperty">
-                                                        {{oneProperty}}
+                                                            v-for="(oneProperty,idxProperty) in search.bool.options"
+                                                            :key="idxProperty" :value="oneProperty.value">
+                                                        {{oneProperty.tip}}
                                                     </b-form-select-option>
                                                 </b-form-select>
                                             </div>
@@ -274,12 +274,12 @@
                                                 <label>电</label>
                                                 <b-form-select v-model="selectedElectricity" class="nice-select search-select ">
                                                     <template #first>
-                                                        <b-form-select-option :value="null" disabled>是否通电</b-form-select-option>
+                                                        <b-form-select-option :value="1" disabled>有</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneElectricity,idxElectricity) in select.bool"
-                                                            :key="idxElectricity" :value="oneElectricity">
-                                                        {{oneElectricity}}
+                                                            v-for="(oneElectricity,idxElectricity) in search.bool.options"
+                                                            :key="idxElectricity" :value="oneElectricity.value">
+                                                        {{oneElectricity.tip}}
                                                     </b-form-select-option>
                                                 </b-form-select>
                                             </div>
@@ -288,12 +288,12 @@
                                                 <label>气</label>
                                                 <b-form-select v-model="selectedNaturalGas" class="nice-select search-select ">
                                                     <template #first>
-                                                        <b-form-select-option :value="null" disabled>是否有天然气</b-form-select-option>
+                                                        <b-form-select-option :value="1" disabled>有</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneNaturalGas,idxNaturalGas) in select.bool"
-                                                            :key="idxNaturalGas" :value="oneNaturalGas">
-                                                        {{oneNaturalGas}}
+                                                            v-for="(oneNaturalGas,idxNaturalGas) in search.bool.options"
+                                                            :key="idxNaturalGas" :value="oneNaturalGas.value">
+                                                        {{oneNaturalGas.tip}}
                                                     </b-form-select-option>
                                                 </b-form-select>
                                             </div>
@@ -302,12 +302,12 @@
                                                 <label>水</label>
                                                 <b-form-select v-model="selectedWater" class="nice-select search-select ">
                                                     <template #first>
-                                                        <b-form-select-option :value="null" disabled>是否通水</b-form-select-option>
+                                                        <b-form-select-option :value="1" disabled>有</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneWater,idxWater) in select.bool"
-                                                            :key="idxWater" :value="oneWater">
-                                                        {{oneWater}}
+                                                            v-for="(oneWater,idxWater) in search.bool.options"
+                                                            :key="idxWater" :value="oneWater.value">
+                                                        {{oneWater.tip}}
                                                     </b-form-select-option>
                                                 </b-form-select>
                                             </div>
@@ -398,18 +398,6 @@
 
                 },
                 fromNum:1,
-                select:{
-                    status:['租房','卖房'],
-                    leaseTerm:['按天计','按周计','按月计','按年计'],
-                    types:['公寓','咖啡馆','住宅','餐馆','商店','别墅'],
-                    constructionYear:
-                        ['1 年以上','2 年以上','3 年以上','4 年以上','5 年以上','6 年以上','7 年以上','8 年以上','9 年以上'],
-                    houseNum:['1','2','3','4','5','6','7','8','9'],
-                    toiletsNum:['1','2','3','4','5','6','7','8','9'],
-                    kitchen:['1','2','3'],
-                    parkingSpace:['1','2','3'],
-                    bool:['有','没有']
-                },
                 selectedStatus:null,
                 selectedLeaseTerm:null,
                 selectedTypes:null,
