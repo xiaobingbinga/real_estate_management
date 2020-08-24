@@ -27,4 +27,6 @@ public interface HouseListService extends BaseService<Properties,Integer> {
     List<DisplayVo> selectSpecial(int i);
 
     List<DisplayVo> selectAll(Integer pageNum, Integer pageSize);
+
+    List<DisplayVo> selectCondition(Long[] ids);
 }

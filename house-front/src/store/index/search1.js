@@ -1,7 +1,7 @@
 export default {
     namespaced: true,
     state: {
-        search: {
+        search1: {
             rentType: {
                 label: '状态',
                 options: [
@@ -90,7 +90,7 @@ export default {
         }
     },
     getters: {
-        search: state => state.search
+        search1: state => state.search1
     },
     mutations: {},
     actions: {},

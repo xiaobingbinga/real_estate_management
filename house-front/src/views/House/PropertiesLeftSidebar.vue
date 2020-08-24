@@ -25,7 +25,7 @@
                     <div class="row">
 
 
-                        <div v-for="(oneFea,idxFea) in featureList"
+                        <div v-for="(oneFea,idxFea) in currHouse"
                              :key="idxFea"
                              class="property-item col-md-6 col-12 mb-40">
                             <div class="property-inner">
@@ -114,7 +114,7 @@
                         <!--Property Search start-->
                         <div class="property-search sidebar-property-search">
 
-                            <from-inner/>
+                            <from-inner @insurance="setCondition"/>
 
                         </div>
                         <!--Property Search end-->
@@ -273,7 +273,7 @@
                 rows: 0,//数据总条数
                 perPage: 6,//每页显示数据
                 currentPage: 1,//当前页数
-                featureList:null,//房产数据
+                condition:null,//查询数据
                 publicPath: process.env.BASE_URL//路径数据
             }
         },
@@ -281,23 +281,35 @@
             // ...mapGetters('featureList',['featureList'])
         },
         methods:{
-            setCondition(){
-                console.log(this.$route.params.condition);
-                if (this.$route.params.condition != null){
-                    this.axios.post('/p/properties/condition',this.$route.params.condition)
+            setCondition(condition){
+                this.condition = condition;
+                if (condition != null){
+                    this.axios.post('/p/properties/condition',condition)
                         .then(result => {
-                            this.featureList = result.data.data;
+                            console.log(result);
+                            this.currHouse = result.data.data.list;
+                            this.rows = result.data.data.total;
                         });
-                }else {
+                }else{
                     this.axios.post('/p/properties/list',{pageNum:this.currentPage,pageSize:this.perPage})
                         .then(result => {
-                            this.featureList = result.data.data;
+                            console.log(result);
+                            this.currHouse = result.data.data.list;
+                            this.rows = result.data.data.total;
                         });
+                }
+            },
+            change(){
+                if (this.condition != null){
+                    this.condition.pageNum = this.currentPage;
+                    this.setCondition(this.condition);
+                }else {
+                    this.setCondition(null);
                 }
             }
         },
         created() {
-            this.setCondition();
+            this.setCondition(this.$route.params.condition);
         }
     }
 </script>

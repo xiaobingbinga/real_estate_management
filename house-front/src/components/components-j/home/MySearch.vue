@@ -14,7 +14,7 @@
       <div class="row">
         <div class="col">
           <div class="property-search">
-            <from-inner/>
+            <from-inner @insurance="jump"/>
           </div>
         </div>
       </div>
@@ -27,8 +27,17 @@
     import FromInner from "./FromInner";
 
     export default {
-        components: {FromInner}
-
+        components: {FromInner},
+        methods:{
+          jump(condition){
+            this.$router.push({
+              name:'propertiesLeftSidebar',
+              params:{
+                condition
+              }
+            })
+          }
+        }
 
     }
 </script>

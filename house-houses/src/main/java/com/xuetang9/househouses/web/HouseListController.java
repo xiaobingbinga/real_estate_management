@@ -41,6 +41,7 @@ public class HouseListController {
         try {
             jsonResult.setCode(200);
             jsonResult.setData(new PageInfo<>(displayVos));
+//            jsonResult.setData(displayVos);
         } catch (Exception e) {
             e.printStackTrace();
             jsonResult.setCode(1000);
@@ -49,6 +50,25 @@ public class HouseListController {
         return jsonResult;
     }
 
+    /**
+     * 根据代理人返回房产信息
+     * @param ids
+     * @return
+     */
+    @PostMapping("/condition-owner")
+    public JsonResult houseListByOwner(@RequestBody Long[] ids){
+        JsonResult jsonResult = new JsonResult();
+        List<DisplayVo> displayVos = houseListService.selectCondition(ids);
+        try {
+            jsonResult.setCode(200);
+            jsonResult.setData(displayVos);
+        } catch (Exception e) {
+            e.printStackTrace();
+            jsonResult.setCode(1000);
+            jsonResult.setMessage("数据库查询失败");
+        }
+        return jsonResult;
+    }
 
     /**
      * 推荐新增房产
@@ -131,6 +151,7 @@ public class HouseListController {
         try {
             jsonResult.setCode(200);
             jsonResult.setData(new PageInfo<>(displayVos));
+//            jsonResult.setData(displayVos);
         } catch (Exception e) {
             e.printStackTrace();
             jsonResult.setCode(1000);
