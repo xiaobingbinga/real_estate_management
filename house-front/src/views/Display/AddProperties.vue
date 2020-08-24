@@ -92,7 +92,7 @@
                                                         <b-form-select-option :value="null" disabled>请选择房屋状态</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneStatus,idxStatus) in search.rentType.options"
+                                                            v-for="(oneStatus,idxStatus) in search1.rentType.options"
                                                             :key="idxStatus" :value="oneStatus.value">
                                                         {{oneStatus.tip}}
                                                     </b-form-select-option>
@@ -109,7 +109,7 @@
                                                     </template>
                                                     <template v-if="status !== 2">
                                                     <b-form-select-option
-                                                            v-for="(oneLeaseTerm,idxLeaseTerm) in search.leaseTermType.options"
+                                                            v-for="(oneLeaseTerm,idxLeaseTerm) in search1.leaseTermType.options"
                                                             :key="idxLeaseTerm" :value="oneLeaseTerm.value">
                                                         {{oneLeaseTerm.tip}}
                                                     </b-form-select-option>
@@ -124,7 +124,7 @@
                                                         <b-form-select-option :value="null" disabled>请选择房屋类型</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneTypes,idxTypes) in search.houseType.options"
+                                                            v-for="(oneTypes,idxTypes) in search1.houseType.options"
                                                             :key="idxTypes" :value="oneTypes.value">
                                                         {{oneTypes.tip}}
                                                     </b-form-select-option>
@@ -193,7 +193,7 @@
                                                         <b-form-select-option :value="null" disabled>请选择建造年份</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneConstructionYear,idxConstructionYear) in search.constructionYear.options"
+                                                            v-for="(oneConstructionYear,idxConstructionYear) in search1.constructionYear.options"
                                                             :key="idxConstructionYear" :value="oneConstructionYear.value">
                                                         {{oneConstructionYear.tip}}
                                                     </b-form-select-option>
@@ -207,7 +207,7 @@
                                                         <b-form-select-option :value="null" disabled>请选择房间数量</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneHouseNum,idxHouseNum) in search.roomNumber.options"
+                                                            v-for="(oneHouseNum,idxHouseNum) in search1.roomNumber.options"
                                                             :key="idxHouseNum" :value="oneHouseNum.value">
                                                         {{oneHouseNum.tip}}
                                                     </b-form-select-option>
@@ -221,7 +221,7 @@
                                                         <b-form-select-option :value="null" disabled>请选择卫生间数量</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneToiletsNum,idxToiletsNum) in search.bathroomNumber.options"
+                                                            v-for="(oneToiletsNum,idxToiletsNum) in search1.bathroomNumber.options"
                                                             :key="idxToiletsNum" :value="oneToiletsNum.value">
                                                         {{oneToiletsNum.tip}}
                                                     </b-form-select-option>
@@ -235,7 +235,7 @@
                                                         <b-form-select-option :value="null" disabled>请选择厨房数量</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneKitchen,idxKitchen) in search.kitchen.options"
+                                                            v-for="(oneKitchen,idxKitchen) in search1.kitchen.options"
                                                             :key="idxKitchen" :value="oneKitchen.value">
                                                         {{oneKitchen.tip}}
                                                     </b-form-select-option>
@@ -249,7 +249,7 @@
                                                         <b-form-select-option :value="null" disabled>请选择车位数量</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneParkingSpace,idxParkingSpace) in search.parkingSpace.options"
+                                                            v-for="(oneParkingSpace,idxParkingSpace) in search1.parkingSpace.options"
                                                             :key="idxParkingSpace" :value="oneParkingSpace.value">
                                                         {{oneParkingSpace.tip}}
                                                     </b-form-select-option>
@@ -262,11 +262,13 @@
 <!--                                                    <template #first>-->
 <!--                                                        <b-form-select-option :value="1" disabled>有</b-form-select-option>-->
 <!--                                                    </template>-->
-                                                    <b-form-select-option
-                                                            v-for="(oneProperty,idxProperty) in search.bool.options"
-                                                            :key="idxProperty" :value="oneProperty.value">
-                                                        {{oneProperty.tip}}
-                                                    </b-form-select-option>
+                                                    <b-form-select-option :value="0">有</b-form-select-option>
+                                                    <b-form-select-option :value="1">没有</b-form-select-option>
+<!--                                                    <b-form-select-option-->
+<!--                                                            v-for="(oneProperty,idxProperty) in search.bool.options"-->
+<!--                                                            :key="idxProperty" :value="oneProperty.value">-->
+<!--                                                        {{oneProperty.tip}}-->
+<!--                                                    </b-form-select-option>-->
                                                 </b-form-select>
                                             </div>
 
@@ -277,7 +279,7 @@
                                                         <b-form-select-option :value="1" disabled>有</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneElectricity,idxElectricity) in search.bool.options"
+                                                            v-for="(oneElectricity,idxElectricity) in search1.bool.options"
                                                             :key="idxElectricity" :value="oneElectricity.value">
                                                         {{oneElectricity.tip}}
                                                     </b-form-select-option>
@@ -291,7 +293,7 @@
                                                         <b-form-select-option :value="1" disabled>有</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneNaturalGas,idxNaturalGas) in search.bool.options"
+                                                            v-for="(oneNaturalGas,idxNaturalGas) in search1.bool.options"
                                                             :key="idxNaturalGas" :value="oneNaturalGas.value">
                                                         {{oneNaturalGas.tip}}
                                                     </b-form-select-option>
@@ -305,7 +307,7 @@
                                                         <b-form-select-option :value="1" disabled>有</b-form-select-option>
                                                     </template>
                                                     <b-form-select-option
-                                                            v-for="(oneWater,idxWater) in search.bool.options"
+                                                            v-for="(oneWater,idxWater) in search1.bool.options"
                                                             :key="idxWater" :value="oneWater.value">
                                                         {{oneWater.tip}}
                                                     </b-form-select-option>
@@ -415,7 +417,7 @@
         },
         computed:{
             ...mapGetters('address',["address"]),
-            ...mapGetters('search',['search'])
+            ...mapGetters('search1',['search1'])
         },
         methods:{
             setFromNum(num){

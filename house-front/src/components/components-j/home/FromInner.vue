@@ -39,7 +39,7 @@
                         <b-form-select-option :value="null" disabled>请选择租售类型</b-form-select-option>
                     </template>
                     <b-form-select-option
-                            v-for="(oneRent,idxRent) in search.rentType.options"
+                            v-for="(oneRent,idxRent) in search1.rentType.options"
                             :key="idxRent" :value="oneRent.value">
                         {{oneRent.tip}}
                     </b-form-select-option>
@@ -52,7 +52,7 @@
                         <b-form-select-option :value="null" disabled>请选择房屋类型</b-form-select-option>
                     </template>
                     <b-form-select-option
-                            v-for="(oneHouse,idxHouse) in search.houseType.options"
+                            v-for="(oneHouse,idxHouse) in search1.houseType.options"
                             :key="idxHouse" :value="oneHouse.value">
                         {{oneHouse.tip}}
                     </b-form-select-option>
@@ -66,7 +66,7 @@
                         <b-form-select-option :value="null" disabled>请选择房间数</b-form-select-option>
                     </template>
                     <b-form-select-option
-                            v-for="(oneRoom,idxRoom) in search.roomNumber.options"
+                            v-for="(oneRoom,idxRoom) in search1.roomNumber.options"
                             :key="idxRoom" :value="oneRoom.value">
                         {{oneRoom.tip}}
                     </b-form-select-option>
@@ -79,7 +79,7 @@
                         <b-form-select-option :value="null" disabled>请选择卫生间数</b-form-select-option>
                     </template>
                     <b-form-select-option
-                            v-for="(oneBath,idxBath) in search.bathroomNumber.options"
+                            v-for="(oneBath,idxBath) in search1.bathroomNumber.options"
                             :key="idxBath" :value="oneBath.value">
                         {{oneBath.tip}}
                     </b-form-select-option>
@@ -136,7 +136,7 @@
             }
         },
         computed:{
-            ...mapGetters('search',["search"]),
+            ...mapGetters('search1',["search1"]),
             ...mapGetters('address',["address"])
         },
         methods:{

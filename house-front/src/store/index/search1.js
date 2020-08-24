@@ -28,44 +28,18 @@ export default {
                     {value: 6, tip:'别墅'}
                 ]
             },
-            province:{
-                label: '省份',
-                options: [
-                    {value: 1, tip: ''},
-                    {value: 2, tip: ''},
-                    {value: 3, tip: ''},
-                    {value: 4, tip: ''},
-                    {value: 5, tip: ''},
-                    {value: 6, tip: ''},
-                    {value: 7, tip: ''},
-                    {value: 8, tip: ''},
-                    {value: 9, tip: ''}
-                ]
-            },
-            city: {
-                label: '城市',
-                options: [
-                    {value: 1, tip: '成都'},
-                    {value: 2, tip: '北京'},
-                    {value: 3, tip: '上海'},
-                    {value: 4, tip: '广州'},
-                    {value: 5, tip: '深圳'},
-                    {value: 6, tip: '重庆'},
-                    {value: 7, tip: '武汉'},
-                    {value: 8, tip: '沈阳'},
-                    {value: 9, tip: '福州'},
-                    {value: 10, tip: '厦门'},
-                    {value: 11, tip: '银川'},
-                    {value: 12, tip: '拉萨'},
-                    {value: 13, tip: '绵阳'},
-                    {value: 14, tip: '遂宁'},
-                    {value: 15, tip: '攀枝花'},
-                    {value: 16, tip: '简阳'},
-                    {value: 17, tip: '德阳'},
-                    {value: 18, tip: '金堂'},
-                    {value: 19, tip: '泸州'},
-                    {value: 20, tip: '内江'},
-                    {value: 21, tip: '阆中'}
+            constructionYear:{
+                label:'建造年份',
+                options:[
+                    {value:1,tip:'1 年以上'},
+                    {value:2,tip:'2 年以上'},
+                    {value:3,tip:'3 年以上'},
+                    {value:4,tip:'4 年以上'},
+                    {value:5,tip:'5 年以上'},
+                    {value:6,tip:'6 年以上'},
+                    {value:7,tip:'7 年以上'},
+                    {value:8,tip:'8 年以上'},
+                    {value:9,tip:'9 年以上'}
                 ]
             },
             roomNumber: {
@@ -88,6 +62,29 @@ export default {
                     {value: 4, tip: '4'},
                     {value: 5, tip: '5'},
                     {value: 6, tip: '6'}
+                ]
+            },
+            kitchen:{
+                label:'厨房数量',
+                options:[
+                    {value:1,tip:'1'},
+                    {value:2,tip:'2'},
+                    {value:3,tip:'3'}
+                ]
+            },
+            parkingSpace:{
+                label:'车位数量',
+                options:[
+                    {value:1,tip:'1'},
+                    {value:2,tip:'2'},
+                    {value:3,tip:'3'}
+                ]
+            },
+            bool:{
+                label:'是否含有',
+                options:[
+                    {value:0,tip:'没有'},
+                    {value:1,tip:'有'}
                 ]
             }
         }
