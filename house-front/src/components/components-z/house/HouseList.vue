@@ -3,7 +3,7 @@
     <div :class="rootClass">
         <div class="row">
             <div :class="itemRootClass"
-                 v-for="houseInfo in houseList"
+                 v-for="houseInfo in pageInfo.list"
                  :key="houseInfo.id">
                 <house-inner :houseInfo="houseInfo">
                     <template #houseDescription="{description}">
@@ -20,13 +20,13 @@
         <div class="row mt-20">
             <div class="col">
                 <b-pagination class="page-pagination"
-                              v-model="currentPage"
-                              :total-rows="rows"
-                              :per-page="perPage"
+                              v-model="pageInfo.pageNum"
+                              :total-rows="pageInfo.total"
+                              :per-page="pageInfo.pageSize"
                               align="center"
                               size="lg"
-                              aria-control s="my-table"
                               pills
+                              @change="changePage"
                               :hide-goto-end-buttons="true"
                               :hide-goto-start-buttons="true"
                               prev-text='< Prev'
@@ -45,113 +45,18 @@
         props:{
             rootClass:String,
             itemRootClass:String,
-            houseList:{
-                type:Array,
-                default(){
-                    return [
-                        {
-                            id:1,
-                            pictureUrl:"assets/images/property/property-1.jpg",
-                            square:550,
-                            roomNumber:6,
-                            bathroomNumber:4,
-                            garageNumber:3,
-                            title:'江南宅院',
-                            address:'锦江区东大街下东大街568号',
-                            rentType:1,
-                            price:550,
-                            leaseType:1,
-                            isHot:1,
-                            isSpecial:0
-                        },
-                        {
-                            id:2,
-                            pictureUrl:"assets/images/property/property-2.jpg",
-                            square:550,
-                            roomNumber:6,
-                            bathroomNumber:4,
-                            garageNumber:3,
-                            title:'木马山别墅',
-                            address:'城北大道450附22号',
-                            rentType:2,
-                            price:2550,
-                            leaseType:1,
-                            isHot:1,
-                            isSpecial:0
-                        },
-                        {
-                            id:3,
-                            pictureUrl:"assets/images/property/property-3.jpg",
-                            square:550,
-                            roomNumber:6,
-                            bathroomNumber:4,
-                            garageNumber:3,
-                            title:'皇家一号公寓',
-                            address:'锦江区福字街215号',
-                            rentType:1,
-                            price:550,
-                            leaseType:1,
-                            isHot:1,
-                            isSpecial:0
-                        },
-                        {
-                            id:4,
-                            pictureUrl:"assets/images/property/property-4.jpg",
-                            square:550,
-                            roomNumber:6,
-                            bathroomNumber:4,
-                            garageNumber:3,
-                            title:'龙城一号别墅',
-                            address:'龙泉驿区南山大道333号附12号',
-                            rentType:1,
-                            price:550,
-                            leaseType:1,
-                            isHot:1,
-                            isSpecial:0
-                        },
-                        {
-                            id:5,
-                            pictureUrl:"assets/images/property/property-5.jpg",
-                            square:550,
-                            roomNumber:6,
-                            bathroomNumber:4,
-                            garageNumber:3,
-                            title:'春天花园别墅',
-                            address:'金牛区琴台西路668号',
-                            rentType:2,
-                            price:2550,
-                            leaseType:1,
-                            isHot:1,
-                            isSpecial:0
-                        },
-                        {
-                            id:6,
-                            pictureUrl:"assets/images/property/property-6.jpg",
-                            square:550,
-                            roomNumber:6,
-                            bathroomNumber:4,
-                            garageNumber:3,
-                            title:'万科西山别墅',
-                            address:'高新区蜀都大道12号',
-                            rentType:1,
-                            price:550,
-                            leaseType:1,
-                            isHot:1,
-                            isSpecial:0
-                        }
-                    ]
-                }
-            }
-        },
-        computed:{
-            rows(){
-                return this.houseList.length
-            }
+            pageInfo:Object
         },
         data:()=>({
-            currentPage:1,
-            perPage:5
-        })
+        }),
+        methods:{
+            changePage(pageNum){
+                console.log(pageNum)
+                this.$emit('changePage',pageNum)
+            }
+        },
+        created() {
+        }
     }
 </script>
 

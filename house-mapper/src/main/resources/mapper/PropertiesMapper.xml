@@ -55,14 +55,16 @@
   </select>
 
   <select id="selectDtoByCondition" resultType="com.xuetang9.house.dto.properties.PropertiesSimpleDto"
-          parameterType="com.xuetang9.house.dto.properties.ConditionTo">
+          parameterType="com.xuetang9.house.dto.properties.ConditionDto">
     select <include refid="simpleDto"/> from properties
     <where>
-      <if test="statusId != null"> status_id = #{statusId} </if>
-      <if test="type != null"> and type = #{type} </if>
+      <if test="rentType != null"> and rent_type = #{rentType} </if>
+      <if test="houseType != null"> and type = #{houseType} </if>
       <if test="city != null and city != ''"> and city = #{city} </if>
       <if test="roomNumber != null"> and room_number = #{roomNumber} </if>
       <if test="bathroomNumber != null"> and bathroom_number = #{bathroomNumber} </if>
+      <if test="minPrice != null"> and price &gt; #{minPrice} </if>
+      <if test="maxPrice != null"> and price &lt; #{maxPrice}</if>
     </where>
   </select>
 

@@ -3,7 +3,7 @@
         <div class="image">
             <span class="label" v-if="houseInfo.isHot">热门</span>
             <span class="label" v-if="houseInfo.isSpecial">特色</span>
-            <a href="single-properties.html"><img :src="`${publicPath}${houseInfo.pictureUrl}`" alt=""></a>
+            <a href="single-properties.html"><img :src="houseInfo.pictureUrl" alt=""></a>
             <ul class="property-feature">
                 <li>
                     <span class="area"><img :src="`${publicPath}assets/images/icons/area.png`" alt="">{{houseInfo.square}} 平米</span>

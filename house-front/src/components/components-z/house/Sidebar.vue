@@ -5,7 +5,32 @@
                 <div class="property-search sidebar-property-search">
                     <form action="#">
                         <div v-for="(item,key) in search" :key="key">
-                            <b-form-select v-model="selectedValue[key]"
+
+                            <b-form-select v-if="key==='province'" v-model="selectedValue[key]"
+                                           class="nice-select search-select" @change="changeProvince">
+                                <template #first>
+                                    <b-form-select-option :value="null">{{item.label}}</b-form-select-option>
+                                </template>
+                                <b-form-select-option v-for="item in address.districts"
+                                                      :key="item.adcode"
+                                                      :value="item.name">
+                                    {{item.name}}
+                                </b-form-select-option>
+                            </b-form-select>
+
+                            <b-form-select v-else-if="key==='city'" v-model="selectedValue[key]"
+                                           class="nice-select search-select">
+                                <template #first>
+                                    <b-form-select-option :value="null">{{item.label}}</b-form-select-option>
+                                </template>
+                                <b-form-select-option v-for="item in cities"
+                                                      :key="item.citycode"
+                                                      :value="item.name">
+                                    {{item.name}}
+                                </b-form-select-option>
+                            </b-form-select>
+
+                            <b-form-select v-else v-model="selectedValue[key]"
                                            class="nice-select search-select">
                                 <template #first>
                                     <b-form-select-option :value="null">{{item.label}}</b-form-select-option>
@@ -30,7 +55,7 @@
                                         :tooltipStyle="{backgroundColor:'#fff'}"/>
                         </div>
                         <div>
-                            <button>搜索</button>
+                            <button type="button" @click="searchProperties">搜索</button>
                         </div>
                     </form>
                 </div>
@@ -87,23 +112,56 @@
         components:{SidebarHouseInner,SidebarAgentInner,SidebarItem,VueSlider},
         computed:{
             ...mapGetters('search',['search']),
-            ...mapGetters('featureList',['sidebarFeatureList']),
+            ...mapGetters('address',['address']),
+            // ...mapGetters('featureList',['sidebarFeatureList']),
             ...mapGetters('agentList',['agentList'])
         },
         props:{
-            rootClass:String
+            rootClass:String,
+            pageNum: {
+                type: Number,
+                default: 1
+            },
+            pageSize: {
+                type: Number,
+                default: 6
+            }
         },
         data:()=>({
             selectedValue:{
                 rentType: null,
                 houseType: null,
-                province:null,
+                province: null,
                 city: null,
                 roomNumber: null,
-                bathroomNumber: null,
+                bathroomNumber: null
             },
-            sliderValue:[1250,7500]
-        })
+            sliderValue:[1250,7500],
+            sidebarFeatureList:[],
+            cities:[]
+        }),
+        methods:{
+            changeProvince(){
+                this.cities = this.address.districts.filter(item => item.name === this.selectedValue.province)[0].districts
+            },
+            searchProperties(){
+                let param = this.selectedValue
+                param.pageNum = this.pageNum
+                param.pageSize = this.pageSize
+                param.minPrice = this.sliderValue[0]
+                param.maxPrice = this.sliderValue[1]
+                console.log(param)
+                this.$emit('getCondition',param)
+            },
+            getSidebarFeatureList(){
+                this.axios.get(process.env.VUE_APP_PROPERTIES + '/condition-features').then(res => {
+                    this.sidebarFeatureList = res.data.data
+                })
+            }
+        },
+        created() {
+            this.getSidebarFeatureList()
+        }
     }
 </script>
 

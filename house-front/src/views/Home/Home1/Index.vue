@@ -11,7 +11,7 @@
                       item-root-class="property-carousel section"
                       title="特色房产"
                       :showPageDot="true"
-                      :list="featureList"
+                      :list="FeatureHouseList"
                       :swiperOption="featureSwiperOption">
             <template #item="{itemData}">
                 <div class="property-item col">
@@ -108,10 +108,10 @@
         computed: {
             ...mapGetters('agentList', ['agentList']),
             ...mapGetters('brandList', ['brandList']),
-            ...mapGetters('featureList', ['featureList']),
-            ...mapGetters('houseList', ['houseList']),
+            // ...mapGetters('featureList', ['featureList']),
+            // ...mapGetters('houseList', ['houseList']),
             ...mapGetters('newsList', ['newsList']),
-            ...mapGetters('serviceHouseList', ['serviceHouseList'])
+            // ...mapGetters('serviceHouseList', ['serviceHouseList'])
         },
         data: () => ({
             featureSwiperOption: {
@@ -165,7 +165,35 @@
                     nextEl: '.slick-next',
                     prevEl: '.slick-prev'
                 }
+            },
+            houseList:[],
+            serviceHouseList:[],
+            FeatureHouseList:[]
+        }),
+        methods:{
+            getHouseList(){
+                this.axios.get(process.env.VUE_APP_PROPERTIES + "/properties-add").then(res => {
+                    console.log(res)
+                    this.houseList = res.data.data
+                })
+            },
+            getServiceHouseList(){
+                this.axios.get(process.env.VUE_APP_PROPERTIES + "/list").then(res => {
+                    console.log(res)
+                    this.serviceHouseList = res.data.data.list
+                })
+            },
+            getFeatureHouseList(){
+                this.axios.get(process.env.VUE_APP_PROPERTIES + "/condition-features").then(res => {
+                    console.log(res)
+                    this.FeatureHouseList = res.data.data
+                })
             }
-        })
+        },
+        created() {
+            this.getHouseList()
+            this.getServiceHouseList()
+            this.getFeatureHouseList()
+        }
     }
 </script>
