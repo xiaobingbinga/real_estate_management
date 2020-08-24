@@ -7,7 +7,9 @@
                       v-for="(property, i) in properties"
                       propertyInnerClass="property-inner"
                       :property="property" :key="i"></house-property>
-      <house-pagination></house-pagination>
+      <house-pagination :currentPage.sync="currentPage"
+                        :rows="total"
+                        :perPage="pageSize"></house-pagination>
     </house-section>
   </div>
 </template>
@@ -16,8 +18,9 @@
   export default {
     name: "index",
     data:()=>({
-      currentPage: '1',
-      rows: 100,
+      currentPage: 1,
+      total: 100,
+      pageSize: 9,
       properties: [
         {
           id: 1,
@@ -168,11 +171,25 @@
     methods:{
       //需要分页页码数据
       setProperties(){
-        this.axios.post('/p/properties/list',{pageNum:1,pageSize:8}).then(result => {
+        this.axios.post('/p/properties/list',{pageNum:this.currentPage,pageSize:this.pageSize}).then(result => {
           this.property = result.data.data.list;
-          this.rows = result.data.data.total;
+          this.total = result.data.data.total;
+          this.pageSize = result.data.data.pageSize;
         })
       }
+    },
+    watch: {
+      currentPage: function(newCurrentPage){
+        console.log(newCurrentPage)
+        this.axios.post('/p/properties/list',{pageNum:newCurrentPage,pageSize:this.pageSize}).then(result => {
+          this.property = result.data.data.list;
+          this.total = result.data.data.total;
+          this.pageSize = result.data.data.pageSize;
+        })
+      }
+    },
+    created() {
+      this.setProperties();
     }
   }
 </script>

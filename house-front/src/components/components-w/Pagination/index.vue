@@ -17,15 +17,15 @@
     props: {
       currentPage: {
         type: Number,
-        default: 1,
+        default: 3,
       },
       rows: {
         type: Number,
-        default: 100
+        default: 90
       },
       perPage: {
         type: Number,
-        default: 10
+        default: 9
       }
     },
     data:() => ({

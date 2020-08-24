@@ -70,15 +70,15 @@
           <template #item>
             <div class="property-2">
               <div class="property-inner">
-                <a href="single-properties.html" class="image"><img src="assets/images/property/property-13.jpg" alt=""></a>
+                <a href="single-properties.html" class="image"><img :src="houseAdList.pictureUrl" alt=""></a>
                 <div class="content">
-                  <h4 class="title"><a href="single-properties.html">江南宅院</a></h4>
-                  <span class="location">成都双流机场大道568</span>
-                  <h4 class="type">出租 <span>￥550 <span>月</span></span></h4>
+                  <h4 class="title"><a href="single-properties.html">{{ houseAdList.title }}</a></h4>
+                  <span class="location">{{ houseAdList.address }}</span>
+                  <h4 class="type">{{houseAdList.rentType}} <span>{{houseAdList.price}} <span v-show="houseAdList.rentType === '出租'">月</span></span></h4>
                   <ul>
-                    <li>6卧</li>
-                    <li>4卫</li>
-                    <li>3车位</li>
+                    <li>{{houseAdList.roomNumber}}卧</li>
+                    <li>{{houseAdList.bathroomNumber}}卫</li>
+                    <li>{{houseAdList.garageNumber}}车位</li>
                   </ul>
                 </div>
               </div>
@@ -413,10 +413,6 @@
         featureProperties: [],
         //我们的服务-广告位房产，2个
         houseAdList: [],
-        //新增加的房产,6个
-        houseNewsList:[],
-        //我的代理人,6个
-        agentList:[],
         newProperties: [
           {
             id: 1,
@@ -615,14 +611,14 @@
       selectNewsHouse() {
         this.axios.get(`/p/properties/properties-add`).then(result => {
           if (result.data.code === 200) {
-            this.houseNewsList = result.data.data
+            this.newProperties = result.data.data
           }
         })
       },
       selectMyAgent(){
         this.axios.get("/ag/agent/recommend").then( result => {
           if(result.data.code === 200){
-            this.agentList = result.data.data
+            this.agents = result.data.data
           }
         })
       }
