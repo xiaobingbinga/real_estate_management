@@ -3,10 +3,14 @@
         <div class="image">
             <span class="type" v-if="houseInfo.rentType === 1">出租</span>
             <span class="type" v-if="houseInfo.rentType === 2">出售</span>
-            <a href="single-properties.html" class="h-100"><img class="h-100" :src="houseInfo.pictureUrl" alt=""></a>
+            <router-link :to="{path:'/house/single-properties-left-sidebar',query:{id:houseInfo.id}}" class="h-100">
+                <img class="h-100" :src="houseInfo.pictureUrl" alt="">
+            </router-link>
         </div>
         <div class="content">
-            <h5 class="title"><a href="single-properties.html">{{houseInfo.title}}</a></h5>
+            <h5 class="title">
+                <router-link :to="{path:'/house/single-properties-left-sidebar',query:{id:houseInfo.id}}">{{houseInfo.title}}</router-link>
+            </h5>
             <span class="location"><img :src="`${publicPath}assets/images/icons/marker.png`" alt="">{{houseInfo.address}}</span>
             <span class="price">
                 ￥{{houseInfo.price}}

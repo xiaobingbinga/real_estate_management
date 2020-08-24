@@ -1,7 +1,7 @@
 <template>
     <div class="sidebar-agent">
         <div class="image">
-            <a href="single-properties.html"><img :src="`${publicPath}${agent.photo}`" alt=""></a>
+            <a href="single-properties.html"><img :src="agent.photo" alt=""></a>
         </div>
         <div class="content">
             <h5 class="title"><a href="single-properties.html">{{agent.name}}</a></h5>

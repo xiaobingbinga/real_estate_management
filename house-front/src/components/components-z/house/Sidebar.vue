@@ -114,7 +114,7 @@
             ...mapGetters('search',['search']),
             ...mapGetters('address',['address']),
             // ...mapGetters('featureList',['sidebarFeatureList']),
-            ...mapGetters('agentList',['agentList'])
+            // ...mapGetters('agentList',['agentList'])
         },
         props:{
             rootClass:String,
@@ -138,7 +138,8 @@
             },
             sliderValue:[1250,7500],
             sidebarFeatureList:[],
-            cities:[]
+            cities:[],
+            agentList:[]
         }),
         methods:{
             changeProvince(){
@@ -157,10 +158,16 @@
                 this.axios.get(process.env.VUE_APP_PROPERTIES + '/condition-features').then(res => {
                     this.sidebarFeatureList = res.data.data
                 })
+            },
+            getAgentList(){
+                this.axios.get("/ag/agent/recommend").then(res => {
+                    this.agentList = res.data.data
+                })
             }
         },
         created() {
             this.getSidebarFeatureList()
+            this.getAgentList()
         }
     }
 </script>

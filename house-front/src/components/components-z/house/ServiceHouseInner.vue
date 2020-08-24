@@ -1,9 +1,11 @@
 <template>
     <div class="property-2">
         <div class="property-inner">
-            <a href="single-properties.html" class="image"><img :src="houseInfo.pictureUrl" alt=""></a>
+            <router-link :to="{path:'/house/single-properties-left-sidebar',query:{id:houseInfo.id}}"><img :src="houseInfo.pictureUrl" alt=""></router-link>
             <div class="content">
-                <h4 class="title"><a href="single-properties.html">{{houseInfo.title}}</a></h4>
+                <h4 class="title">
+                    <router-link :to="{path:'/house/single-properties-left-sidebar',query:{id:houseInfo.id}}">{{houseInfo.title}}</router-link>
+                </h4>
                 <span class="location">{{houseInfo.address}}</span>
                 <h4 class="type">
                     <span v-if="houseInfo.rentType === 1">出租</span>

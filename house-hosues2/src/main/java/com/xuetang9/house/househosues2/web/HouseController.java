@@ -66,7 +66,7 @@ public class HouseController {
         List<PropertiesSimpleDto> list = propertiesService.listFeatures();
         if (list.size() != 0){
             jsonResult.setCode(200);
-            jsonResult.setData(list);
+            jsonResult.setData(list.subList(0,3));
         }else{
             jsonResult.setCode(4004);
             jsonResult.setMessage("no data");
