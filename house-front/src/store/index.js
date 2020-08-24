@@ -12,25 +12,16 @@ import houseList from "./index/houseList";
 import newsList from "./index/newsList";
 import serviceHouseList from "./index/serviceHouseList";
 import address from "./index/address";
+import user from "./module/user";
 import search1 from "./index/search1";
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  // 属性
-  state: {
-  },
-  // 读取属性方法
   getters:{
     city: state => {
       return state.city;
     }
-  },
-  // 写入属性方法
-  mutations: {
-  },
-  // 异步，读取属性，并可通过mutations修改属性
-  actions: {
   },
   // 分模块操作
   modules: {
@@ -43,7 +34,8 @@ export default new Vuex.Store({
     newsList,
     view,
     serviceHouseList,
+    search1,
     address,
-    search1
+    user
   }
 })

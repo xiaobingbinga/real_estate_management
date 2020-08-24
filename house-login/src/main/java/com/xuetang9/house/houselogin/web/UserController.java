@@ -3,7 +3,6 @@ package com.xuetang9.house.houselogin.web;
 import com.aliyuncs.exceptions.ClientException;
 import com.xuetang9.house.dto.user.LoginTo;
 import com.xuetang9.house.house_feign.feign.UaaFeign;
-import com.xuetang9.house.houseauth.domain.UserDetail;
 import com.xuetang9.house.houselogin.domain.User;
 import com.xuetang9.house.houselogin.dto.RegisterByAccountTo;
 import com.xuetang9.house.houselogin.dto.RegisterByPhoneTo;
@@ -13,24 +12,12 @@ import com.xuetang9.house.houselogin.service.RegisterService;
 import com.xuetang9.house.houselogin.util.RedisUtil;
 import com.xuetang9.house.houselogin.util.SmsUtil;
 import com.xuetang9.house.vo.JsonResult;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.spring.web.json.Json;
 
 import javax.annotation.Resource;
-import java.security.Principal;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Pattern;
 
 import java.util.HashMap;
@@ -64,19 +51,13 @@ public class UserController {
 
     @PostMapping("login")
     @ApiOperation(value = "登录接口", tags = "用户注册和登录接口")
-    public JsonResult<Map> login(@RequestBody LoginTo login) throws FailLoginException, HttpRequestMethodNotSupportedException {
+    public JsonResult<Map<String, String>> login(@RequestBody LoginTo login) throws FailLoginException, HttpRequestMethodNotSupportedException {
         Map<String, String> result = new HashMap<>();
-        User user = loginService.Login(login.getAccount(), login.getPassword());
+        User user = loginService.login(login.getAccount(), login.getPassword());
         result.put("nickName", user.getNikename());
         result.put("utId", user.getUtId().toString());
-        Map<String, String> parameters = new HashMap<>();
-        parameters.put("grant_type", "password");
-        parameters.put("client_id", "client_2");
-        parameters.put("client_sercret", "123456");
-        parameters.put("password", login.getPassword());
-        parameters.put("username", login.getAccount());
-        String token = uaaFeign.readToken(parameters);
-        return new JsonResult<Map>().setCode(200).setMessage("登录成功").setData(result).setToken(token);
+        String token = uaaFeign.readToken(tokenParam(login.getAccount(), login.getPassword()));
+        return new JsonResult<Map<String, String>>().setCode(200).setMessage("登录成功").setData(result).setToken(token);
     }
 
     @Resource
@@ -152,4 +133,15 @@ public class UserController {
             return new JsonResult().setCode(code).setMessage("注册失败");
         }
     }
+
+    private Map<String, String> tokenParam(String username, String password){
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("grant_type", "password");
+        parameters.put("client_id", "client_2");
+        parameters.put("client_sercret", "123456");
+        parameters.put("password", password);
+        parameters.put("username", username);
+        return parameters;
+    }
+
 }

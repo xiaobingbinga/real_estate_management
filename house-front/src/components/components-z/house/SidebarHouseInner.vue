@@ -3,7 +3,7 @@
         <div class="image">
             <span class="type" v-if="houseInfo.rentType === 1">出租</span>
             <span class="type" v-if="houseInfo.rentType === 2">出售</span>
-            <a href="single-properties.html"><img :src="`${publicPath}${houseInfo.sidebarPictureUrl}`" alt=""></a>
+            <a href="single-properties.html" class="h-100"><img class="h-100" :src="houseInfo.pictureUrl" alt=""></a>
         </div>
         <div class="content">
             <h5 class="title"><a href="single-properties.html">{{houseInfo.title}}</a></h5>
@@ -24,7 +24,7 @@
                 default(){
                     return {
                         id:1,
-                        sidebarPictureUrl: 'assets/images/property/sidebar-property-1.jpg',
+                        pictureUrl: 'assets/images/property/sidebar-property-1.jpg',
                         square:550,
                         roomNumber:5,
                         bathroomNumber:1,

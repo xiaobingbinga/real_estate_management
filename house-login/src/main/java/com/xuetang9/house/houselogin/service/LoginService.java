@@ -14,6 +14,6 @@ import java.util.Map;
  */
 public interface LoginService {
 
-    User Login(String username, String password) throws FailLoginException;
+    User login(String username, String password) throws FailLoginException;
 
 }

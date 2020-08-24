@@ -8,15 +8,6 @@ export default {
                     {value: 1, tip: '租房'}, {value: 2, tip: '卖房'}
                 ]
             },
-            leaseTermType:{
-                label: '租期类型',
-                options: [
-                    {value: 1,tip:'按天计'},
-                    {value: 2,tip:'按周计'},
-                    {value: 3,tip:'按月计'},
-                    {value: 4,tip:'按年计'},
-                ]
-            },
             houseType: {
                 label: '类型',
                 options: [

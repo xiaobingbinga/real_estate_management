@@ -1,7 +1,7 @@
 package com.xuetang9.house.mapper;
 
 import com.xuetang9.house.domain.Properties;
-import com.xuetang9.house.dto.properties.ConditionTo;
+import com.xuetang9.house.dto.properties.ConditionDto;
 import com.xuetang9.house.dto.properties.ListConditionDto;
 import com.xuetang9.house.dto.properties.PropertiesSimpleDto;
 import tk.mybatis.mapper.common.Mapper;
@@ -15,7 +15,7 @@ public interface PropertiesMapper extends Mapper<Properties> {
      */
     List<PropertiesSimpleDto> selectAllSimple();
 
-    List<PropertiesSimpleDto> selectDtoByCondition(ConditionTo condition);
+    List<PropertiesSimpleDto> selectDtoByCondition(ConditionDto condition);
 
     List<PropertiesSimpleDto> selectSimpleListByCondition(ListConditionDto condition);
 }

@@ -2,7 +2,7 @@ package com.xuetang9.house.househosues2.web;
 
 import com.github.pagehelper.PageInfo;
 import com.xuetang9.house.domain.Properties;
-import com.xuetang9.house.dto.properties.ConditionTo;
+import com.xuetang9.house.dto.properties.ConditionDto;
 import com.xuetang9.house.dto.properties.PropertiesSimpleDto;
 import com.xuetang9.house.househosues2.service.PropertiesService;
 import com.xuetang9.house.vo.JsonResult;
@@ -46,11 +46,9 @@ public class HouseController {
 
     @PostMapping("/condition")
     @ApiOperation(value = "房产信息搜索接口",tags = "房产数据访问接口")
-    public JsonResult search(@RequestBody @ApiParam(value = "查询对象",required = true) ConditionTo condition,
-                             @RequestParam(defaultValue = "1") int pageNum,
-                             @RequestParam(defaultValue = "5") int pageSize){
+    public JsonResult search(@RequestBody @ApiParam(value = "查询对象",required = true) ConditionDto condition){
         JsonResult jsonResult = new JsonResult();
-        List<PropertiesSimpleDto> list = propertiesService.listByCondition(condition, pageNum, pageSize);
+        List<PropertiesSimpleDto> list = propertiesService.listByCondition(condition);
         if (list.size() != 0){
             jsonResult.setCode(200);
             jsonResult.setData(new PageInfo<>(list));
