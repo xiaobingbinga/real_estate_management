@@ -259,25 +259,17 @@
                                             <div class="col-md-4 col-12 mb-30">
                                                 <label>是否有物管</label>
                                                 <b-form-select v-model="selectedProperty" class="nice-select search-select ">
-<!--                                                    <template #first>-->
-<!--                                                        <b-form-select-option :value="1" disabled>有</b-form-select-option>-->
-<!--                                                    </template>-->
-                                                    <b-form-select-option :value="0">有</b-form-select-option>
-                                                    <b-form-select-option :value="1">没有</b-form-select-option>
-<!--                                                    <b-form-select-option-->
-<!--                                                            v-for="(oneProperty,idxProperty) in search.bool.options"-->
-<!--                                                            :key="idxProperty" :value="oneProperty.value">-->
-<!--                                                        {{oneProperty.tip}}-->
-<!--                                                    </b-form-select-option>-->
+                                                    <b-form-select-option
+                                                            v-for="(oneProperty,idxProperty) in search1.bool.options"
+                                                            :key="idxProperty" :value="oneProperty.value">
+                                                        {{oneProperty.tip}}
+                                                    </b-form-select-option>
                                                 </b-form-select>
                                             </div>
 
                                             <div class="col-md-4 col-12 mb-30">
                                                 <label>电</label>
                                                 <b-form-select v-model="selectedElectricity" class="nice-select search-select ">
-                                                    <template #first>
-                                                        <b-form-select-option :value="1" disabled>有</b-form-select-option>
-                                                    </template>
                                                     <b-form-select-option
                                                             v-for="(oneElectricity,idxElectricity) in search1.bool.options"
                                                             :key="idxElectricity" :value="oneElectricity.value">
@@ -289,9 +281,6 @@
                                             <div class="col-md-4 col-12 mb-30">
                                                 <label>气</label>
                                                 <b-form-select v-model="selectedNaturalGas" class="nice-select search-select ">
-                                                    <template #first>
-                                                        <b-form-select-option :value="1" disabled>有</b-form-select-option>
-                                                    </template>
                                                     <b-form-select-option
                                                             v-for="(oneNaturalGas,idxNaturalGas) in search1.bool.options"
                                                             :key="idxNaturalGas" :value="oneNaturalGas.value">
@@ -303,9 +292,6 @@
                                             <div class="col-md-4 col-12 mb-30">
                                                 <label>水</label>
                                                 <b-form-select v-model="selectedWater" class="nice-select search-select ">
-                                                    <template #first>
-                                                        <b-form-select-option :value="1" disabled>有</b-form-select-option>
-                                                    </template>
                                                     <b-form-select-option
                                                             v-for="(oneWater,idxWater) in search1.bool.options"
                                                             :key="idxWater" :value="oneWater.value">
@@ -390,15 +376,30 @@
                     maxFiles: 1,
                     dictDefaultMessage: "<i class='pe-7s-cloud-upload'></i>点击或拖拽上传文件"
                 },
+
                 selectedProvince: null,
                 citys:null,
                 status:null,
                 condition:{
-                    city:null,
-                    statusId:null,
-                    type:null,
-
+                    title:null,//标题
+                    city:null,//城市
+                    address:null,//详细地址
+                    statusId:null,//状态
+                    leaseTerm:null,//租期类型
+                    type:null,//类型
+                    price:null,//价格
+                    area:null,//面积
+                    description:null,//描述
+                    houseNum:null,//房间数
+                    toiletsNum:null,//卫生间数
+                    kitchen:null,//厨房数
+                    parkingSpace:null,//车位数
+                    property:0,//物管
+                    electricity:0,//电
+                    naturalGas:0,//气
+                    water:0//水
                 },
+
                 fromNum:1,
                 selectedStatus:null,
                 selectedLeaseTerm:null,
@@ -408,10 +409,10 @@
                 selectedToiletsNum:null,
                 selectedKitchen:null,
                 selectedParkingSpace:null,
-                selectedProperty:null,
-                selectedElectricity:null,
-                selectedNaturalGas:null,
-                selectedWater:null
+                selectedProperty:1,
+                selectedElectricity:1,
+                selectedNaturalGas:1,
+                selectedWater:1
 
             }
         },
