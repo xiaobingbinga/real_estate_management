@@ -71,7 +71,6 @@
                 <div class="brand col"><img :src="itemData.pictureUrl" alt=""></div>
             </template>
         </house-slider>
-
     </div>
 </template>
 
@@ -106,12 +105,8 @@
             houseInner
         },
         computed: {
-            ...mapGetters('agentList', ['agentList']),
             ...mapGetters('brandList', ['brandList']),
-            // ...mapGetters('featureList', ['featureList']),
-            // ...mapGetters('houseList', ['houseList']),
-            ...mapGetters('newsList', ['newsList']),
-            // ...mapGetters('serviceHouseList', ['serviceHouseList'])
+            ...mapGetters('newsList', ['newsList'])
         },
         data: () => ({
             featureSwiperOption: {
@@ -168,7 +163,8 @@
             },
             houseList:[],
             serviceHouseList:[],
-            FeatureHouseList:[]
+            FeatureHouseList:[],
+            agentList:[]
         }),
         methods:{
             getHouseList(){
@@ -188,12 +184,19 @@
                     console.log(res)
                     this.FeatureHouseList = res.data.data
                 })
+            },
+            getAgentList(){
+                this.axios.get("/ag/agent/recommend").then(res => {
+                    console.log(res)
+                    this.agentList = res.data.data
+                })
             }
         },
         created() {
             this.getHouseList()
             this.getServiceHouseList()
             this.getFeatureHouseList()
+            this.getAgentList()
         }
     }
 </script>

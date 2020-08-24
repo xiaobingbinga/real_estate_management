@@ -249,6 +249,7 @@
     },
     created(){
       let id = this.$route.params.id ? this.$route.params.id : this.$route.query.id;
+      console.log(id)
       this.setProperty(id);
     }
   }

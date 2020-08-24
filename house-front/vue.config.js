@@ -21,8 +21,10 @@ module.exports = {
             "/ag/":{
                 target:"http://192.168.12.4:10000",
                 changeOrigin: true,
-
-
+            },
+            "/p2":{
+                target:"http://192.168.12.4:10000",
+                changeOrigin: true
             }
 
         }

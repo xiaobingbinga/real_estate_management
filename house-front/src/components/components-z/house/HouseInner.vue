@@ -3,7 +3,7 @@
         <div class="image">
             <span class="label" v-if="houseInfo.isHot">热门</span>
             <span class="label" v-if="houseInfo.isSpecial">特色</span>
-            <a href="single-properties.html"><img :src="houseInfo.pictureUrl" alt=""></a>
+            <router-link :to="{path:'/house/single-properties-left-sidebar',query:{id:houseInfo.id}}"><img :src="houseInfo.pictureUrl" alt=""></router-link>
             <ul class="property-feature">
                 <li>
                     <span class="area"><img :src="`${publicPath}assets/images/icons/area.png`" alt="">{{houseInfo.square}} 平米</span>
@@ -21,7 +21,7 @@
         </div>
         <div class="content">
             <div class="left">
-                <h3 class="title"><a href="single-properties.html">{{houseInfo.title}}</a></h3>
+                <h3 class="title"><router-link :to="{path:'/house/single-properties-left-sidebar',query:{id:houseInfo.id}}">{{houseInfo.title}}</router-link></h3>
                 <span class="location"><img src="assets/images/icons/marker.png" alt="">{{houseInfo.address}}</span>
             </div>
             <div class="right">
