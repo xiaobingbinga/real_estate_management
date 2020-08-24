@@ -39,8 +39,8 @@ public class HouseInfoController {
      * @param id
      * @return
      */
-    @GetMapping("/properties-info/{id}")
-    public JsonResult houseInfoByCondition(@PathVariable("id") Integer id){
+    @GetMapping("/properties-info")
+    public JsonResult houseInfoByCondition(Integer id){
         JsonResult jsonResult = new JsonResult();
         PropertiesVo properties = houseInfoService.getByIdVo(id);
         try {

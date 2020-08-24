@@ -73,7 +73,7 @@
                 <div class="row">
                   <div class="col-md-6 col-12 mb-30"><input type="text" placeholder="Name"></div>
                   <div class="col-md-6 col-12 mb-30"><input type="email" placeholder="Email"></div>
-                  <div class="col-12 mb-30"><textarea placeholder="Message"></textarea></div>
+                  <div class="col-12 mb-30"><textarea placeholder="Message"/></div>
                   <div class="col-12"><button class="btn">send now</button></div>
                 </div>
               </form>
@@ -85,7 +85,20 @@
       </template>
       <template #right>
         <house-module-thumbnail title="Search Property">
-          <house-search-thumbnail></house-search-thumbnail>
+          <div class="sidebar">
+
+
+            <!--Property Search start-->
+            <div class="property-search sidebar-property-search">
+
+              <from-inner @insurance="jump"/>
+
+            </div>
+            <!--Property Search end-->
+
+          </div>
+
+<!--          <house-search-thumbnail></house-search-thumbnail>-->
         </house-module-thumbnail>
         <house-module-thumbnail title="Feature Property">
           <template v-for="(property, i) in properties">
@@ -117,7 +130,9 @@
 </template>
 
 <script>
+  import FromInner from "../../../components/components-j/home/FromInner";
   export default {
+    components:{FromInner},
     name: "index",
     data: () => ({
       properties: [
@@ -199,23 +214,43 @@
         bathroomNumber: '6',
         garageNumber: '6',
         kitchenNumber: '6',
-        isRealtyManagement: true,
-        isElectric: true,
-        isNaturalGas: true,
-        isWater: true,
-        isAirConditioning: true,
-        isFurniture: true,
-        isBalcony: true,
-        isCableTV: true,
-        isParking: true,
-        isLift: true,
-        isPool: true,
-        isDishwater: true,
-        isFerigerator: true,
-        isKitchenUtensils: true
+        realtyManagement: true,
+        electric: true,
+        naturalGas: true,
+        water: true,
+        airConditioning: true,
+        furniture: true,
+        balcony: true,
+        cableTV: true,
+        parking: true,
+        lift: true,
+        pool: true,
+        dishwater: true,
+        ferigerator: true,
+        kitchenUtensils: true
       },
       publicPath: process.env.BASE_URL
-    })
+    }),
+    methods:{
+      setProperty(id){
+        this.axios.get(`/p/properties/properties-info?id=${id}`).then(result =>{
+          console.log(result);
+          this.property = result.data.data;
+        })
+      },
+      jump(condition){
+        this.$router.push({
+          name:'propertiesLeftSidebar',
+          params:{
+            condition
+          }
+        })
+      }
+    },
+    created(){
+      let id = this.$route.params.id ? this.$route.params.id : this.$route.query.id;
+      this.setProperty(id);
+    }
   }
 </script>
 

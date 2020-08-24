@@ -40,20 +40,20 @@
           <div class="col-md-7 col-12">
             <h3>Amenities</h3>
             <ul class="amenities-list">
-              <li v-show="property.isRealtyManagement">物管</li>
-              <li v-show="property.isElectric">通电</li>
-              <li v-show="property.isNaturalGas">天然气</li>
-              <li v-show="property.isWater">通水</li>
-              <li v-show="property.isAirConditioning">空调</li>
-              <li v-show="property.isFurniture">家具</li>
-              <li v-show="property.isBalcony">阳台</li>
-              <li v-show="property.isCableTV">有线电话</li>
-              <li v-show="property.isParking">车库</li>
-              <li v-show="property.isLift">电梯</li>
-              <li v-show="property.isPool">游泳池</li>
-              <li v-show="property.isDishwater">洗衣机</li>
-              <li v-show="property.isFerigerator">冰箱</li>
-              <li v-show="property.isKitchenUtensils">厨房用品</li>
+              <li v-show="property.realtyManagement">物管</li>
+              <li v-show="property.electric">通电</li>
+              <li v-show="property.naturalGas">天然气</li>
+              <li v-show="property.water">通水</li>
+              <li v-show="property.airConditioning">空调</li>
+              <li v-show="property.furniture">家具</li>
+              <li v-show="property.balcony">阳台</li>
+              <li v-show="property.cableTV">有线电话</li>
+              <li v-show="property.parking">车库</li>
+              <li v-show="property.lift">电梯</li>
+              <li v-show="property.pool">游泳池</li>
+              <li v-show="property.dishwater">洗衣机</li>
+              <li v-show="property.ferigerator">冰箱</li>
+              <li v-show="property.kitchenUtensils">厨房用品</li>
             </ul>
           </div>
 

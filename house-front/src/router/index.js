@@ -57,7 +57,7 @@ const routes = [
   },
   {
     path:'/house/single-properties-left-sidebar',
-    name:'Properties',
+    name:'PropertiesOne',
     component:() => import('@/views/House/Single/SinglePropertiesLeftSidebar')
   },
   {

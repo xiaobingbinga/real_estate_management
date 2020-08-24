@@ -32,8 +32,8 @@
                                 <div class="image">
                                     <span v-if="oneFea.isHot === 1" class="label">热门</span>
                                     <span v-if="oneFea.isSpecial === 1" class="label">特色</span>
-                                    <a href="single-properties.html">
-                                        <img :src="`${oneFea.pictureUrl}`" alt=""></a>
+                                    <router-link :to="{name:'PropertiesOne',params:{id:oneFea.id}}">
+                                        <img :src="`${oneFea.pictureUrl}`" alt=""></router-link>
                                     <ul class="property-feature">
                                         <li>
                                             <span class="area">
