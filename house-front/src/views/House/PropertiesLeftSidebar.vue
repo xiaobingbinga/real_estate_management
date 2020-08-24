@@ -59,7 +59,9 @@
                                 </div>
                                 <div class="content">
                                     <div class="left">
-                                        <h3 class="title"><a href="single-properties.html">{{oneFea.title}}</a></h3>
+                                        <h3 class="title">
+                                            <router-link :to="{name:'PropertiesOne',params:{id:oneFea.id}}">
+                                                {{oneFea.title}}</router-link></h3>
                                         <span class="location">
                                             <img :src="`${publicPath}assets/images/icons/marker.png`" alt="">
                                             {{oneFea.address}}</span>

@@ -1,9 +1,11 @@
 <template>
   <div class="property-inner">
-    <a href="" class="image"><img :src="info.pictureUrl"
-                                  alt=""></a>
+    <router-link :to="{name:'PropertiesOne',params:{id:info.id}}" class="image">
+      <img :src="info.pictureUrl" alt=""></router-link>
     <div class="content" style="text-align: left">
-      <h4 class="title"><a href="single-properties.html">{{info.title}}</a></h4>
+      <h4 class="title">
+        <router-link :to="{name:'PropertiesOne',params:{id:info.id}}">
+          {{info.title}}</router-link></h4>
       <span class="location">{{info.address}}</span>
       
       <h4 v-if="info.rentType === 1" class="type">出租

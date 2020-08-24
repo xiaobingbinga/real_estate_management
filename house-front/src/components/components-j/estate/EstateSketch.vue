@@ -5,8 +5,9 @@
       <div class="image ">
         <span class="label" v-if="info.hot === 1">热门</span>
         <span class="label" v-else-if="info.special === 1">特色</span>
-        
-        <a href="single-properties.html"><img :src="`${info.pictureUrl}`" alt=""></a>
+
+        <router-link :to="{name:'PropertiesOne',params:{id:info.id}}">
+          <img :src="`${info.pictureUrl}`" alt=""></router-link>
         <ul class="property-feature" style="margin-bottom: 0">
           <li>
             <span class="area"><img :src="`${publicPath}assets/images/icons/area.png`" alt="">{{info.square}} 平米</span>
@@ -24,7 +25,9 @@
       </div>
       <div class="content">
         <div class="left">
-          <h3 class="title"><a href="single-properties.html">{{info.title}}</a></h3>
+          <h3 class="title">
+            <router-link :to="{name:'PropertiesOne',params:{id:info.id}}">
+              {{info.title}}</router-link></h3>
           <span class="location"><img src="assets/images/icons/marker.png" alt="">{{info.address}}</span>
         </div>
         <div class="right">

@@ -13,7 +13,9 @@
                 <div class="col-12">
                   <!--Hero Content start-->
                   <div class="hero-property-content text-center">
-                    <h1 class="title"><a href="#">{{item.title}}</a></h1>
+                    <h1 class="title">
+                      <router-link :to="{name:'PropertiesOne',params:{id:item.id}}">
+                        {{item.title}}</router-link></h1>
                     <span class="location"><img src="assets/images/icons/hero-marker.png"
                                                 alt=""> {{item.address}}</span>
                     <div class="type-wrap">
