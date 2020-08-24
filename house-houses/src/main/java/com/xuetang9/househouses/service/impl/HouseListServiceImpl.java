@@ -70,4 +70,9 @@ public class HouseListServiceImpl extends BaseServiceImpl<Properties,Integer,Pro
         displayVoMapper.selectAllPage();
         return page;
     }
+
+    @Override
+    public List<DisplayVo> selectCondition(Long[] ids) {
+        return displayVoMapper.selectIdCondition(ids);
+    }
 }

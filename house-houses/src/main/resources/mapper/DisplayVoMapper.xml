@@ -59,4 +59,13 @@
         from `properties` order by `id` desc
     </select>
 
+    <select id="selectIdCondition" resultType="com.xuetang9.househouses.domain.vo.DisplayVo">
+        select <include refid="displayVo"></include>
+        from `properties` where `owner_id` in
+        <foreach collection="array" item="owner" index="index"
+                 open="(" close=")" separator=",">
+            #{owner}
+        </foreach>
+    </select>
+
 </mapper>

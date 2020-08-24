@@ -26,4 +26,6 @@ public interface DisplayVoMapper extends Mapper<DisplayVo> {
     List<DisplayVo> selectDisplayAd(int i);
 
     List<DisplayVo> selectAllPage();
+
+    List<DisplayVo> selectIdCondition(Long[] ids);
 }

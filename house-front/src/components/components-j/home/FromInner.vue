@@ -100,7 +100,7 @@
                 </vue-slider>
             </div>
             <div>
-                <button @click="insurance()">搜索</button>
+                <button type="button" @click="insurance()">搜索</button>
             </div>
         </form>
 
@@ -149,12 +149,7 @@
                 if (this.condition.city != null){
                     this.condition.city = this.condition.city.substring(0,this.condition.city.length-1);
                 }
-                this.$router.push({
-                    name:'propertiesLeftSidebar',
-                    params:{
-                        condition:this.condition
-                    }
-                })
+                this.$emit('insurance',this.condition);
             }
         }
     }
