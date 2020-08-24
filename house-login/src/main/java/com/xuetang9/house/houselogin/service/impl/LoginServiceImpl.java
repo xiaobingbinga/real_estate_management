@@ -27,7 +27,7 @@ public class LoginServiceImpl implements LoginService {
     private final UserMapper userMapper;
 
     @Override
-    public User Login(String username, String password) throws FailLoginException {
+    public User login(String username, String password) throws FailLoginException {
         UserExample example = new UserExample();
         example.or().andAccountEqualTo(username);
         User user = userMapper.selectOneByExampleSelective(example, User.Column.password, User.Column.nikename,

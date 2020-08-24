@@ -32,7 +32,7 @@ public class ReactiveJdbcAuthenticationManager implements ReactiveAuthentication
                 .flatMap((accessToken ->{
                     log.info("accessToken: {}",accessToken);
                     OAuth2AccessToken oAuth2AccessToken = this.tokenStore.readAccessToken(accessToken);
-                    //根据access_token从数据库获取不到OAuth2AccessToken
+                    // 根据access_token从数据库获取不到OAuth2AccessToken
                     if(oAuth2AccessToken == null){
                         return Mono.error(new InvalidTokenException("无效的token"));
                     }else if(oAuth2AccessToken.isExpired()){

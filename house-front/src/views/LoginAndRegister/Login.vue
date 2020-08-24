@@ -10,14 +10,18 @@
           <input type="password" name="password" v-model.trim="$v.loginForm.password.$model" placeholder="输入密码">
           <div :class="{ error : !$v.loginForm.password.required }" class="zone-height">密码必填</div>
         </div>
+        <!-- 验证码 -->
+        <div ref="captcha" id="captcha"></div>
+        <!-- 验证结果 -->
+        <div id="msg"></div>
         <div class="col-12 mb-30">
           <ul>
             <li><input type="checkbox" id="login_remember"> <label for="login_remember" class="cursor_label">记住用户和密码</label></li>
           </ul>
         </div>
-        <div class="col-12 mb-30"><button class="btn btn3" type="submit">登录</button></div>
+        <!--<div class="col-12 mb-30"><button class="btn btn3" type="submit">登录</button></div>-->
         <div class="col-12 d-flex justify-content-between">
-          <span>新用户需要到老九学堂 &nbsp; <a class="register-toggle" href="#register-tab">注册!</a></span>
+          <span>新用户需要到老九学堂 &nbsp; <a class="register-toggle ml-0" href="#register-tab">注册!</a></span>
           <span><a href="forgot-password.html">忘记密码?</a></span>
         </div>
       </div>
@@ -26,6 +30,9 @@
 </template>
 
 <script>
+  import '@/utils/slideBlock'
+  // import Login from '@/apis/login'
+  import { mapActions } from 'vuex'
   import { required } from 'vuelidate/lib/validators'
   export default {
     name: "Login",
@@ -47,6 +54,7 @@
       }
     },
     methods: {
+      ...mapActions('user', ['loginByUsername']),
       submit() {
         this.$v.$touch();
         if (this.$v.$invalid) {
@@ -54,9 +62,42 @@
           console.log('失败')
         } else {
           this.submitStatus = 'PENDING';
-          console.log('成功')
+          console.log('成功');
         }
+      },
+      getCaptcha() {
+        window.jigsaw.init({
+          el: this.$refs.captcha,
+          onSuccess: this.onSuccess,
+          onFail: this.onFail,
+          onRefresh: this.cleanMsg
+        });
+      },
+      onSuccess() {
+        this.$v.$touch();
+        if (this.$v.$invalid) {
+          this.submitStatus = 'ERROR';
+          console.log('失败');
+          window.jigsaw.reset();
+        } else {
+          this.submitStatus = 'PENDING';
+          console.log('成功');
+          console.log(this.loginByUsername);
+          this.loginByUsername(this.loginForm).then(() => {
+            console.log(11111111111111111111111111111)
+            this.$router.push("/");
+          });
+        }
+      },
+      onFail() {
+        console.log("失败");
+      },
+      cleanMsg() {
+        console.log("刷新");
       }
+    },
+    mounted() {
+      this.getCaptcha();
     }
   }
 </script>
@@ -84,5 +125,19 @@
   }
   .input-error input, .input-error input:focus, .input-error input:hover, .input-error textarea {
     border-color: #CC3333;
+  }
+  #msg {
+    width: 100%;
+    line-height: 40px;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  a:link,
+  a:visited,
+  a:hover,
+  a:active {
+    margin-left: 100px;
+    color: #0366d6;
   }
 </style>
