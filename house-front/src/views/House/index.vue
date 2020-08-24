@@ -164,7 +164,16 @@
           typeName: '出售'
         }
       ]
-    })
+    }),
+    methods:{
+      //需要分页页码数据
+      setProperties(){
+        this.axios.post('/p/properties/list',{pageNum:1,pageSize:8}).then(result => {
+          this.property = result.data.data.list;
+          this.rows = result.data.data.total;
+        })
+      }
+    }
   }
 </script>
 
