@@ -2,10 +2,11 @@
   <div :class="col === true?'col':''">
     <div class="agent">
       <div class="image">
-        <a class="img" href="agent-details.html">
+        <a class="img"  @click.stop="test">
           <img
             :src="agent.photo != null ? agent.photo: publicPath+'assets/images/agent/default.jpg'"
-            alt=""></a>
+            alt=""
+            ></a>
         <div class="social">
           <a :href="agent.facebookUrl" class="facebook"><i class="fa fa-facebook"></i></a>
           <a :href="agent.twitterUrl" class="twitter"><i class="fa fa-twitter"></i></a>
@@ -36,6 +37,7 @@
                 type:Object,
                 default(){
                     return {
+                        userId:1,
                         photo:"assets/images/agent/agent-1.jpg",
                         name:"唐纳德.菲尔",
                         mobile:'(756) 447 5779',
@@ -54,6 +56,18 @@
                 default(){
                     return true;
                 }
+            }
+        },
+        methods:{
+            test(){
+                // 跳转路由
+                this.$router.push({
+                    path:"/agent/info",
+                    query:{
+                        id:this.agent.userId
+                    }
+                })
+                
             }
         }
     }

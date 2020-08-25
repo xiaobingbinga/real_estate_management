@@ -10,17 +10,19 @@
         
         <div class="row">
           <!--Agent satrt-->
-          <div class="col-lg-3 col-sm-6 col-12 mb-30" v-for="(item,index) in this.agentList" :key="index">
-              <my-agent :agent="item" :col="false"></my-agent>
+          <div class="col-lg-3 col-sm-6 col-12 mb-30" v-for="(item,index) in this.pageInfo.list" :key="index">
+            <my-agent :agent="item" :col="false"></my-agent>
           </div>
           <!--Agent end-->
         </div>
         
-        <agent-pagination></agent-pagination>
+        <agent-pagination :currentPage="pageInfo.pageNum"
+                          :rows="pageInfo.total"
+                          :perPage="pageInfo.pageSize"
+                          @update:currentPage="updatePageNum"></agent-pagination>
       </div>
     </div>
   
-    
   
   </div>
 
@@ -30,150 +32,47 @@
     import AgentTitle from "@/components/components-w/Title"
     import MyAgent from "@/components/components-j/agent/MyAgent";
     import AgentPagination from "@/components/components-w/Pagination"
+
     export default {
         components: {
             AgentTitle,
             MyAgent,
             AgentPagination
         },
-        data(){
+        data() {
             return {
-                // 代理人列表
-                agentList:[
-                    {
-                        id:1,
-                        name:"唐纳德.菲尔",
-                        mobile:'(756) 447 5779',
-                        email:'info@example.com',
-                        count:5,
-                        photo:"assets/images/agent/agent-1.jpg"
-                    },
-                    {
-                        id:2,
-                        name:"朱.汉密尔顿",
-                        mobile:'(756) 447 5779',
-                        email:'info@example.com',
-                        count:2,
-                        photo:"assets/images/agent/agent-2.jpg"
-                    },
-                    {
-                        id:3,
-                        name:"克莉期丁.吉尔波特",
-                        mobile:'(756) 447 5779',
-                        email:'info@example.com',
-                        count:4,
-                        photo:"assets/images/agent/agent-3.jpg"
-                    },
-                    {
-                        id:4,
-                        name:"杰森.帕特",
-                        mobile:'(756) 447 5779',
-                        email:'info@example.com',
-                        count:3,
-                        photo:"assets/images/agent/agent-4.jpg"
-                    },
-                    {
-                        id:5,
-                        name:"德布拉.依尔斯",
-                        mobile:'(756) 447 5779',
-                        count:1,
-                        email:'info@example.com',
-                        photo:"assets/images/agent/agent-5.jpg"
-                    },
-                    
-                //   =======================================================
-                    {
-                        id:1,
-                        name:"唐纳德.菲尔",
-                        mobile:'(756) 447 5779',
-                        email:'info@example.com',
-                        count:5,
-                        photo:"assets/images/agent/agent-1.jpg"
-                    },
-                    {
-                        id:2,
-                        name:"朱.汉密尔顿",
-                        mobile:'(756) 447 5779',
-                        email:'info@example.com',
-                        count:2,
-                        photo:"assets/images/agent/agent-2.jpg"
-                    },
-                    {
-                        id:3,
-                        name:"克莉期丁.吉尔波特",
-                        phone:'(756) 447 5779',
-                        email:'info@example.com',
-                        count:4,
-                        photo:"assets/images/agent/agent-3.jpg"
-                    },
-                    {
-                        id:4,
-                        name:"杰森.帕特",
-                        mobile:'(756) 447 5779',
-                        email:'info@example.com',
-                        count:3,
-                        photo:"assets/images/agent/agent-4.jpg"
-                    },
-                    {
-                        id:5,
-                        name:"德布拉.依尔斯",
-                        mobile:'(756) 447 5779',
-                        count:1,
-                        email:'info@example.com',
-                        photo:"assets/images/agent/agent-5.jpg"
-                    },
-                    {
-                        id:1,
-                        name:"唐纳德.菲尔",
-                        mobile:'(756) 447 5779',
-                        email:'info@example.com',
-                        count:5,
-                        photo:"assets/images/agent/agent-1.jpg"
-                    },
-                    {
-                        id:2,
-                        name:"朱.汉密尔顿",
-                        mobile:'(756) 447 5779',
-                        email:'info@example.com',
-                        count:2,
-                        photo:"assets/images/agent/agent-2.jpg"
-                    },
-                    {
-                        id:3,
-                        name:"克莉期丁.吉尔波特",
-                        mobile:'(756) 447 5779',
-                        email:'info@example.com',
-                        count:4,
-                        photo:"assets/images/agent/agent-3.jpg"
-                    },
-                    {
-                        id:4,
-                        name:"杰森.帕特",
-                        mobile:'(756) 447 5779',
-                        email:'info@example.com',
-                        count:3,
-                        photo:"assets/images/agent/agent-4.jpg"
-                    },
-                    {
-                        id:5,
-                        name:"德布拉.依尔斯",
-                        mobile:'(756) 447 5779',
-                        count:1,
-                        email:'info@example.com',
-                        photo:"assets/images/agent/agent-5.jpg"
-                    },
-                    {
-                        id:1,
-                        name:"唐纳德.菲尔",
-                        mobile:'(756) 447 5779',
-                        email:'info@example.com',
-                        count:5,
-                        photo:"assets/images/agent/agent-1.jpg"
-                    },
-                
-                ],
+                // 分页数据
+                pageInfo: {
+                    pageSize:4,
+                    pageNum:1
+                },
+
             }
+        },
+        methods: {
+            //  分页查询代理人列表
+            selectAgentListByPage() {
+                // 进行数据封装
+                this.axios.post("/ag/agent/list", {pageSize:this.pageInfo.pageSize, pageNum:this.pageInfo.pageNum})
+                    .then(res => {
+                        if (res.data.code == 200) {
+                            this.pageInfo = res.data.data
+                        } else {
+                            console.log(res.data.data.message)
+                        }
+                    })
+                    .catch(res => {
+                    })
+            },
+            updatePageNum(newCurrentPage) {
+                this.pageInfo.pageNum = newCurrentPage
+                this.selectAgentListByPage()
+            }
+        },
+        created() {
+            this.selectAgentListByPage()
         }
+
 
     }
 </script>

@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
+import java.util.List;
 
 /**
  * @version 1.0
@@ -49,9 +50,10 @@ public class AgentInfoVo {
     @ApiModelProperty(name = "代理房产数量",example = "2")
     private Integer propertiesCount;
 
+    @ApiModelProperty(name = "代理编号列表")
+    private List<Long> ownerIds;
+
     /* 代理商的信息*/
-
-
     @ApiModelProperty(name = "代理商编号")
     private Long agencyId;
 

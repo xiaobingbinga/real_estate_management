@@ -1,8 +1,11 @@
 package com.xuetang9.house.houseagents.domain.vo;
 
+import com.xuetang9.house.domain.Agent;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * @version 1.0
@@ -13,7 +16,10 @@ import lombok.Data;
  */
 @Data
 @ApiModel("代理人列表展示传输对象")
-public class AgentListVo {
+public class AgentListVo extends Agent implements Serializable {
+
+    @ApiModelProperty(name = "代理人编号",example = "1")
+    private Long id;
 
     @ApiModelProperty(name = "代理人用户编号",example = "1")
     private Long userId;

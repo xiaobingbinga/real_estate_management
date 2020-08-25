@@ -8,6 +8,7 @@ import com.xuetang9.house.vo.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,7 +33,7 @@ public class AgentInfoController {
      * @return
      */
     @PostMapping("/agent-info")
-    public JsonResult agentInfo(AgentTo agentTo){
+    public JsonResult agentInfo(@RequestBody AgentTo agentTo){
         JsonResult jsonResult = new JsonResult();
         try{
             AgentInfoVo agentInfoVo =  agentService.agentInfoById((long)agentTo.getUserId());

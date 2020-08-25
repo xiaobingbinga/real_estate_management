@@ -33,7 +33,7 @@ public class PageAspect  {
      */
     @Around("aspect()")
     public Object before(ProceedingJoinPoint joinPoint) throws Throwable {
-        
+
         Object[] objects = joinPoint.getArgs();
         for(Object object: objects){
             if(object instanceof PageTo){
@@ -46,7 +46,6 @@ public class PageAspect  {
                 }
             }
         }
-
         return joinPoint.proceed(joinPoint.getArgs());
     }
 

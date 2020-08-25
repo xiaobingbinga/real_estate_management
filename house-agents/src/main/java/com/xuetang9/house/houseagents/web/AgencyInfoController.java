@@ -6,9 +6,7 @@ import com.xuetang9.house.houseagents.service.AgencyService;
 import com.xuetang9.house.vo.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.PrimitiveIterator;
@@ -34,8 +32,7 @@ public class AgencyInfoController {
      * @return
      */
     @PostMapping("/agency-info")
-    public JsonResult agencyInfo(AgencyTo agencyTo){
-
+    public JsonResult agencyInfo( @RequestBody AgencyTo agencyTo){
         JsonResult jsonResult = new JsonResult();
         try{
             AgencyInfoVo agencyInfoVo =  agencyService.agencyInfoById(agencyTo.getId());

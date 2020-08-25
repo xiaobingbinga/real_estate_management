@@ -1,5 +1,6 @@
 package com.xuetang9.house.houseagents.service;
 
+import com.github.pagehelper.PageInfo;
 import com.xuetang9.house.domain.Agent;
 import com.xuetang9.house.houseagents.domain.vo.AgentInfoVo;
 import com.xuetang9.house.houseagents.domain.vo.AgentListVo;
@@ -15,7 +16,6 @@ import java.util.List;
  * @data: 2020年08月16日12:49
  * @address：成都市锦江区西部金融中心
  */
-@Service
 public interface AgentService extends BaseService<Agent,Long> {
 
     /**
