@@ -1,8 +1,8 @@
-import {setToken} from "../../utils/auth";
+import {setToken,getToken} from "../../utils/auth";
 import Login from "../../apis/login";
 
 const state = {
-  token: '',
+  token: getToken(),
   nickName: '',
   utId: ''
 };

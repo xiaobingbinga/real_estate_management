@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from "../views/Home/Home2/Home.vue";
+import store from "../store"
+import paths from "../store/module/dynamicRoutes"
+import form from "bootstrap-vue/esm/mixins/form";
 
 Vue.use(VueRouter)
 
@@ -50,11 +53,7 @@ const routes = [
     name:'propertiesListRightSidebar',
     component:() => import('@/views/House/PropertiesListRightSidebar')
   },
-  {
-    path: '/house/add-house-details',
-    name: 'addHouseDetails',
-    component: () => import('@/views/Display/AddProperties')
-  },
+
   {
     path:'/house/single-properties-left-sidebar',
     name:'PropertiesOne',
@@ -89,11 +88,7 @@ const routes = [
       }
     ]
   },
-  {
-    path:'/display/add-properties',
-    name:'AddProperties',
-    component:() => import('@/views/Display/AddProperties')
-  },
+
     // 代理人列表
   {
     path: '/agent/list',
@@ -127,5 +122,19 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 });
+
+router.beforeEach(async (to,form,next) => {
+  if (to.path === '/display/add-properties'){
+    let $store = router.app.$store || store;
+    if ($store.getters.token){
+      router.addRoutes(paths);
+    }else {
+      next({path:'/login'});
+    }
+
+  }else {
+    next();
+  }
+})
 
 export default router
