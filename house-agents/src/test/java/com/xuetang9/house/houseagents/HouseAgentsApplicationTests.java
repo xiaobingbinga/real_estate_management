@@ -1,9 +1,11 @@
 package com.xuetang9.house.houseagents;
 
+import com.github.pagehelper.PageInfo;
 import com.xuetang9.house.domain.Agent;
 import com.xuetang9.house.dto.properties.PageTo;
 import com.xuetang9.house.houseagents.service.AgencyService;
 import com.xuetang9.house.houseagents.service.AgentService;
+import com.xuetang9.house.houseagents.service.Impl.AgencyServiceImpl;
 import com.xuetang9.house.houseagents.service.Impl.AgentServiceImpl;
 import com.xuetang9.house.houseagents.web.AgencyListController;
 import com.xuetang9.house.houseagents.web.AgentListController;
@@ -36,17 +38,8 @@ class HouseAgentsApplicationTests {
 
     @Test
     void contextLoads() {
-
-        // System.out.println(agentListController.agentListByStar());
-        // System.out.println(agentListController.agentListByAnency(1));
-        // PageTo pageTo = new PageTo();
-        // pageTo.setPageSize(5);
-        // pageTo.setPageNum(2);
-        // System.out.println(agentListController.agentListByPage(pageTo));
-        // System.out.println(agentListController.agentListByStar());
-
-        System.out.println(2 >>> 16);
-
+        System.out.println(agencyService.agencyInfoById(2L));
+        // System.out.println(agencyService.listAgencyVoByPage(1, 3));
 
     }
 

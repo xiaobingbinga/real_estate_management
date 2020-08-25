@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @version 1.0
  * @desc:
@@ -44,5 +46,8 @@ public class AgencyInfoVo {
 
     @ApiModelProperty(name = "代理商名下房产数量")
     private Integer propertiesCount;
+
+    @ApiModelProperty(name = "代理编号列表")
+    private List<Long> ownerIds;
 
 }

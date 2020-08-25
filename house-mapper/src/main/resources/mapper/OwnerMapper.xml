@@ -18,4 +18,8 @@
     <result column="ximalaya_site" jdbcType="VARCHAR" property="ximalayaSite" />
     <result column="zifubao_site" jdbcType="VARCHAR" property="zifubaoSite" />
   </resultMap>
+
+  <select id="selectOwnerIdByAgentId" parameterType="_long" resultType="_long" >
+    select id from owner where agent_id = #{agentId}
+  </select>
 </mapper>

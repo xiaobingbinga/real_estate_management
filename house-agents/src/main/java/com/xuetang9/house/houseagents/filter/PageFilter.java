@@ -33,7 +33,6 @@ public class PageFilter implements Filter {
 
         int pageNum = Integer.parseInt(servletRequest.getParameter("pageNum"));
         int pageSize = Integer.parseInt(servletRequest.getParameter("pageSize"));
-        System.out.println("分页参数============="+pageNum+pageSize);
         if(pageNum <= 0 || pageSize <= 0){
             JsonResult jsonResult = new JsonResult();
             jsonResult.setData(1001);

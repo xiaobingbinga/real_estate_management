@@ -21,8 +21,10 @@ public class ParamInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
         int pageNum =  Integer.parseInt(request.getParameter("pageNum"));
         int pageSize = Integer.parseInt(request.getParameter("pageSize"));
+
 
         if(pageNum <= 0 || pageSize <= 0){
             request.getRequestDispatcher("/un_page").forward(request,response);

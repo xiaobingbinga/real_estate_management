@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuetang9.house.houseagents.mapper.AgencyListVoMapper">
+
+    <select id="selectAgencyListInfo" resultType="com.xuetang9.house.houseagents.domain.vo.AgencyListVo" >
+        select id, icon ,user_id as userId from agency
+    </select>
+
+
+</mapper>

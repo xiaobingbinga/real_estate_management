@@ -24,7 +24,7 @@ public interface AgencyService extends BaseService<Agency, Long> {
      * @param pageIndex
      * @return
      */
-    List<AgencyListVo> listAgencyVoByPage(int pageSize,int pageIndex);
+    List<AgencyListVo> listAgencyVoByPage(int pageIndex,int pageSize);
 
     /**
      * 代理商详细信息

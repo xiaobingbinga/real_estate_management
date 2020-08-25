@@ -104,6 +104,7 @@ const routes = [
   {
     path: '/agent/info',
     name: "AgentInfo",
+    props:true,
     component: ()=>import('@/views/Agent/AgentInfo')
   },
   // 代理商列表
@@ -116,6 +117,7 @@ const routes = [
   {
     path: '/agency/info',
     name: "AgencyInfo",
+    props:true,
     component:()=>import('@/views/Agent/AgencyInfo')
   }
 ];

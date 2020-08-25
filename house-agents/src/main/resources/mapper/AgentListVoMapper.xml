@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuetang9.house.houseagents.mapper.AgentListVoMapper">
+
+
+    <select id="selectAgentListInfo" resultType="com.xuetang9.house.houseagents.domain.vo.AgentListVo" parameterType="com.xuetang9.house.domain.Agent">
+        select id, user_id as userId, email , photo from agent
+        <where>
+            <if test="agencyId != null and agencyId != ''">
+                and agency_id = #{agencyId}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectRecommendAgent" resultType="com.xuetang9.house.houseagents.domain.vo.AgentListVo" parameterType="com.xuetang9.house.domain.Agent">
+        select user_id as userId, email , photo from agent
+        <where>
+            <if test="commendStar != null and commendStar != ''">
+                and commend_star = #{commendStar}
+            </if>
+        </where>
+        limit 6
+    </select>
+
+
+
+</mapper>

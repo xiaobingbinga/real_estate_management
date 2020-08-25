@@ -1,5 +1,6 @@
 package com.xuetang9.house.houseagents.web;
 
+import com.github.pagehelper.PageInfo;
 import com.xuetang9.house.domain.Agency;
 import com.xuetang9.house.dto.properties.PageTo;
 import com.xuetang9.house.houseagents.domain.vo.AgencyListVo;
@@ -10,6 +11,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,13 +39,14 @@ public class AgencyListController {
      * @return
      */
     @PostMapping("/agency-list")
-    public JsonResult angecyListByPage(PageTo pageTo){
+    public JsonResult angecyListByPage(@RequestBody PageTo pageTo){
         JsonResult jsonResult = new JsonResult();
 
         try{
             List<AgencyListVo> agencyListVos =  agencyService.listAgencyVoByPage(pageTo.getPageNum(),pageTo.getPageSize());
+            PageInfo<AgencyListVo> pageInfo = new PageInfo<>(agencyListVos);
             if(agencyListVos != null && agencyListVos.size() > 0){
-                jsonResult.setData(agencyListVos);
+                jsonResult.setData(pageInfo);
                 jsonResult.setCode(200);
             }else{
                 jsonResult.setCode(1001);

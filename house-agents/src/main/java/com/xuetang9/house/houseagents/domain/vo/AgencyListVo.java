@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.persistence.Column;
+
 /**
  * @version 1.0
  * @desc:
@@ -17,6 +19,9 @@ public class AgencyListVo  {
 
     @ApiModelProperty(name = "代理商Id",example = "1")
     private Long id;
+
+    @ApiModelProperty(value = "账号标识",example = "2",required = true)
+    private Long userId;
 
     @ApiModelProperty(name = "代理商名称")
     private String name;
