@@ -2,8 +2,19 @@ export default {
     namespaced: true,
     state: {
         search1: {
+            status:{
+              label:'状态',
+                option1:[
+                    {value: 1,tip: '未出租'},
+                    {value: 2,tip: '已出租'}
+                ],
+                option2:[
+                    {value: 3,tip: '未出售'},
+                    {value: 4,tip: '已出售'}
+                ]
+            },
             rentType: {
-                label: '状态',
+                label: '租售类型',
                 options: [
                     {value: 1, tip: '租房'}, {value: 2, tip: '卖房'}
                 ]

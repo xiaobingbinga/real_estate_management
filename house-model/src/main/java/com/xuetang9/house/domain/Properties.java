@@ -193,7 +193,7 @@ public class Properties implements Serializable {
      */
     @Column(name = "is_cableTV")
     @ApiModelProperty(value = "有线电话吗",example = "1",required = true)
-    private Byte cabletv;
+    private Byte cableTV;
 
     /**
      * 有车库吗
