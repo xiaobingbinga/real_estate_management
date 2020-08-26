@@ -1,5 +1,8 @@
 const webpack = require('webpack');
 module.exports = {
+    publicPath:'/',//访问路径
+    assetsDir:'static',//静态资源存放目录
+    productionSourceMap:false,//关闭调试
     configureWebpack: {
         plugins: [
             new webpack.ProvidePlugin({
