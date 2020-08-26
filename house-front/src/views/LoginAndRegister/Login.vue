@@ -39,7 +39,7 @@
     data: () => ({
       loginForm: {
         username: '',
-        password: '',
+        password: ''
       },
       submitStatus: null
     }),

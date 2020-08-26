@@ -605,6 +605,7 @@
         this.axios.get(`/p/properties/advertising?num=${num}`).then(result => {
           if (result.data.code === 200) {
             this.houseAdList = result.data.data
+            console.log(this.houseAdList);
           }
         });
       },

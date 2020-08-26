@@ -7,7 +7,7 @@
 <!--        <span v-else-if="property.isAd" class="label">广告</span>-->
         <span v-else-if="property.special" class="label">特色</span>
         <span v-else class="label"></span>
-        <a :href="propertyUrl" @click="propertyClick"><img :src="`${publicPath}${property.pictureUrl}`" alt=""></a>
+        <a :href="propertyUrl" @click="propertyClick"><img :src="pictureUrl" alt=""></a>
         <ul class="property-feature">
           <li>
             <span class="area"><img :src="`${publicPath}assets/images/icons/area.png`" alt="">{{ property.square }} 平米</span>
@@ -80,6 +80,19 @@
       propertyUrl: {
         type: String,
         default: 'javascript:;'
+      }
+    },
+    computed: {
+      pictureUrl: function() {
+        if (!this.property.pictureUrl){
+          return '';
+        }else {
+          if(this.property.pictureUrl.indexOf('http') !== -1){
+            return this.property.pictureUrl;
+          }else {
+            return `${this.publicPath}${this.property.pictureUrl}`;
+          }
+        }
       }
     },
     methods: {

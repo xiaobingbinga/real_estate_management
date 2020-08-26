@@ -148,7 +148,7 @@
         if (!this.property.pictureUrl){
           return '';
         }else {
-          if(this.property.pictureUrl.indexOf('http') != -1){
+          if(this.property.pictureUrl.indexOf('http') !== -1){
             return this.property.pictureUrl;
           }else {
             return `${this.publicPath}${this.property.pictureUrl}`;
