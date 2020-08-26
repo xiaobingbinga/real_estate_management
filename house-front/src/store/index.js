@@ -15,6 +15,7 @@ import address from "./index/address";
 import user from "./module/user";
 import search1 from "./index/search1";
 
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({

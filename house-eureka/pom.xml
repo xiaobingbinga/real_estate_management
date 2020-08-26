@@ -5,7 +5,7 @@
     <groupId>com.xuetang9.house</groupId>
     <artifactId>house-eureka</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>house-eureka1</name>
+    <name>house-eureka</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
@@ -55,7 +55,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.3.0.RELEASE</version>
                 <configuration>
-                    <mainClass>com.xuetang9.house.houseeureka.HouseEureka1Application</mainClass>
+                    <mainClass>com.xuetang9.house.houseeureka.HouseEurekaApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

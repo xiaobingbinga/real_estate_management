@@ -32,6 +32,8 @@
         <mybatis-spring.version>2.1.1</mybatis-spring.version>
         <lombok.version>1.18.12</lombok.version>
         <springfox.version>2.9.2</springfox.version>
+        <!--打包过程不执行单元测试案例-->
+        <skipTests>true</skipTests>
     </properties>
 
     <dependencyManagement>
