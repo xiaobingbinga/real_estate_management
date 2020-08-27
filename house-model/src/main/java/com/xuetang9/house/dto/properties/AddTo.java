@@ -19,7 +19,7 @@ import javax.persistence.Column;
 public class AddTo {
 
     @ApiModelProperty(value = "用户Id",example = "1",required = true)
-    private String ownerId;
+    private Long ownerId;
 
     @ApiModelProperty(value = "房产标题",example = "依澜雅居",required = true)
     private String title;

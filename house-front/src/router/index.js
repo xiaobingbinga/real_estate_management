@@ -123,11 +123,23 @@ const router = new VueRouter({
   routes
 });
 
+import {getToken} from "../utils/auth"
 router.beforeEach(async (to,form,next) => {
   if (to.path === '/display/add-properties'){
     let $store = router.app.$store || store;
-    if ($store.getters.token){
-      router.addRoutes(paths);
+    console.log(getToken())
+    if (getToken() !== null){
+      if (!$store.getters['dynamicRoutes/getLoaded']){
+        console.log($store);
+        console.log($store.getters['dynamicRoutes/getPaths']);
+        router.addRoutes($store.getters['dynamicRoutes/getPaths']);
+        console.log(router);
+        $store.commit('dynamicRoutes/setLoaded', true);
+        await router.push(to);
+      }else {
+        next();
+      }
+
     }else {
       next({path:'/login'});
     }
@@ -135,6 +147,6 @@ router.beforeEach(async (to,form,next) => {
   }else {
     next();
   }
-})
+});
 
 export default router

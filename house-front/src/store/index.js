@@ -14,7 +14,7 @@ import serviceHouseList from "./index/serviceHouseList";
 import address from "./index/address";
 import user from "./module/user";
 import search1 from "./index/search1";
-
+import dynamicRoutes from "./module/dynamicRoutes";
 
 Vue.use(Vuex)
 
@@ -37,6 +37,7 @@ export default new Vuex.Store({
     serviceHouseList,
     search1,
     address,
-    user
+    user,
+    dynamicRoutes
   }
 })

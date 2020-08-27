@@ -3,7 +3,7 @@
 const tokenKey = 'Authorization';
 
 export function getToken(){
-  localStorage.getItem(tokenKey);
+  return localStorage.getItem(tokenKey);
 }
 
 export function setToken(token) {

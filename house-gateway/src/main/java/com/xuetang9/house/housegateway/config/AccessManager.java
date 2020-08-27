@@ -63,6 +63,9 @@ public class AccessManager implements ReactiveAuthorizationManager<Authorization
     }
 
     private boolean permitAll(String requestPath) {
+        if (requestPath.equals("/p/properties/add-properties")){
+            return false;
+        }
         return permitAll.stream()
                 .anyMatch(r -> antPathMatcher.match(r, requestPath));
     }
