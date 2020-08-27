@@ -103,7 +103,7 @@
 <!--                <filtering>true</filtering>-->
 <!--            </resource>-->
 <!--        </resources>-->
-        <plugins>
+<!--        <plugins>-->
 <!--            <plugin>-->
 <!--                <groupId>org.apache.maven.plugins</groupId>-->
 <!--                <artifactId>maven-resources-plugin</artifactId>-->
@@ -125,13 +125,16 @@
 <!--                </configuration>-->
 <!--            </plugin>-->
 
-        </plugins>
+<!--        </plugins>-->
         <pluginManagement>
             <plugins>
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>2.3.0.RELEASE</version>
+                    <configuration>
+                        <classifier>exec</classifier>
+                    </configuration>
                     <executions>
                         <execution>
                             <id>repackage</id>

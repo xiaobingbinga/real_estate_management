@@ -41,8 +41,14 @@
                     <!--User start-->
                     <div class="col mr-sm-50 mr-xs-50">
                         <div class="header-user">
-                            <router-link to="/login" class="user-toggle">
-                                <i class="pe-7s-user"/><span>{{nickName || '登录或注册'}}</span></router-link>
+                            {{ nickName }}
+                            <router-link to="/login" class="user-toggle" v-show="!nickName">
+                                <i class="pe-7s-user"></i><span>登录或注册</span>
+                            </router-link>
+                            <router-link to="/" @click="logout" class="user-toggle" v-show="nickName">
+                                <i class="pe-7s-user"></i><span>注销</span>
+                            </router-link>
+                            <img v-show="nickName" id="avator" src="assets/images/logo.png" alt="">
                         </div>
                     </div>
                     <!--User end-->
@@ -63,6 +69,7 @@
 
 <script>
     import {mapGetters,mapMutations} from 'vuex'
+    import {removeToken} from "../utils/auth";
     export default {
         data(){
             return {
@@ -73,7 +80,10 @@
             ...mapGetters('user',['nickName'])
         },
         methods:{
-            ...mapMutations('menus',['addMenu'])
+            ...mapMutations('menus',['addMenu']),
+            logout(){
+                removeToken();
+            }
         },
         created() {
 
@@ -82,5 +92,7 @@
 </script>
 
 <style scoped>
-
+    #avator{
+        border-radius: 50%;
+    }
 </style>

@@ -41,6 +41,7 @@ const actions = {
         commit('SET_NICK_NAME', nickName);
         commit('SET_UT_ID', utId);
         setToken(token);
+        console.log(getToken())
         resolve()
       }).catch(error => {
         reject(error)
