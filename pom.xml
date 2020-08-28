@@ -19,6 +19,7 @@
         <module>house-feign</module>
         <module>house-uaa</module>
         <module>house-houses</module>
+        <module>house-hosues2</module>
         <module>house-agents</module>
     </modules>
 

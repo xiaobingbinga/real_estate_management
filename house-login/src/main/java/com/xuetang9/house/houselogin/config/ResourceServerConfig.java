@@ -62,7 +62,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Bean
     public JwtAccessTokenConverter jwtTokenEnhancer(){
         JwtAccessTokenConverter jwtTokenEnhancer = new JwtAccessTokenConverter();
-        jwtTokenEnhancer.setSigningKey("springcloudalibaba");
+        jwtTokenEnhancer.setSigningKey("house");
         return jwtTokenEnhancer;
     }
 

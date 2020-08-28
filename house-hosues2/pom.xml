@@ -78,14 +78,6 @@
                 <configuration>
                     <mainClass>com.xuetang9.house.househosues2.HouseHosues2Application</mainClass>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>repackage</id>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
