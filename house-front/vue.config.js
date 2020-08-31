@@ -18,15 +18,15 @@ module.exports = {
         port: 80,
         proxy:{
             "/p/":{
-                target:"http://192.168.12.4:10000",
+                target:"http://192.168.1.10:11100",
                 changeOrigin: true,
             },
             "/ag/":{
-                target:"http://192.168.12.4:10000",
+                target:"http://192.168.1.10:11100",
                 changeOrigin: true,
             },
             "/p2":{
-                target:"http://192.168.12.4:10000",
+                target:"http://192.168.1.10:11100",
                 changeOrigin: true
             }
 
